@@ -2,8 +2,9 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-color: #eee;   
 }
-.footer{
-    background-color: rgb(219, 217, 217);
+ 
+.bg-footer{
+    background-color: rgb(211, 211, 211);
     bottom: 0px;
     height: 60px;
-}
+  }

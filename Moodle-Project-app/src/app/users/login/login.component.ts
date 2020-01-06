@@ -3,7 +3,7 @@ import { User } from '../user/user';
 import Swal from 'sweetalert2';
 import {AuthService} from '../auth/auth.service';
 import {Router} from '@angular/router';
-import { from } from 'rxjs';
+
 
 @Component({
   selector: 'app-login',
@@ -32,14 +32,21 @@ login(): void{
   this.authService.login(this.user).subscribe(response=> {
     console.log(response);
 
-    let payload = JSON.parse(atob(response.access_token.split(".")[1]));
+    this.authService.saveUser(response.access_token);
+    this.authService.saveToken(response.access_token);
 
-    console.log(payload);
-
-    this.router.navigate(['/footer']); //change
+    let user = this.authService.user;
     
-    Swal.fire('Login',`Welcome ${payload.user_name}, you are now logged!`, 'success');
-  })
+    this.router.navigate(['/Home']); //change
+    
+    Swal.fire('Login',`Welcome ${user.username}, you are now logged!`, 'success');
+  },
+  error =>{
+    if (error.status == 400){
+      Swal.fire('Error', 'User or Password incorrect!','error');
+    }
+  }
+  );
 }
 
 }

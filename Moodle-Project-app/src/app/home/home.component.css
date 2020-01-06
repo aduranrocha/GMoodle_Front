@@ -1,0 +1,26 @@
+  
+  .bg-gradient-primary {
+    background-color: #eee;
+
+    background-size: cover;
+    height: 100%;
+  } 
+  .table-ind{
+    position: relative;
+    z-index: 100;
+  }
+  /* cards */
+  .cards-ind{
+    position: relative;
+    z-index: 200;
+  }
+  .card-common {
+    box-shadow: 1px 2px 5px #999;
+    transition: all .4s;
+  }
+  
+  .card-common:hover {
+    box-shadow: 2px 3px 15px #999;
+    transform: translateY(-1px);
+  }
+  /* cards end */

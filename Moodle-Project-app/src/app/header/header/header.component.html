@@ -1,3 +1,4 @@
+<body >
 <nav class="navbar navbar-expand-md navbar-light">
     <button class="navbar-toggler ml-auto mb-2 bg-light" type="button" data-toggle="collapse"
         data-target="#myNavbar">
@@ -17,7 +18,7 @@
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                         class="fas fa-home text-light fa-lg mr-3"></i>Dashboard</a></li>
 
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 current"><i
+                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                         class="fas fa-book-open text-light fa-lg mr-3"></i>Materias</a></li>
 
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
@@ -82,6 +83,7 @@
     </div>
 </nav>
 
+
 <!--modal logout-->
 <div class="modal fade" id="sing-out">
     <div class="modal-dialog">
@@ -95,9 +97,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal">Stay Here</button>
-                <button [routerLink]="['/logout']" type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
+                <button (click)= "logout()" type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
             </div>
         </div>
     </div>
 </div>
 <!--/modal logout-->
+</body>

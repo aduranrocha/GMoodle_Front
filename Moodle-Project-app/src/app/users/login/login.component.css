@@ -14,7 +14,7 @@ body {
     color: #858796;
     text-align: left;
     background-color: #fff;
-    
+    background-repeat: no-repeat !important
   }
   body{
     background-repeat: no-repeat !important;
@@ -48,6 +48,7 @@ body {
     color: #fff;
     background-color: #2e59d9;
     border-color: #2653d4;
+    
   }
   .btn-primary {
     color: #fff;
@@ -81,6 +82,7 @@ body {
   }
 element.style {
     background-image: url('/src/assets/media/gatoshilo.jpg');
+    
   }
   .flex-grow-1 {
     flex-grow: 1!important;
