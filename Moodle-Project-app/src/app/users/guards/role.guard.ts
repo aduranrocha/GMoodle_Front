@@ -29,21 +29,13 @@ export class RoleGuard implements CanActivate {
     // console.log('ROLEGUARD->' + next); //Console confirmation of getting the correct role.
 
     if (this.authService.hasRole(role)) { //if the date insde the token has a 'role' then
-
-      //Conditional: depending of the type of role will send the user to a specific path. [WARNING]
-      let route;
-      if (next.data['role'] == 'ROLE_ADMIN') {
-        route = '/Admin';
-        /* } else if (next.data['role'] == 'ROLE_STUDENT') {
-           route = '/Student';
-         } else if (next.data['role'] == 'ROLE_TEACHER') {
-           route = '/Teacher'
-         }
-         this.router.navigate([route]);
-       */
-      }
       return true;
+      }
+     
 
-    }
+    
+
+    return false;
+
   }
 }

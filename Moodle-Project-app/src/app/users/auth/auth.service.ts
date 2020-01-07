@@ -73,6 +73,7 @@ export class AuthService {
     this._user.email = payload.email;
     this._user.username =  payload.user_name;
     this._user.roles = payload.authorities;
+   
 
     console.log(' THIS ROLE->'+this._user.roles); //Console confirmation everything is working good!
 
