@@ -12,12 +12,13 @@ import { Route } from '@angular/compiler/src/core';
 export class HeaderAComponent implements OnInit {
 
   constructor(private authService : AuthService, private router : Router) { }
-
+  
+//Method loging with an alert to tell the user that they are logged out!
   logout():void{
     let username = this.authService.user.username;
     this.authService.logout();
     Swal.fire('Logout', `${username} you have logged out! See you soon.`,'success');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']); 
   }
 
 
