@@ -1,4 +1,5 @@
 export class User {
+ 
 	id: number;
     username : string;
 	name : string;
@@ -7,5 +8,7 @@ export class User {
 	password : string;
 	address : string;
 	phoneNumber : string;
-    roles: string[] = [];
+	roles: string[] = [];
+	//added for the user.component.ts archive but still not sure where it comes from in the tutorial
+  content: User[];
 }

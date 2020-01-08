@@ -35,6 +35,7 @@ export class AuthService {
     if (this._token != null) {
       return this._token;
     } else if (this._token == null && sessionStorage.getItem('token') != null){
+      this._token = sessionStorage.getItem('token');
       return this._token;
     }
     return null;
@@ -94,6 +95,15 @@ export class AuthService {
     }
     return null;
    }
+   //Authentication of the session [NOT USED]
+   isAuthenticated(): boolean{
+     let payload = this.getTokenData(this.token);
+     if (payload =! null && payload.user_name && payload.user_name.lenght > 0){
+       return true;
+     }
+     return false;
+   }
+
 
    //Conditional that checks if the user has certain role 
    hasRole(role: string): boolean {

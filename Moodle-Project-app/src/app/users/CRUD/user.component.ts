@@ -8,8 +8,8 @@ import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-student',
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css']
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
 export class StudentComponent implements OnInit {
   //Variables to use so we can paginate each user from our DB and to set an alert for the moment an admin wants to delete a user.
@@ -57,6 +57,7 @@ export class StudentComponent implements OnInit {
       cancelButtonText: 'Do not delete'
     }).then((result) => {
       if (result.value) {
+
         //Confirmation once the user is deleted
         this.StudentService.delete(user.id).subscribe(
           () => {

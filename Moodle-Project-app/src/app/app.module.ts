@@ -11,12 +11,12 @@ import { LoginComponent } from './users/login/login.component';
 import {HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { HeaderTComponent } from './header/header-t/header-t.component';
-import { HomeTComponent } from './home-t/home-t.component';
+import { HomeTComponent } from './home/home-t/home-t.component';
 import { AuthGuard } from './users/guards/auth.guard';
 import { RoleGuard } from './users/guards/role.guard';
-import { HomeAComponent } from './home-a/home-a.component';
+import { HomeAComponent } from './home/home-a/home-a.component';
 import { HeaderAComponent } from './header/header-a/header-a.component';
-import {StudentComponent} from './users/user/user.component'
+import {StudentComponent} from './users/CRUD/user.component'
 
 
 // Path is used to give the path a certain name, or protect certain path throu Guards, AuthGuard is a general guard while RoleGuard will circle through roles and assign a certain path depending the role
