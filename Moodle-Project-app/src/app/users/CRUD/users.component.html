@@ -1,0 +1,60 @@
+
+
+<div class="card border-primary mb-3">
+  <div class="card-header">Users</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">List of all users</h5>
+    <div class="my-2 text-left">
+      <button *ngIf="authService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary" type="button" [routerLink]="['/user']">
+        Create a new user
+      </button>
+    </div>
+    <div *ngIf="User?.length == 0" class="alert alert-info">
+      No user added yet
+    </div>
+    <table class="table table-bordered table-striped" *ngIf="User?.length>0">
+      <thead>
+        <tr>
+          <th *ngIf="authService.hasRole('ROLE_USER')">#</th>
+          <th>username</th>
+          <th>Name</th>
+          <th>Last Name</th>
+          <th>email</th>
+          <th>ROLE</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Degree</th>
+          <th>Birthday</th>
+          <th>Creation Date</th>
+          <th *ngIf="authService.hasRole('ROLE_ADMIN')">edit</th>
+        </tr>
+      </thead>
+      <!-- CHANGE PATH!!! --> 
+      <!-- USER IMAGE!! -->
+      <tbody>
+        <tr *ngFor="let User of Users"> <!-- client of clients-->
+          <td *ngIf="authService.hasRole('ROLE_USER')"><img (click)="abrirModal(user)" *ngIf="user?.photo"
+            src="http://localhost:8080/api/uploads/img/{{user.photo}}" alt="{{user.photo}}" class="img-thumbnail rounded" style="width:64px; cursor: pointer;"> 
+            <img (click)="abrirModal(user)" *ngIf="!user?.photo"
+              src="http://localhost:8080/images/no-usuario.png" alt="without photo" class="img-thumbnail rounded"
+              style="width:64px; cursor: pointer;">
+            </td>
+          <td>{{ user.username}}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.roles }}</td>
+          <td>{{ user.adress }}</td>
+          <td>{{ user.phoneNumber }}</td>
+          <td>{{ user.dregree }}</td>
+          <td>{{ user.birthDay }}</td>
+          <td>{{ user.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+          <td *ngIf="authService.hasRole('ROLE_ADMIN')">
+            <button type="button" name="editar" [routerLink]="['/user', user.id]" class="btn btn-primary btn-sm">edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
+</div>

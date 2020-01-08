@@ -6,9 +6,13 @@ export class User {
 	lastName : string;
 	email :  string;
 	password : string;
+	gender : string;
 	address : string;
 	phoneNumber : string;
+	birthDay: string
+	photo : string;
 	roles: string[] = [];
-	//added for the user.component.ts archive but still not sure where it comes from in the tutorial
-  content: User[];
+	createAt : string;
+
+	
 }

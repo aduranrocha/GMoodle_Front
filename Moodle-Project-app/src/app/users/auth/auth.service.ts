@@ -121,15 +121,6 @@ export class AuthService {
      sessionStorage.removeItem('token'); // deletes just the token
      sessionStorage.removeItem('user'); // deletes just the user
    }
-   
-   //Conditional: if in the session storage we have a token, then it will confirm the user is logged in!
-   isLoggedIn(): boolean {
-     let session = sessionStorage.getItem('token');
-     if (session != null ){
-       return true
-     }
 
-     return false;
-   }
 
 }
