@@ -110,7 +110,9 @@ getUser(username): Observable<User>{
         return throwError(e);
       }
 
-      console.error(e.error.message)
+      console.error(e.error.message);
+      Swal.fire(e.error.message, e.error.error, 'error');
+      return throwError(e);
     }))
   }
 }

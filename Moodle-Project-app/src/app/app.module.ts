@@ -16,7 +16,7 @@ import { AuthGuard } from './users/guards/auth.guard';
 import { RoleGuard } from './users/guards/role.guard';
 import { HomeAComponent } from './home-a/home-a.component';
 import { HeaderAComponent } from './header/header-a/header-a.component';
-import {StudentComponent} from './student/student.component'
+import {StudentComponent} from './users/user/user.component'
 
 
 // Path is used to give the path a certain name, or protect certain path throu Guards, AuthGuard is a general guard while RoleGuard will circle through roles and assign a certain path depending the role
