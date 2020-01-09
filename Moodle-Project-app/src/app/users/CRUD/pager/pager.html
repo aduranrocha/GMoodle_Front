@@ -1,0 +1,25 @@
+<!-- PAGER NEEDS THE PATH!, This should be connect with the general list of all users, wich is the user.html/component-->
+<ul *ngIf="pages?.length >0" class="pagetion">
+
+    <li class="page-item" *ngIf="pager.number > 0">
+      <a class="page-link" [routerLink]="['/List/user.id', pager.number-1]">&laquo;</a> <!--check this path-->
+    </li>
+  
+    <li [ngClass]="pager.first? 'disabled page-item': 'page-item'">
+      <a class="page-link" [routerLink]="['', 0]">Firsrt</a><!--check this path-->
+    </li>
+  
+    <li *ngFor="let page of pages" [ngClass]="page-1 == pager.number? 'page-item active':'page-item'">
+      <span class="page-link" *ngIf="page-1 == pager.number">{{page}}</span>
+      <a *ngIf="page-1 != pager.number" class="page-link" [routerLink]="['/List/user.id', page-1]">{{page}}</a><!--check this path-->
+    </li>
+  
+    <li [ngClass]="pager.last?' disabled page-item': 'page-item'">
+      <a class="page-link" [routerLink]="['/List/user.id', pager.totalPages-1]">Last</a><!--check this path-->
+    </li>
+  
+    <li class="page-item" *ngIf="pager.number < pager.totalPages-1">
+      <a class="page-link" [routerLink]="['/List/user.id', pagedor.number+1]">&raquo;</a><!--check this path-->
+    </li>
+  </ul>
+  

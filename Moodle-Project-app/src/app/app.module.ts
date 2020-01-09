@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 // Components are importet so you can they can be linked inside other components and inside component.html 
@@ -19,18 +19,26 @@ import { HeaderAComponent } from './header/header-a/header-a.component';
 import {StudentComponent} from './users/CRUD/users.component'
 import { FormComponent } from './users/CRUD/form.component';
 import { DetailComponent } from './users/CRUD/photo/detail/detail.component';
+import { pagerComponent } from './users/CRUD/pager/pager.component';
+import { StudentService } from './service/student.service';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { registerLocaleData } from '@angular/common';
+import localeES from '@angular/common/locales/es';
+
+registerLocaleData(localeES, 'es');
 
 // Path is used to give the path a certain name, or protect certain path throu Guards, AuthGuard is a general guard while RoleGuard will circle through roles and assign a certain path depending the role
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent  } , // login page
   { path: 'Student', component: HomeComponent }, //Student 'home page' only accessed by a role 'Student'
-  { path: 'Admin', component: HomeAComponent, canActivate:[AuthGuard, RoleGuard], data: {role: 'ROLE_ADMIN'} } //Admin 'home page' only accessed by a role 'Admin'
-  ,
+  { path: 'Admin', component: HomeAComponent, canActivate:[AuthGuard, RoleGuard], data: {role: 'ROLE_ADMIN'} }, //Admin 'home page' only accessed by a role 'Admin',
   { path: 'Teacher', component: HomeTComponent, canActivate:[AuthGuard, RoleGuard], data: {role: 'ROLE_TEACHER'} }, //Teacher 'home page' only accessed by a role 'Teacher'
-  {path: 'CRUD', component: FormComponent}, //Form where all the users are created and deleted, Redirects to List
-  {path: 'List', component: StudentComponent} //ReadAll of the users, redirects to CRUD
+  {path: 'CRUD/page', component: FormComponent}, //Form where all the users are created and deleted, Redirects to List
+  {path: 'List', component: StudentComponent}, //ReadAll of the users, redirects to CRUD
+  {path: 'List/:id', component: StudentComponent} //ReadAll of the users, redirects to CRUD
+  
 ];
 
 // 
@@ -47,17 +55,19 @@ const routes: Routes = [
     HeaderAComponent,
     StudentComponent,
     FormComponent,
-    DetailComponent
+    DetailComponent,
+    pagerComponent
 
     
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [StudentService, { provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

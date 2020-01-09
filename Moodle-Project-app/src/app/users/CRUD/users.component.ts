@@ -14,9 +14,9 @@ import { ModalService } from 'src/app/service/modal.service';
   styleUrls: ['./user.component.css']
 })
 export class StudentComponent implements OnInit {
-  //Variables to use so we can paginate each user from our DB and to set an alert for the moment an admin wants to delete a user.
+  //Variables to use so we can pagete each user from our DB and to set an alert for the moment an admin wants to delete a user.
   users: User[];
-  paginator: any;
+  pager: any;
   selectedUser: User;
 
   constructor(
@@ -28,7 +28,7 @@ export class StudentComponent implements OnInit {
 
   ngOnInit() {
 
-    //Pagination of the users coming from the DB
+    //pagetion of the users coming from the DB
     this.activateRoute.paramMap.subscribe(params => {
       let page: number = +params.get('page');
 
@@ -37,7 +37,7 @@ export class StudentComponent implements OnInit {
       }
 
 
-      //Getting users to paginate them (error on the contet part! )
+      //Getting users to pagete them (error on the contet part! )
       this.StudentService.getUser(page).pipe(
         tap((response: any) => {
           console.log('UserComponent : tap 3');
@@ -45,7 +45,7 @@ export class StudentComponent implements OnInit {
         })
       ).subscribe((response: any) => {
         this.users = response.content as User[];
-        this.paginator = response;
+        this.pager = response;
       });
     });
 

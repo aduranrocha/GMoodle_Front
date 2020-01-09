@@ -52,7 +52,7 @@ export class StudentService {
   //In this create method is added some catch errors in case something goes wrong and display it on a sweet alert message
 
 
-  //CREATE - PAGINATION 
+  //CREATE - pageTION 
   getUsers(page: number): Observable<any> {
     return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
       tap((response: any) => {

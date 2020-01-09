@@ -1,11 +1,12 @@
-
+<app-detail *ngIf = "selectedUser" [User] = "selectedUser"> </app-detail>
 
 <div class="card border-primary mb-3">
   <div class="card-header">Users</div>
   <div class="card-body text-primary">
     <h5 class="card-title">List of all users</h5>
     <div class="my-2 text-left">
-      <button *ngIf="authService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary" type="button" [routerLink]="['/user']">
+      <!-- THIS BUTTON SHOULD SEND YOU TO THE CRUD PAGE, TO CHANGE THINGS-->
+      <button *ngIf="authService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary" type="button" [routerLink]="['CRUD']">
         Create a new user
       </button>
     </div>
@@ -50,11 +51,13 @@
           <td>{{ user.birthDay }}</td>
           <td>{{ user.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
           <td *ngIf="authService.hasRole('ROLE_ADMIN')">
-            <button type="button" name="editar" [routerLink]="['/user', user.id]" class="btn btn-primary btn-sm">edit</button>
+            <!-- THIS BUTTON SHOULD SEND YOU TO THE CRUD PAGE, TO CHANGE THINGS-->
+            <button type="button" name="editar" [routerLink]="['/CRUD']" class="btn btn-primary btn-sm">edit</button>
           </td>
         </tr>
       </tbody>
     </table>
-    
+    <!--pager implementation on this table-->
+    <pager-nav *ngIf = "pagedor" [pagedor] = "pagedor"></pager-nav>
   </div>
 </div>
