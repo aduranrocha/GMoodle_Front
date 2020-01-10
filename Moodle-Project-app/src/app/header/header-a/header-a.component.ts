@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { Route } from '@angular/compiler/src/core';
 
 @Component({
-  selector: 'app-header-a',
+  selector: 'app-headerA',
   templateUrl: './header-a.component.html',
   styleUrls: ['./header-a.component.css']
 })

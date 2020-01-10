@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'Student', component: HomeComponent }, //Student 'home page' only accessed by a role 'Student'
   { path: 'Admin', component: HomeAComponent, canActivate:[AuthGuard, RoleGuard], data: {role: 'ROLE_ADMIN'} }, //Admin 'home page' only accessed by a role 'Admin',
   { path: 'Teacher', component: HomeTComponent, canActivate:[AuthGuard, RoleGuard], data: {role: 'ROLE_TEACHER'} }, //Teacher 'home page' only accessed by a role 'Teacher'
-  {path: 'CRUD/page', component: FormComponent}, //Form where all the users are created and deleted, Redirects to List
+  {path: 'CRUD', component: FormComponent}, //Form where all the users are created and deleted, Redirects to List
   {path: 'List', component: StudentComponent}, //ReadAll of the users, redirects to CRUD
   {path: 'List/:id', component: StudentComponent} //ReadAll of the users, redirects to CRUD
   

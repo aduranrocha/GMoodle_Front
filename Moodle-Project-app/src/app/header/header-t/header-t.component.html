@@ -29,13 +29,22 @@
                             </ul>
                         </div>
                         <!--ICONS / OUTSIDE LINE-->
-                        <ul class="navbar-nav flex-column mt-4">
+                        <ul class="navbar-nav flex-column mt-4" data-toggle="dropdow">
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                         class="fas fa-calendar-alt text-light fa-lg mr-3"></i>Calendario</a></li>
     
     
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
-                                        class="fas fa-user-tie text-light fa-lg mr-3"></i>Alumnos</a></li>
+                                        <li class="dropright">
+                                            <button class="nav-item btn" type="button" id="dropdownMenuButton"
+                                                data-toggle="dropdown">
+                                        <li><a class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                                                    class="fas fa-user-tie text-light fa-lg mr-3"></i>Alumnos</a></li>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" routerLink="/CRUD">Nuevo Alumno</a>
+                                            <a class="dropdown-item" routerLink="/List">Lista de Alumnos</a>
+                                        </div>
+                                        </li>
     
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                         class="fas fa-wrench text-light fa-lg mr-3"></i>Settings</a></li>
