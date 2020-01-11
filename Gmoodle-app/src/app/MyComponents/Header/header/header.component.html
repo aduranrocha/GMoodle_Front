@@ -1,0 +1,107 @@
+<body >
+    <nav class="navbar navbar-expand-md navbar-light">
+        <button class="navbar-toggler ml-auto mb-2 bg-light" type="button" data-toggle="collapse"
+            data-target="#myNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <div class="container-fluid">
+                <div class="row">
+                    <!--
+                    SIDE BAR col-lg-3 / md-4 
+                    <div class="col-xl-2 col-lg-3 col-md-4 sidebar fixed-top">
+                        <a href="#"
+                            class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border text-uppercase">Generation</a>
+                        ICONs / INSIDE LINE
+                        <div class="bottom-border pb-3">
+                            <ul class="navbar-nav flex-column mt-4">
+                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                                            class="fas fa-home text-light fa-lg mr-3"></i>Dashboard</a></li>
+    
+                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                                            class="fas fa-book-open text-light fa-lg mr-3"></i>Materias</a></li>
+    
+                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                                            class="fas fa-file text-light fa-lg mr-3"></i>Documentos</a></li>
+    
+                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                                            class="fas fa-tasks text-light fa-lg mr-3"></i>Actividades</a></li>
+    
+                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                                            class="fas fa-file-medical text-light fa-lg mr-3"></i>Evaluaciones</a></li>
+                            </ul>
+                        </div>
+                        ICONS / OUTSIDE LINE
+                        <ul class="navbar-nav flex-column mt-4">
+                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                                        class="fas fa-calendar-alt text-light fa-lg mr-3"></i>Calendario</a></li>
+    
+    
+                            <li class="nav-item"><a routerLink="/List" class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                                        class="fas fa-user-tie text-light fa-lg mr-3"></i>Profesores</a></li>
+    
+                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                                        class="fas fa-wrench text-light fa-lg mr-3"></i>Settings</a></li>
+                        </ul>
+    
+                        /ICON
+                    </div>
+                    /SIDE-BAR
+                    -->
+                    <!-- TOP-NAVB-->
+                    <div class="col-xl-10 col-lg-9 col-md-8 ml-auto fixed-top py-2 top-navbar">
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <h4 class="text-dark text-uppercase mb-0">Dashboard</h4>
+                            </div>
+                            <div class="col-md-5">
+                                <!--HERE GOES THE SEARCH BAR, BUT NOT REALLY-->
+                            </div>
+                            <div class="col-md-3">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item"><a href="#" class="nav-link"><i
+                                                class="fas fa-bell text-warning fa-lg"></i></a>
+                                    </li>
+                                    <li class="nav-item ml-4 left-border">
+                                        <a href="#" class="nav-link">
+                                            <span>Java Fullstack</span>
+                                            <i class="fas fa-user-circle text-info fa-lg mr-3"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item left-border ml-md-auto">
+                                        <a href="#" class="nav-link" data-toggle="modal" data-target="#sing-out">
+                                            <i class="fas fa-sign-out-alt text-danger fa-lg"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- TOP-NAVB- END-->
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    
+    <!--modal logout-->
+    <div class="modal fade" id="sing-out">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Want to Leave?</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    Press logout to leave
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Stay Here</button>
+                    <button (click)= "logout()" type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/modal logout-->
+    </body>

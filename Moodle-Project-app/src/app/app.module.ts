@@ -22,7 +22,7 @@ import { DetailComponent } from './users/CRUD/photo/detail/detail.component';
 import { pagerComponent } from './users/CRUD/pager/pager.component';
 import { StudentService } from './service/student.service';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es';
 
@@ -65,7 +65,7 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    BrowserAnimationsModule
+    
   ],
   providers: [StudentService, { provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]

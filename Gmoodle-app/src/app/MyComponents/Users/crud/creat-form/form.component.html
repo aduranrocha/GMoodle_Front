@@ -1,0 +1,328 @@
+<!-- STUDENTS CRUD / should re-direct to CRUD-->
+
+<body>
+        <section>
+            <!--SOME SPACE BETWEEN TOPNAV AND THIS SECTION-->
+            <div class=" col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row pt-md-5 mt-md-3">
+                    <div class="col-xl-3 col-sm-6 p-2">
+                    </div>
+                </div>
+            </div>
+            
+    
+            <!--JUSTIFICATION FROM THE LEFTNAV-->
+            <div class="row ml-0">
+                <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+    
+                    <!--SECTIONS BUTTONS-->
+                    <div class="card-header bg-light">
+                        <ul class="nav nav-pills card-header-pills">
+                            <li class="nav-item">
+                                <a class="nav-link " href="#">User Settings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/List">Users List</a>
+                            </li>
+    
+                        </ul>
+                    </div>
+    
+                    <!--CARDS WITH CRUD AND STUFF I GUESS-->
+                    <div class="card-body">
+    
+                        <!--CARDS!!! -->
+                        <div id="accordion">
+                            <!--FIRST CARD-->
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn text-primary" data-toggle="collapse" data-target="#collapseOne"
+                                            aria-expanded="true" aria-controls="collapseOne">
+                                            Create a new User
+                                        </button>
+                                    </h5>
+                                </div>
+    
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label
+                                                            for="username"><strong>Username</strong></label><input
+                                                            class="form-control" type="text" placeholder="user.name"
+                                                            name="username" /></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="email"><strong>Email
+                                                                Address</strong></label><input class="form-control"
+                                                            type="email" placeholder="user@example.com" name="email" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label
+                                                            for="username"><strong>Password</strong></label><input
+                                                            class="form-control" type="password" placeholder="password"
+                                                            name="username" /></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="role"><strong>Role</strong>
+                                                        </label><input class="form-control" type="email"
+                                                            placeholder="Admin / Teacher / Student" name="role" /></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label for="first_name"><strong>First
+                                                                Name</strong></label><input class="form-control" type="text"
+                                                            placeholder="John" name="first_name" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="last_name"><strong>Last
+                                                                Name</strong></label><input class="form-control" type="text"
+                                                            placeholder="Doe" name="last_name" /></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label
+                                                            for="username"><strong>Addres</strong></label><input
+                                                            class="form-control" type="text" placeholder="Sunset Blvd, 38"
+                                                            name="username" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="role"><strong>Phone</strong>
+                                                        </label><input class="form-control" type="email"
+                                                            placeholder="(541) 754-3010" name="role" /></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label
+                                                            for="username"><strong>Degree</strong></label><input
+                                                            class="form-control" type="text" placeholder="Java FullStack"
+                                                            name="username" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="role"><strong>Birthday</strong>
+                                                        </label><input class="form-control" type="date"
+                                                            placeholder="(541) 754-3010" name="role" /></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group"><button class="btn btn-primary btn-sm"
+                                                    type="submit">Save
+                                                    Settings</button></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!--SECOND-->
+                            <div class="card">
+                                <div class="card-header py-3" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn text-success collapsed" data-toggle="collapse"
+                                            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Upload a User
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label
+                                                            for="username"><strong>Username</strong></label><input
+                                                            class="form-control" type="text" placeholder="user.name"
+                                                            name="username" /></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="email"><strong>Email
+                                                                Address</strong></label><input class="form-control"
+                                                            type="email" placeholder="user@example.com" name="email" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label
+                                                            for="username"><strong>Password</strong></label><input
+                                                            class="form-control" type="password" placeholder="password"
+                                                            name="username" /></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="role"><strong>Role</strong>
+                                                        </label><input class="form-control" type="email"
+                                                            placeholder="Admin / Teacher / Student" name="role" /></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label for="first_name"><strong>First
+                                                                Name</strong></label><input class="form-control" type="text"
+                                                            placeholder="John" name="first_name" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="last_name"><strong>Last
+                                                                Name</strong></label><input class="form-control" type="text"
+                                                            placeholder="Doe" name="last_name" /></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label
+                                                            for="username"><strong>Addres</strong></label><input
+                                                            class="form-control" type="text" placeholder="Sunset Blvd, 38"
+                                                            name="username" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="role"><strong>Phone</strong>
+                                                        </label><input class="form-control" type="email"
+                                                            placeholder="(541) 754-3010" name="role" /></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label
+                                                            for="username"><strong>Degree</strong></label><input
+                                                            class="form-control" type="text" placeholder="Java FullStack"
+                                                            name="username" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="role"><strong>Birthday</strong>
+                                                        </label><input class="form-control" type="date"
+                                                            placeholder="(541) 754-3010" name="role" /></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group"><button class="btn btn-primary btn-sm"
+                                                    type="submit">Save
+                                                    Settings</button></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--THIRD CARD-->
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn text-danger collapsed" data-toggle="collapse"
+                                            data-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                            Delete a User
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="col-xl-3">
+                                                    <div class="form-group"><label for="username"><strong>User
+                                                                Id</strong></label><input class="form-control" type="text"
+                                                            placeholder="user.name" name="username" /></div>
+                                                </div>
+    
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label
+                                                            for="username"><strong>Username</strong></label><input
+                                                            class="form-control" type="text" placeholder="user.name"
+                                                            name="username" /></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="email"><strong>Email
+                                                                Address</strong></label><input class="form-control"
+                                                            type="email" placeholder="user@example.com" name="email" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label
+                                                            for="username"><strong>Password</strong></label><input
+                                                            class="form-control" type="password" placeholder="password"
+                                                            name="username" /></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="role"><strong>Role</strong>
+                                                        </label><input class="form-control" type="email"
+                                                            placeholder="Admin / Teacher / Student" name="role" /></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label for="first_name"><strong>First
+                                                                Name</strong></label><input class="form-control" type="text"
+                                                            placeholder="John" name="first_name" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="last_name"><strong>Last
+                                                                Name</strong></label><input class="form-control" type="text"
+                                                            placeholder="Doe" name="last_name" /></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label
+                                                            for="username"><strong>Addres</strong></label><input
+                                                            class="form-control" type="text" placeholder="Sunset Blvd, 38"
+                                                            name="username" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="role"><strong>Phone</strong>
+                                                        </label><input class="form-control" type="email"
+                                                            placeholder="(541) 754-3010" name="role" /></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label
+                                                            for="username"><strong>Degree</strong></label><input
+                                                            class="form-control" type="text" placeholder="Java FullStack"
+                                                            name="username" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="role"><strong>Birthday</strong>
+                                                        </label><input class="form-control" type="date"
+                                                            placeholder="(541) 754-3010" name="role" /></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group"><button class="btn btn-danger btn-sm"
+                                                    type="submit">Delete
+                                                    Settings</button></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+    
+                    </div>
+    
+    
+                </div>
+    
+            </div>
+    
+        </section>
+    
+    
+    </body>
+    
