@@ -40,7 +40,9 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/Admin']);
 
     },
-      error => {
+      error => 
+      {
+        console.log(error)
         if (error.status == 400) {
           Swal.fire('Error', 'User or Password incorrect!', 'error');
         }

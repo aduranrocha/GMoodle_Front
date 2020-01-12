@@ -49,7 +49,7 @@ export class AuthService {
 
       //Headers needed to get a token 
     const httpHeaders = new HttpHeaders({
-      'Access-Control-Allow-Oring':'*', 
+      // 'Access-Control-Allow-Oring':'*', 
       'Content-Type':'application/x-www-form-urlencoded', 
       'Authorization':'Basic '+ credentials
     });
