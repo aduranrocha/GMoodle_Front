@@ -51,7 +51,7 @@
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                             data-parent="#accordion">
                             <div class="card-body">
-                                <form [formGroup]="formUser">
+                                <form [formGroup]="formUser" (ngSubmit)="save($event) && formUser.valid">
                                     <div class="form-row">
                                         <div class="col">
                                             <div class="form-group">
@@ -75,18 +75,22 @@
                                                     for="username"><strong>Password</strong></label>
                                                     <input formControlName="password"
                                                     class="form-control" type="password" placeholder="password"
-                                                    name="username" /></div>
+                                                    name="passwordCreate" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="role"><strong>Role</strong>
-                                                </label>
-                                                <!-- <select name="roles" multiple class="form-control custom-select">
-                                                    <option value="ROLE_ADMIN">Admin</option>
-                                                    <option value="ROLE_TEACHER">Teacher</option>
-                                                    <option value="ROLE_STUDENT">Student</option>
-                                                </select> -->
-                                                <input formControlName="role" class="form-control" type="email"
-                                                    placeholder="Admin / Teacher / Student" name="role" /></div>
+                                            <div class="form-group">
+                                                <label for="role"><strong>Role</strong></label>
+                                                <ng-select 
+                                                formControlName="roles"
+                                                class=""
+                                                [items]="rolesModel"
+                                                bindLabel="name"
+                                                bindValue="id"
+                                                placeholder="Select item"
+                                                appendTo="body"
+                                                multiple="true">
+                                             </ng-select> 
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -110,7 +114,7 @@
                                                     for="username"><strong>Addres</strong></label>
                                                     <input formControlName="address"
                                                     class="form-control" type="text" placeholder="Sunset Blvd, 38"
-                                                    name="username" />
+                                                    name="addressCreate" />
                                             </div>
                                         </div>
                                         <div class="col">
@@ -126,7 +130,7 @@
                                                     for="username"><strong>Degree</strong></label>
                                                     <input formControlName="degree"
                                                     class="form-control" type="text" placeholder="Java FullStack"
-                                                    name="username" />
+                                                    name="degreeCreate" />
                                             </div>
                                         </div>
                                         <div class="col">
@@ -137,7 +141,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-primary btn-sm" (click)="save()" type="submit">Save
+                                        <button [disabled]="formUser.invalid" class="btn btn-primary btn-sm" type="submit">Save
                                             Settings</button>
                                         </div>
                                 </form>
@@ -151,83 +155,111 @@
                             <h5 class="mb-0">
                                 <button class="btn text-success collapsed" data-toggle="collapse"
                                     data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Upload a User
+                                    Update a User
                                 </button>
                             </h5>
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
-                                <form>
+                                <form [formGroup]="formUserUpdate">
                                     <div class="form-row">
-                                        <div class="col">
-                                            <div class="form-group"><label
-                                                    for="username"><strong>Username</strong></label><input
-                                                    class="form-control" type="text" placeholder="user.name"
-                                                    name="username" /></div>
+                                        <div class="col-xl-3">
+                                            <div class="form-group">
+                                                <label for="userIdUpdate"><strong>User
+                                                        Id</strong></label>
+                                                <input formControlName="id" class="form-control" type="text"
+                                                    placeholder="1" name="userIdUpdate" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="email"><strong>Email
-                                                        Address</strong></label><input class="form-control" type="email"
-                                                    placeholder="user@example.com" name="email" />
+                                            <div class="form-group"><label
+                                                    for="usernameUpdate"><strong>Username</strong></label>
+                                                    <input formControlName="username"
+                                                    class="form-control" type="text" placeholder="LuisG"
+                                                    name="usernameUpdate" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="emailUpdate"><strong>Email
+                                                        Address</strong></label>
+                                                        <input formControlName="email" class="form-control" type="email"
+                                                    placeholder="user@example.com" name="emailUpdate" />
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
                                             <div class="form-group"><label
-                                                    for="username"><strong>Password</strong></label><input
+                                                    for="passwordUpdate"><strong>Password</strong></label>
+                                                    <input formControlName="password"
                                                     class="form-control" type="password" placeholder="password"
-                                                    name="username" /></div>
+                                                    name="passwordUpdate" /></div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group"><label for="role"><strong>Role</strong>
-                                                </label><input class="form-control" type="email"
-                                                    placeholder="Admin / Teacher / Student" name="role" /></div>
+                                                </label>
+                                                <ng-select 
+                                                formControlName="roles"
+                                                class=""
+                                                [items]="rolesModel"
+                                                bindLabel="name"
+                                                bindValue="id"
+                                                placeholder="Select item"
+                                                appendTo="body"
+                                                multiple="true">
+                                                </ng-select> 
+                                                </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="first_name"><strong>First
-                                                        Name</strong></label><input class="form-control" type="text"
-                                                    placeholder="John" name="first_name" />
+                                            <div class="form-group"><label for="first_nameUpdate"><strong>First
+                                                        Name</strong></label>
+                                                        <input formControlName="name"  class="form-control" type="text"
+                                                    placeholder="Luis" name="first_nameUpdate" />
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="last_name"><strong>Last
-                                                        Name</strong></label><input class="form-control" type="text"
-                                                    placeholder="Doe" name="last_name" /></div>
+                                            <div class="form-group"><label for="last_nameUpdate"><strong>Last
+                                                        Name</strong></label>
+                                                        <input formControlName="lastName" class="form-control" type="text"
+                                                    placeholder="Gutiérrez" name="last_nameUpdate" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
                                             <div class="form-group"><label
-                                                    for="username"><strong>Addres</strong></label><input
+                                                    for="addressUpdate"><strong>Addres</strong></label>
+                                                    <input formControlName="address"
                                                     class="form-control" type="text" placeholder="Sunset Blvd, 38"
-                                                    name="username" />
+                                                    name="addressUpdate" />
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="role"><strong>Phone</strong>
-                                                </label><input class="form-control" type="email"
+                                            <div class="form-group"><label for="PhoneUpdate"><strong>Phone</strong>
+                                                </label>
+                                                <input formControlName="phone" class="form-control" type="text"
                                                     placeholder="(541) 754-3010" name="role" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
                                             <div class="form-group"><label
-                                                    for="username"><strong>Degree</strong></label><input
+                                                    for="degreeUpdate"><strong>Degree</strong></label>
+                                                    <input formControlName="degree"
                                                     class="form-control" type="text" placeholder="Java FullStack"
-                                                    name="username" />
+                                                    name="degreeUpdate" />
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="role"><strong>Birthday</strong>
-                                                </label><input class="form-control" type="date"
-                                                    placeholder="(541) 754-3010" name="role" /></div>
+                                            <div class="form-group"><label for="birthdayUpdate"><strong>Birthday</strong>
+                                                </label>
+                                                <input formControlName="birthDay" class="form-control" type="date"
+                                                    placeholder="(541) 754-3010" name="birthdayUpdate" /></div>
                                         </div>
                                     </div>
-                                    <div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Save
-                                            Settings</button></div>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary btn-sm" type="button" (click)="update($event)" name="Update">Save
+                                            Settings</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -248,18 +280,18 @@
                                 <form>
                                     <div class="form-row">
                                         <div class="col-xl-3">
-                                            <div class="form-group"><label for="username"><strong>User
+                                            <div class="form-group"><label for="userIdDelete"><strong>User
                                                         Id</strong></label><input class="form-control" type="text"
-                                                    placeholder="user.name" name="username" /></div>
+                                                    placeholder="1" name="userIdDelete" /></div>
                                         </div>
 
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
                                             <div class="form-group"><label
-                                                    for="username"><strong>Username</strong></label><input
-                                                    class="form-control" type="text" placeholder="user.name"
-                                                    name="username" /></div>
+                                                    for="usernameDetele"><strong>Username</strong></label><input
+                                                    class="form-control" type="text" placeholder="AryNG"
+                                                    name="usernameDetele" /></div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group"><label for="email"><strong>Email
@@ -271,58 +303,60 @@
                                     <div class="form-row">
                                         <div class="col">
                                             <div class="form-group"><label
-                                                    for="username"><strong>Password</strong></label><input
+                                                    for="passwordDelete"><strong>Password</strong></label><input
                                                     class="form-control" type="password" placeholder="password"
-                                                    name="username" /></div>
+                                                    name="passwordDelete" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="role"><strong>Role</strong>
-                                                </label><input class="form-control" type="email"
-                                                    placeholder="Admin / Teacher / Student" name="role" /></div>
+                        
+                                            <div class="form-group">
+                                                <label for="roleDelete"><strong>Role</strong></label>
+                                     
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="first_name"><strong>First
+                                            <div class="form-group"><label for="first_nameDelete"><strong>First
                                                         Name</strong></label><input class="form-control" type="text"
-                                                    placeholder="John" name="first_name" />
+                                                    placeholder="Aranza" name="first_nameDelete" />
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="last_name"><strong>Last
+                                            <div class="form-group"><label for="last_nameDelete"><strong>Last
                                                         Name</strong></label><input class="form-control" type="text"
-                                                    placeholder="Doe" name="last_name" /></div>
+                                                    placeholder="Negrete" name="last_nameDelete" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
                                             <div class="form-group"><label
-                                                    for="username"><strong>Addres</strong></label><input
+                                                    for="addressDelete"><strong>Addres</strong></label><input
                                                     class="form-control" type="text" placeholder="Sunset Blvd, 38"
-                                                    name="username" />
+                                                    name="addressDelete" />
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="role"><strong>Phone</strong>
-                                                </label><input class="form-control" type="email"
-                                                    placeholder="(541) 754-3010" name="role" /></div>
+                                            <div class="form-group"><label for="PhoneDelete"><strong>Phone</strong>
+                                                </label><input class="form-control" type="text"
+                                                    placeholder="(541) 754-3010" name="PhoneDelete" /></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
                                             <div class="form-group"><label
-                                                    for="username"><strong>Degree</strong></label><input
+                                                    for="degreeDelete"><strong>Degree</strong></label><input
                                                     class="form-control" type="text" placeholder="Java FullStack"
-                                                    name="username" />
+                                                    name="addressDelete" />
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="role"><strong>Birthday</strong>
+                                            <div class="form-group"><label for="birthdayDelete"><strong>Birthday</strong>
                                                 </label><input class="form-control" type="date"
-                                                    placeholder="(541) 754-3010" name="role" /></div>
+                                                    placeholder="(541) 754-3010" name="birthdayDelete" /></div>
                                         </div>
                                     </div>
-                                    <div class="form-group"><button class="btn btn-danger btn-sm" type="submit">Delete
+                                    <div class="form-group"><button class="btn btn-danger btn-sm" type="submit" name="Delete">Delete
                                             Settings</button></div>
                                 </form>
                             </div>

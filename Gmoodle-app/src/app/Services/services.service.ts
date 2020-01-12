@@ -14,7 +14,7 @@ import { AuthService } from '../MyComponents/Users/functions/auth/auth.service';
 })
 export class ServiceService {
   //Host of my backend and the Headers need to make patitions
-  private urlEndPoint: string = 'http://localhost:8080/'; //PATH FOR THE BACK
+  private urlEndPoint: string = 'http://localhost:8080/admin'; //PATH FOR THE BACK
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -28,7 +28,7 @@ export class ServiceService {
     }
     return this.httpHeaders;
   }
-  //Method that will respond in case the user tries to get to a protected section 
+  //!Method that will respond in case the user tries to get to a protected section 
   private isNotAthorized(e): boolean {
     if (e.status == 401) {
       if (this.authService.isAuthenticated()) {
@@ -78,10 +78,12 @@ export class ServiceService {
   //CREATE!
   create(user: User): Observable<User> {
     return this.http.post(this.urlEndPoint, user, { headers: this.addAuthorizationHeader() }).pipe(map((response: any) => response.user as User), catchError(e => {
-      if (this.isNotAthorized(e)) {
+      if (this.authService.isNotAthorized(e)) 
+      {
         return throwError(e);
       }
-      if (e.status == 400) {
+      if (e.status == 400) 
+      {
         return throwError(e);
       }
       console.error(e.error.message); //check error on the console just in case and also show it to the user!

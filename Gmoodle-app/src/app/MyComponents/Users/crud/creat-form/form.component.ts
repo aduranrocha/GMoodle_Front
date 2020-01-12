@@ -22,10 +22,16 @@ export class FormComponent implements OnInit
   //we create a new user and put a nice title!
   private user: User= new User ();
   private formUser: FormGroup;
+  private formUserUpdate: FormGroup;
   
   //*Arrays delcaration
   errors: string [];
-
+  //*Array with roles for ng-select
+  private rolesModel = 
+  [
+   {id: 'ROLE_ADMIN', name: 'ADMIN'},
+   {id: 'ROLE_TEACHER', name: 'TEACHER'}
+  ];
 
   constructor(
     private userService : ServiceService,
@@ -38,7 +44,7 @@ export class FormComponent implements OnInit
     ngOnInit(){
       console.log('HERE!');
       this.formUserInint();
-
+      this.formUserUpdateInint();
       this.activateRouter.paramMap.subscribe(params =>
         {
           let id = + params.get('id');
@@ -53,7 +59,7 @@ export class FormComponent implements OnInit
 
 
 /**
- **This function initialize the form group user
+ **This function initialize the form group for create user
  */
 private formUserInint(): void
 {
@@ -62,7 +68,27 @@ private formUserInint(): void
     username: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
-    role: ['', Validators.required],
+    roles: ['', Validators.required],
+    name: ['', Validators.required],
+    lastName: ['', Validators.required],
+    address: ['', Validators.required],
+    phone: ['', Validators.required],
+    degree: ['', Validators.required],
+    birthDay: ['', Validators.required],
+  });
+}
+/**
+ **This function initialize the form group for update user
+ */
+private formUserUpdateInint(): void
+{
+  this.formUserUpdate = this.formBuilder.group(
+  {
+    id: ['',Validators.required],
+    username: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    roles: ['', Validators.required],
     name: ['', Validators.required],
     lastName: ['', Validators.required],
     address: ['', Validators.required],
@@ -72,26 +98,53 @@ private formUserInint(): void
   });
 }
 
-update() : void{
-  console.log(this.user);
-  this.userService.update(this.user).subscribe(json =>{
+update(event: Event) : void{
+  //*Prevent refresh page
+  event.preventDefault();
+
+  //*Add data from form to object user
+  this.user.id = this.formUserUpdate.get('id').value;
+  this.user.username = this.formUserUpdate.get('username').value;
+  this.user.email = this.formUserUpdate.get('email').value;
+  this.user.password= this.formUserUpdate.get('password').value;
+  this.user.name = this.formUserUpdate.get('name').value;
+  this.user.lastName = this.formUserUpdate.get('lastName').value;
+  this.user.address = this.formUserUpdate.get('address').value;
+  this.user.birthDay = this.formUserUpdate.get('birthDay').value;
+  this.user.phoneNumber = this.formUserUpdate.get('phone').value;
+
+  //*Create array with roles
+  let roles = this.formUserUpdate.get('roles').value;
+ //*Add roles to user
+  for(let role of roles)
+  {
+    this.user.roles.push({name: role});
+  }
+  
+  //*Send user to ap
+  this.userService.update(this.user).subscribe(json =>
+  {
+    console.log(json);
     this.router.navigate(['/CRUD']) //this will re-direct to the form page (crud)
     Swal.fire('User Updated!', `${json.message} : ${json.user.name}`, 'success');
   },
   err =>{
+    console.log(err);
     this.errors = err.error.errors as string[];
     console.error('Back-End error code:'+ err.status);
     console.error(err.error.errors);
-  }
-  )
+  });
 }
 
 /**
  **This function get the data from user formgroup and send this to service
  */
-public save(): void
+public save(event: Event): void
 {
-  console.log('In create function');
+  //*Prevent refresh page
+  event.preventDefault();
+  console.log('In save function');
+
   //*Add data from form to object user
   this.user.username = this.formUser.get('username').value;
   this.user.email = this.formUser.get('email').value;
@@ -101,20 +154,32 @@ public save(): void
   this.user.address = this.formUser.get('address').value;
   this.user.birthDay = this.formUser.get('birthDay').value;
   this.user.phoneNumber = this.formUser.get('phone').value;
+ 
+  //*Create array with roles
+  let roles = this.formUser.get('roles').value;
+ //*Add roles to user
+  for(let role of roles)
+  {
+    this.user.roles.push({name: role});
+  }
 
 
-  this.user.roles.push(this.formUser.get('role').value);
-  
-  console.log(this.user);
+
   //*Send user to api
   this._userService.create(this.user).subscribe(response =>
     { 
       console.log(response);
+      Swal.fire('User Updated!','message', 'success');
     },
     err => 
     {
       console.log(err);
     });
+}
+
+public getUser(): void
+{
+
 }
 
 

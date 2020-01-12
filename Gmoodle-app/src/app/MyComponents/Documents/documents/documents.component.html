@@ -1,0 +1,124 @@
+<app-home-admin></app-home-admin>
+
+<!-- tables -->
+
+<section>
+    <!--SOME SPACE BETWEEN TOPNAV AND THIS SECTION-->
+    <div class=" col-xl-10 col-lg-9 col-md-8 ml-auto">
+        <div class="row pt-md-5 mt-md-3">
+            <div class="col-xl-3 col-sm-6 p-2">
+            </div>
+        </div>
+    </div>
+
+    <!--JUSTIFICATION FROM THE LEFTNAV-->
+    <div class="row ml-0">
+        <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+
+            
+
+            <!--CARDS WITH CRUD AND STUFF I GUESS-->
+            <div class="card border-primary mb-3">
+                <div class="card-header">Documents</div>
+                <div class="card-body text-primary">
+                    <h5 class="card-title">List of all Documents</h5>
+                    <div class="my-2 text-left">
+                        <!-- THIS BUTTON SHOULD LET YOU UPLOAD A NEW FILE IF YOU'RE A TEACHER OR ADMIN-->
+                        <button *ngIf="authService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary"
+                            type="button" data-toggle="modal" data-target="#upload">
+                            Upload a new Document
+                        </button>
+                    </div>
+
+                    
+                    <div *ngIf="User?.length == 0" class="alert alert-info">
+                        No Documents added yet
+                    </div>
+                    
+
+                    <table class="table table-bordered table-striped" *ngIf="Course?.length>0">
+                        <thead>
+                            <tr>
+                                <th *ngIf="authService.hasRole('ROLE_USER')">#</th>
+                                <th>Course Name</th>
+                                <th>Teacher</th>
+                                <th>Creation Date</th>
+                                <th>Document</th>
+                            </tr>
+                        </thead>
+                        <!-- CHANGE PATH!!! -->
+                        <tbody>
+                            <tr *ngFor="let User of Users">
+
+                                <td>{{ course.id}}</td>
+                                <td>{{ course.coursename}}</td>
+                                <td>{{ course.teacher }}</td>
+                                <td>{{ course.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+                                <td *ngIf="authService.hasRole('ROLE_ADMIN')">
+                                    <!-- THIS BUTTON SHOULD DELTE EVERYTHING-->
+                                    <button type="button" name="editar" 
+                                        class="btn btn-danger btn-sm">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--pager implementation on this table-->
+                    <pager-nav *ngIf="pagedor" [pagedor]="pagedor"></pager-nav>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- end of tables -->
+
+<!--modal logout-->
+<div class="modal fade" id="upload">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Upload a new File</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="Activity">Name File</label>
+                    <input type="text" class="form-control" id="Activity" placeholder="Exercise1Fibonnaci">
+                </div>
+
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                        <label for="SelectFile" class="sr-only">Select File</label>
+                        <input type="text" readonly class="form-control-plaintext" value="Select File">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="selectF" class="sr-only">Select File</label>
+                        <input type="file" class="form-control-file mb-2" id="selectF">
+                    </div>
+
+                </form>
+                <form>
+                    <!--
+                    <div class="form-group">
+                        <label for="instructions">Example textarea</label>
+                        <textarea class="form-control" id="instructions" rows="3"></textarea>
+                    </div>
+                    -->
+                </form>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" data-dismiss="modal">Upload</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/modal logout-->
+
+<app-footer></app-footer>

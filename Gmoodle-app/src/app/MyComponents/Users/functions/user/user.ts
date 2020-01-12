@@ -11,7 +11,7 @@ export class User {
 	phoneNumber : string;
 	birthDay: string
 	photo : string;
-	roles: string[] = [];
+	roles: any[] = [];
 	createAt : string;
 
 	

@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import {Observable, TimeoutError} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { User } from '../user/user';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -17,7 +19,7 @@ export class AuthService {
   private _token: string;
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   //Getter of method user 
   public get user() : User{
@@ -122,5 +124,23 @@ export class AuthService {
      sessionStorage.removeItem('user'); // deletes just the user
    }
 
+
+  //Method that will respond in case the user tries to get to a protected section 
+  public isNotAthorized(e): boolean {
+    if (e.status == 401) {
+      if (this.isAuthenticated()) {
+        this.logout();
+      }
+      this.router.navigate(['/login']);
+      return true;
+    }
+
+    if (e.status == 403) {
+      Swal.fire('Access Denided');
+      this.router.navigate(['/login']);
+      return true;
+    }
+    return false;
+  }
 
 }
