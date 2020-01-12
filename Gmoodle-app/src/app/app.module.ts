@@ -22,7 +22,8 @@ import { AllusersComponent } from './MyComponents/Users/crud/allusers/allusers.c
 import { FormComponent } from './MyComponents/Users/crud/creat-form/form.component';
 import { pagerComponent } from './MyComponents/Users/detail/pager/pager.component';
 import { DetailComponent } from './MyComponents/Users/detail/photo-detail/detail.component';
-
+import { AllCoursesComponent } from './MyComponents/Courses/crud/allcourses/allcourses.component';
+import { CreateFormComponent } from './MyComponents/Courses/crud/create-form/form/Createform.component'
 
 //Routers and Stuff
 import { RouterModule, Routes } from '@angular/router';
@@ -30,6 +31,8 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es';
+import { ProfileComponent } from './MyComponents/Profile/profile/profile.component';
+
 
 registerLocaleData(localeES, 'es');
 
@@ -47,8 +50,13 @@ const routes: Routes = [
   { path: 'Teacher', component: HomeTeacherComponent  } , //Teacher's home page only accessed by ROLE_TEACHER
   //CRUDS
   { path: 'CRUD', component: FormComponent}, //Form where all the users are created and deleted, Redirects to List
-  { path: 'List', component: AllusersComponent} //ReadAll of the users, redirects to CRUD
+  { path: 'List', component: AllusersComponent}, //ReadAll of the users, redirects to CRUD
   
+
+  //TEMPORALES 
+  { path: 'pro', component: ProfileComponent}, //ReadAll of the users, redirects to CRUD
+  { path: 'CourseCrud', component: CreateFormComponent}, //ReadAll of the users, redirects to CRUD
+  { path: 'ListCourse', component: AllCoursesComponent}, //ReadAll of the users, redirects to CRUD
 ];
 
 
@@ -70,6 +78,9 @@ const routes: Routes = [
     FormComponent,
     pagerComponent,
     DetailComponent,
+    ProfileComponent,
+    AllCoursesComponent,
+    CreateFormComponent
     
   ],
   imports: [
