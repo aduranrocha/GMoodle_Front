@@ -96,13 +96,16 @@ public save(): void
   this.user.username = this.formUser.get('username').value;
   this.user.email = this.formUser.get('email').value;
   this.user.password= this.formUser.get('password').value;
-  this.user.roles = this.formUser.get('role').value;
   this.user.name = this.formUser.get('name').value;
   this.user.lastName = this.formUser.get('lastName').value;
   this.user.address = this.formUser.get('address').value;
   this.user.birthDay = this.formUser.get('birthDay').value;
- 
-  console.log(JSON.stringify(this.user));
+  this.user.phoneNumber = this.formUser.get('phone').value;
+
+
+  this.user.roles.push(this.formUser.get('role').value);
+  
+  console.log(this.user);
   //*Send user to api
   this._userService.create(this.user).subscribe(response =>
     { 
