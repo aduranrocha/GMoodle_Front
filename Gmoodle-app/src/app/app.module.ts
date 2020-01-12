@@ -33,6 +33,8 @@ import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es';
 import { ProfileComponent } from './MyComponents/Profile/profile/profile.component';
 import { DocumentsComponent } from './MyComponents/Documents/documents/documents.component';
+import { WelcomeComponent } from './MyComponents/Group/welcome/welcome.component';
+import { ActivitiesComponent } from './MyComponents/Documents/activities/activities.component';
 
 
 registerLocaleData(localeES, 'es');
@@ -59,6 +61,7 @@ const routes: Routes = [
   { path: 'CourseCrud', component: CreateFormComponent}, //ReadAll of the users, redirects to CRUD
   { path: 'ListCourse', component: AllCoursesComponent}, //ReadAll of the users, redirects to CRUD
   { path: 'Doc', component: DocumentsComponent}, //ReadAll of the users, redirects to CRUD
+  { path: 'Welcome', component: WelcomeComponent}, //ReadAll of the users, redirects to CRUD
 ];
 
 
@@ -83,7 +86,9 @@ const routes: Routes = [
     ProfileComponent,
     AllCoursesComponent,
     CreateFormComponent,
-    DocumentsComponent
+    DocumentsComponent,
+    WelcomeComponent,
+    ActivitiesComponent
     
   ],
   imports: [
