@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, TimeoutError} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { User } from '../user/user.component';
+import { User } from '../user/user';
 
 
 @Injectable({

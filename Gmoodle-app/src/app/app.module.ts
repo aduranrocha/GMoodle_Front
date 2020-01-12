@@ -3,7 +3,6 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 //MyComponents
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './MyComponents/Footer/footer/footer.component';
 import { HeaderComponent } from './MyComponents/Header/header/header.component';

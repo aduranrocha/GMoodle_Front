@@ -1,6 +1,6 @@
 //This is the functionality part for the CRUD form (form.html) where all the create and delete boxtext are!
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/MyComponents/Users/functions/user/user.component';
+import { User } from 'src/app/MyComponents/Users/functions/user/user';
 import { ServiceService } from 'src/app/Services/services.service';
 import {  ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';

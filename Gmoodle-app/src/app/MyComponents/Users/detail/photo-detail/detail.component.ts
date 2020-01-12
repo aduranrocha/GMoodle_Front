@@ -2,7 +2,7 @@
 //I dont know, in the tutorials looked cool
 import { Component, OnInit, Input } from '@angular/core';
 import Swal from 'sweetalert2';
-import { User } from 'src/app/MyComponents/Users/functions/user/user.component';
+import { User } from 'src/app/MyComponents/Users/functions/user/user';
 import { ServiceService } from 'src/app/Services/services.service';
 import { AuthService } from 'src/app/MyComponents/Users/functions/auth/auth.service';
 import { ModalService } from 'src/app/Services/modal.service';

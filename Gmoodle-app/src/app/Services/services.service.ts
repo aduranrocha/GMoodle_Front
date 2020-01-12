@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../MyComponents/Users/functions/user/user.component'; //user method where is set the strings for username, name, lastname and such
+import { User } from '../MyComponents/Users/functions/user/user'; //user method where is set the strings for username, name, lastname and such
 import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common/http';
 import { map, catchError, tap, throwIfEmpty } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
