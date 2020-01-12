@@ -32,6 +32,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es';
 import { ProfileComponent } from './MyComponents/Profile/profile/profile.component';
+import { DocumentsComponent } from './MyComponents/Documents/documents/documents.component';
 
 
 registerLocaleData(localeES, 'es');
@@ -57,6 +58,7 @@ const routes: Routes = [
   { path: 'pro', component: ProfileComponent}, //ReadAll of the users, redirects to CRUD
   { path: 'CourseCrud', component: CreateFormComponent}, //ReadAll of the users, redirects to CRUD
   { path: 'ListCourse', component: AllCoursesComponent}, //ReadAll of the users, redirects to CRUD
+  { path: 'Doc', component: DocumentsComponent}, //ReadAll of the users, redirects to CRUD
 ];
 
 
@@ -80,7 +82,8 @@ const routes: Routes = [
     DetailComponent,
     ProfileComponent,
     AllCoursesComponent,
-    CreateFormComponent
+    CreateFormComponent,
+    DocumentsComponent
     
   ],
   imports: [
