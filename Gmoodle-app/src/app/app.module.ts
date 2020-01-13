@@ -37,6 +37,8 @@ import { WelcomeComponent } from './MyComponents/Group/welcome/welcome.component
 import { ActivitiesComponent } from './MyComponents/Documents/activities/activities.component';
 import { GroupFormComponent } from './MyComponents/Group/Crud/group-form/group-form.component';
 import { AllgroupsComponent } from './MyComponents/Group/Crud/AllGroups/allgroups/allgroups.component';
+import { EvaluationsComponent } from './MyComponents/Documents/evaluations/evaluations/evaluations.component';
+import { ListUsersComponent } from './MyComponents/Student/ListUsers/list-users.component';
 
 
 registerLocaleData(localeES, 'es');
@@ -67,6 +69,7 @@ const routes: Routes = [
   { path: 'Activities', component: ActivitiesComponent}, //List Activies with a modal to upload a new activity
   { path: 'GroupCrud', component: AllgroupsComponent}, //Group Crud
   { path: 'ListGroup', component: GroupFormComponent}, //List Groups with a modal to upload a new group
+  { path: 'Evaluations', component: EvaluationsComponent}, //List Groups with a modal to upload a new group
 
 ];
 
@@ -96,7 +99,9 @@ const routes: Routes = [
     WelcomeComponent,
     ActivitiesComponent,
     GroupFormComponent,
-    AllgroupsComponent
+    AllgroupsComponent,
+    EvaluationsComponent,
+    ListUsersComponent
     
   ],
   imports: [
