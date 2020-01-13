@@ -1,0 +1,97 @@
+<!--LIST OF READ ALL / Re-directs to CRUD -->
+
+
+<!--this header is the topnav should change bweteen roles????-->
+<app-home-admin></app-home-admin>
+
+
+
+<section>
+  <!--SOME SPACE BETWEEN TOPNAV AND THIS SECTION-->
+  <div class=" col-xl-10 col-lg-9 col-md-8 ml-auto">
+    <div class="row pt-md-5 mt-md-3">
+      <div class="col-xl-3 col-sm-6 p-2">
+      </div>
+    </div>
+  </div>
+
+  <!--JUSTIFICATION FROM THE LEFTNAV-->
+  <div class="row ml-0">
+    <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+
+      <!--SECTIONS BUTTONS-->
+      <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+          <li class="nav-item">
+            <a class="nav-link " routerLink = "/GroupCrud">Group Settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" >Group List</a>
+          </li>
+
+        </ul>
+      </div>
+
+      <!--CARDS WITH CRUD AND STUFF I GUESS-->
+      <div class="card border-primary mb-3">
+        <div class="card-header">Group</div>
+        <div class="card-body text-primary">
+          <h5 class="card-title">List of all Group</h5>
+          <div class="my-2 text-left">
+            <!-- THIS BUTTON SHOULD SEND YOU TO THE CRUD PAGE, TO CHANGE THINGS-->
+            <button *ngIf="authService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary" type="button"
+              [routerLink]="['/GroupCrud']">
+              Create a new Group
+            </button>
+          </div>
+          <div *ngIf="User?.length == 0" class="alert alert-info">
+            No group added yet
+          </div>
+          <table class="table table-bordered table-striped" *ngIf="User?.length>0">
+            <thead>
+              <tr>
+                <th *ngIf="authService.hasRole('ROLE_USER')">#</th>
+                <th>Group</th>
+                <th>Name</th>
+                <th>Summary</th>
+                <th>Start Day</th>
+                <th>End Day</th>
+                <th>No. Students</th>
+                <th>Creation Date</th>
+                <th *ngIf="authService.hasRole('ROLE_ADMIN')">edit</th>
+              </tr>
+            </thead>
+            <!-- CHANGE PATH!!! -->
+            <!-- Group.ts i guess,  -->
+            <tbody>
+              <tr *ngFor="let Group of Groups">
+                <!-- client of clients-->
+                </td>
+                <td>{{ group.id}}</td>
+                <td>{{ group.name }}</td>
+                <td>{{ group.summary }}</td>
+                <td>{{ group.startDay }}</td>
+                <td>{{ group.endDay }}</td>
+                <td>{{ group.studentsNumber }}</td>
+                <td>{{ user.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+                <td *ngIf="authService.hasRole('ROLE_ADMIN')">
+                  <!-- THIS BUTTON SHOULD SEND YOU TO THE CRUD PAGE, TO CHANGE THINGS-->
+                  <button type="button" name="editar" [routerLink]="['/GroupCrud']"
+                    class="btn btn-primary btn-sm">edit</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!--pager implementation on this table-->
+          <pager-nav *ngIf="pagedor" [pagedor]="pagedor"></pager-nav>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+<app-footer></app-footer>

@@ -1,4 +1,5 @@
-<body >
+<!-- Navbars for the admin page without the option of CRUD the Courses and option of making Activities -->
+<body>
     <nav class="navbar navbar-expand-md navbar-light">
         <button class="navbar-toggler ml-auto mb-2 bg-light" type="button" data-toggle="collapse"
             data-target="#myNavbar">
@@ -18,34 +19,27 @@
                                 <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                             class="fas fa-home text-light fa-lg mr-3"></i>Dashboard</a></li>
     
-                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
-                                            class="fas fa-file text-light fa-lg mr-3"></i>Documentos</a></li>
+                                <li class="nav-item"><a routerLink="/Document" class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                                            class="fas fa-file text-light fa-lg mr-3"></i>Documents</a></li>
+    
+                                <li class="nav-item"><a routerLink="/Activities" class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                                            class="fas fa-tasks text-light fa-lg mr-3"></i>Activities</a></li>
     
                                 <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
-                                            class="fas fa-tasks text-light fa-lg mr-3"></i>Actividades</a></li>
-    
-                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
-                                            class="fas fa-file-medical text-light fa-lg mr-3"></i>Evaluaciones</a></li>
+                                            class="fas fa-file-medical text-light fa-lg mr-3"></i>Evaluations</a></li>
                             </ul>
                         </div>
                         <!--ICONS / OUTSIDE LINE-->
-                        <ul class="navbar-nav flex-column mt-4" data-toggle="dropdow">
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
-                                        class="fas fa-calendar-alt text-light fa-lg mr-3"></i>Calendario</a></li>
-    
-    
-                                        <li class="dropright">
-                                            <button class="nav-item btn" type="button" id="dropdownMenuButton"
-                                                data-toggle="dropdown">
-                                        <li><a class="nav-link text-white p-3 mb-2 sidebar-link"><i
-                                                    class="fas fa-user-tie text-light fa-lg mr-3"></i>Alumnos</a></li>
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" routerLink="/CRUD">Nuevo Alumno</a>
-                                            <a class="dropdown-item" routerLink="/List">Lista de Alumnos</a>
-                                        </div>
-                                        </li>
-    
+                        <ul class="navbar-nav flex-column mt-4">
+                            <li class="nav-item"><a class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                                        class="fas fa-calendar-alt text-light fa-lg mr-3"></i>Calendar</a></li>
+
+
+                            <li class="nav-item"><a routerLink="/CRUD"
+                                    class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                                        class="fas fa-user-tie text-light fa-lg mr-3"></i>Students</a></li>
+
+
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                                         class="fas fa-wrench text-light fa-lg mr-3"></i>Settings</a></li>
                         </ul>

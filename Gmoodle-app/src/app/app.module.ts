@@ -35,6 +35,8 @@ import { ProfileComponent } from './MyComponents/Profile/profile/profile.compone
 import { DocumentsComponent } from './MyComponents/Documents/documents/documents.component';
 import { WelcomeComponent } from './MyComponents/Group/welcome/welcome.component';
 import { ActivitiesComponent } from './MyComponents/Documents/activities/activities.component';
+import { GroupFormComponent } from './MyComponents/Group/Crud/group-form/group-form.component';
+import { AllgroupsComponent } from './MyComponents/Group/Crud/AllGroups/allgroups/allgroups.component';
 
 
 registerLocaleData(localeES, 'es');
@@ -57,11 +59,15 @@ const routes: Routes = [
   
 
   //TEMPORALES 
-  { path: 'pro', component: ProfileComponent}, //ReadAll of the users, redirects to CRUD
-  { path: 'CourseCrud', component: CreateFormComponent}, //ReadAll of the users, redirects to CRUD
-  { path: 'ListCourse', component: AllCoursesComponent}, //ReadAll of the users, redirects to CRUD
-  { path: 'Doc', component: DocumentsComponent}, //ReadAll of the users, redirects to CRUD
-  { path: 'Welcome', component: WelcomeComponent}, //ReadAll of the users, redirects to CRUD
+  { path: 'Profile', component: ProfileComponent}, //Profile!
+  { path: 'CourseCrud', component: CreateFormComponent}, //Crud for the courses 
+  { path: 'ListCourse', component: AllCoursesComponent}, //ReadAll of the courses
+  { path: 'Documents', component: DocumentsComponent}, //List of all documents with a modal to upload documents
+  { path: 'Welcome', component: WelcomeComponent}, //Select a group! like cohort 17,18,19...
+  { path: 'Activities', component: ActivitiesComponent}, //List Activies with a modal to upload a new activity
+  { path: 'GroupCrud', component: AllgroupsComponent}, //Group Crud
+  { path: 'ListGroup', component: GroupFormComponent}, //List Groups with a modal to upload a new group
+
 ];
 
 
@@ -88,7 +94,9 @@ const routes: Routes = [
     CreateFormComponent,
     DocumentsComponent,
     WelcomeComponent,
-    ActivitiesComponent
+    ActivitiesComponent,
+    GroupFormComponent,
+    AllgroupsComponent
     
   ],
   imports: [
