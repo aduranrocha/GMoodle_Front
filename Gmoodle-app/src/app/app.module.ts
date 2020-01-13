@@ -39,6 +39,7 @@ import { GroupFormComponent } from './MyComponents/Group/Crud/group-form/group-f
 import { AllgroupsComponent } from './MyComponents/Group/Crud/AllGroups/allgroups/allgroups.component';
 import { EvaluationsComponent } from './MyComponents/Documents/evaluations/evaluations/evaluations.component';
 import { ListUsersComponent } from './MyComponents/Student/ListUsers/list-users.component';
+import { ListdocumentComponent } from './MyComponents/Student/ListDocuments/listdocument.component';
 
 
 registerLocaleData(localeES, 'es');
@@ -101,7 +102,8 @@ const routes: Routes = [
     GroupFormComponent,
     AllgroupsComponent,
     EvaluationsComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    ListdocumentComponent
     
   ],
   imports: [
