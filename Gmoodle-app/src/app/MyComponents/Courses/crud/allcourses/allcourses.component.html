@@ -52,7 +52,7 @@
                     <div *ngIf="User?.length == 0" class="alert alert-info">
                         No Course added yet
                     </div>
-                    <table class="table table-bordered table-striped" *ngIf="Course?.length>0">
+                    <table class="table table-bordered table-striped" *ngIf="courses.length > 0">
                         <thead>
                             <tr>
                                 <th *ngIf="authService.hasRole('ROLE_USER')">#</th>
@@ -63,9 +63,9 @@
                         </thead>
                         <!-- CHANGE PATH!!! -->
                         <tbody>
-                            <tr *ngFor="let User of Users">
-                                <td>{{ course.coursename}}</td>
-                                <td>{{ course.teacher }}</td>
+                            <tr *ngFor="let course of courses">
+                                <td>{{ course.nameCourse}}</td>
+                                <td>course.teacher</td>
                                 <td>{{ course.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
                                 <td *ngIf="authService.hasRole('ROLE_ADMIN')">
                                     <!-- THIS BUTTON SHOULD SEND YOU TO THE CRUD PAGE, TO CHANGE THINGS-->

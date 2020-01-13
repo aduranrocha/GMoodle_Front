@@ -36,23 +36,27 @@
                     </div>
                     
 
-                    <table class="table table-bordered table-striped" *ngIf="Course?.length>0">
+                    <table class="table table-bordered table-striped" *ngIf="documents.length > 0">
                         <thead>
                             <tr>
                                 <th *ngIf="authService.hasRole('ROLE_USER')">#</th>
                                 <th>Course Name</th>
-                                <th>Teacher</th>
+                                <th>Title</th>
                                 <th>Creation Date</th>
                                 <th>Document</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <!-- CHANGE PATH!!! -->
                         <tbody>
-                            <tr *ngFor="let User of Users">
+                            <tr *ngFor="let document of documents">
 
-                                <td>{{ course.id}}</td>
-                                <td>{{ course.coursename}}</td>
-                                <td>{{ course.teacher }}</td>
+                                <td>{{ document.idDocument}}</td>
+                                <td>{{ document.titleActivity }}</td>
+                                <td>
+                                    <span *ngIf="document.isCheack" class="badge badge-success">Check</span>
+                                    <span *ngIf="!document.isCheack" class="badge badge-warning">No Check</span>
+                                </td>
                                 <td>{{ course.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
                                 <td *ngIf="authService.hasRole('ROLE_ADMIN')">
                                     <!-- THIS BUTTON SHOULD DELTE EVERYTHING-->
