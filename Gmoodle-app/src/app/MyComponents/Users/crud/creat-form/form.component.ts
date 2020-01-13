@@ -23,6 +23,7 @@ export class FormComponent implements OnInit
   private user: User= new User ();
   private formUser: FormGroup;
   private formUserUpdate: FormGroup;
+  private formUserDelete: FormGroup;
   
   //*Arrays delcaration
   errors: string [];
@@ -45,6 +46,7 @@ export class FormComponent implements OnInit
       console.log('HERE!');
       this.formUserInint();
       this.formUserUpdateInint();
+      this.formUserDeleteInint();
       this.activateRouter.paramMap.subscribe(params =>
         {
           let id = + params.get('id');
@@ -98,6 +100,18 @@ private formUserUpdateInint(): void
   });
 }
 
+/**
+ **This function initialize the form group for create user
+ */
+private formUserDeleteInint(): void
+{
+  this.formUserDelete = this.formBuilder.group(
+  {
+    id: ['', Validators.required],
+  });
+}
+
+
 update(event: Event) : void{
   //*Prevent refresh page
   event.preventDefault();
@@ -127,6 +141,8 @@ update(event: Event) : void{
     console.log(json);
     this.router.navigate(['/CRUD']) //this will re-direct to the form page (crud)
     Swal.fire('User Updated!', `${json.message} : ${json.user.name}`, 'success');
+    //Clear form
+    this.formUserUpdate.reset();
   },
   err =>{
     console.log(err);
@@ -163,15 +179,33 @@ public save(event: Event): void
     this.user.roles.push({name: role});
   }
 
-
-
   //*Send user to api
   this._userService.create(this.user).subscribe(response =>
     { 
       console.log(response);
-      Swal.fire('User Updated!','message', 'success');
+      Swal.fire('User Created!','message', 'success');
+      //Clear form
+      this.formUser.reset();
     },
     err => 
+    {
+      console.log(err);
+    });
+}
+
+private delete(event: Event):void 
+{
+  //Prevent refresh page
+  event.preventDefault();
+  console.log('In delete')
+  //Get id
+  let id = this.formUserDelete.get('id').value;
+  console.log(id);
+  this._userService.delete(id).subscribe(response =>
+    {
+      console.log(response);
+    },
+    err =>
     {
       console.log(err);
     });

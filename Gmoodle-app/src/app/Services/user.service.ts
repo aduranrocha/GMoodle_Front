@@ -78,4 +78,23 @@ export class UserService {
     })
     );
   }
+
+
+    //Delete method also using the id (BORRAR PARTE DE FRONT!)
+    delete(id: number): Observable<User> 
+    {
+      console.log('DELETE')
+      return this.http.delete<User>(`${this.urlEndPoint}/${id}`, { headers: this.addAuthorizationHeader() }).pipe(
+        catchError(e => {
+  
+          if (this._authService.isNotAthorized(e)) {
+            return throwError(e);
+          }
+  
+          console.error(e.error.message);
+          Swal.fire('An Error has ocurred' + e.error.message, e.error.error, 'error');
+          return throwError(e);
+        })
+      );
+    }
 }

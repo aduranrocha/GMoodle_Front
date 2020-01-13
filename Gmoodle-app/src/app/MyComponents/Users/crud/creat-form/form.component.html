@@ -277,12 +277,13 @@
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                             data-parent="#accordion">
                             <div class="card-body">
-                                <form>
+                                <form [formGroup]="formUserDelete" >
                                     <div class="form-row">
                                         <div class="col-xl-3">
-                                            <div class="form-group"><label for="userIdDelete"><strong>User
-                                                        Id</strong></label><input class="form-control" type="text"
-                                                    placeholder="1" name="userIdDelete" /></div>
+                                            <div class="form-group"><label for="userIdDelete">
+                                                <strong>User Id</strong></label>
+                                                <input formControlName="id" class="form-control" type="text"
+                                                    placeholder="1" name="userIdDelete" required/></div>
                                         </div>
 
                                     </div>
@@ -356,7 +357,8 @@
                                                     placeholder="(541) 754-3010" name="birthdayDelete" /></div>
                                         </div>
                                     </div>
-                                    <div class="form-group"><button class="btn btn-danger btn-sm" type="submit" name="Delete">Delete
+                                    <div class="form-group">
+                                        <button [disabled]="formUserDelete.invalid" (click)="delete($event)" class="btn btn-danger btn-sm"  name="Delete">Delete
                                             Settings</button></div>
                                 </form>
                             </div>

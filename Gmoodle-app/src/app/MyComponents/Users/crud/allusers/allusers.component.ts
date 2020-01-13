@@ -30,23 +30,32 @@ export class AllusersComponent implements OnInit {
   ngOnInit() {
 
     //pagetion of the users coming from the DB
-    this.activateRoute.paramMap.subscribe(params => {
+    this.activateRoute.paramMap.subscribe(params =>
+    {
       let page: number = +params.get('page');
 
-      if (!page) {
+      if (!page) 
+      {
         page = 0; //if is not page, then iniciate it on 0 (?I belive so)
       }
-
+      console.log('page: '+page);
 
       //Getting users to pagete them (error on the contet part! )
       this.ServiceService.getUser(page).pipe(
-        tap((response: any) => {
+        tap((response: any) => 
+        {
           console.log('UserComponent : tap 3');
           (response.content as User[]).forEach(user => console.log(user.name)); //goint through each user!
         })
-      ).subscribe((response: any) => {
+      ).subscribe((response: any) => 
+      {
         this.users = response.content as User[];
         this.pager = response;
+        console.log('users');
+      },
+      err =>
+      {
+        console.log(err);
       });
     });
 
@@ -65,7 +74,8 @@ export class AllusersComponent implements OnInit {
 
 
   //Customized sweetalert for notifying the user whether if they want to delete another user or not
-  delete(user: User): void {
+  delete(user: User): void 
+  {
     Swal.fire({
       title: 'Está seguro?',
       text: `¿Seguro que desea eliminar al cliente ${user.name} ${user.lastName}?`,
