@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DocumentService } from 'src/app/Services/document.service';
 import { AuthService } from '../../Users/functions/auth/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Document } from 'src/app/models/document';
 
 @Component({
   selector: 'app-documents',
@@ -57,6 +58,16 @@ export class DocumentsComponent implements OnInit {
 
   private uploadFile()
   {
-    
+    console.log('upload');
+    let document = new Document();
+    console.log(this.files[0]);
+    this._documentService.upload(this.files[0],1,1).subscribe(response =>{
+      console.log(response);
+    },
+    err =>
+    {
+      console.log(err);
+    }
+    );
   }
 }

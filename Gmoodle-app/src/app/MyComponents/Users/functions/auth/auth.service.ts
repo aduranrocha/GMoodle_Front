@@ -101,7 +101,10 @@ export class AuthService {
    //Authentication of the session [NOT USED]
    isAuthenticated(): boolean{
      let payload = this.getTokenData(this.token);
-     if (payload =! null && payload.user_name && payload.user_name.lenght > 0){
+      console.log('payload'+ payload.user_name)
+     if (payload =! null && payload.user_name.length > 0)
+     {
+       console.log('IS TRUE')
        return true;
      }
      return false;

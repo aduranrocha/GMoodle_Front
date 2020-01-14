@@ -9,10 +9,11 @@ export class User {
 	gender : string;
 	address : string;
 	phoneNumber : string;
-	birthDay: string
+	birthDate: string
 	photo : string;
 	roles: any[] = [];
 	createAt : string;
 	degree: string;
 	isDemoUser: boolean;
+	
 }

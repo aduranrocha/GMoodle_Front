@@ -52,7 +52,7 @@
           <div *ngIf="User?.length == 0" class="alert alert-info">
             No user added yet
           </div>
-          <table class="table table-bordered table-striped" *ngIf="User?.length>0">
+          <table class="table table-bordered table-striped" *ngIf="users?.length>0">
             <thead>
               <tr>
                 <th *ngIf="authService.hasRole('ROLE_USER')">#</th>
@@ -66,12 +66,13 @@
                 <th>Degree</th>
                 <th>Birthday</th>
                 <th>Creation Date</th>
-                <th *ngIf="authService.hasRole('ROLE_ADMIN')">edit</th>
+                <th *ngIf="authService.hasRole('ROLE_ADMIN')">Accions</th>
               </tr>
             </thead>
             <!-- CHANGE PATH!!! -->
             <!-- USER IMAGE!! -->
             <tbody>
+              {{users | json}}
               <tr *ngFor="let user of users">
                 <!-- client of clients-->
                 <td *ngIf="authService.hasRole('ROLE_USER')"><img (click)="abrirModal(user)" *ngIf="user?.photo"
@@ -85,21 +86,24 @@
                 <td>{{ user.lastName }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles }}</td>
-                <td>{{ user.adress }}</td>
+                <td>{{ user.address }}</td>
                 <td>{{ user.phoneNumber }}</td>
-                <td>{{ user.dregree }}</td>
-                <td>{{ user.birthDay }}</td>
+                <td>{{ user.degree }}</td>
+                <td>{{ user.birthDate }}</td>
                 <td>{{ user.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
                 <td *ngIf="authService.hasRole('ROLE_ADMIN')">
                   <!-- THIS BUTTON SHOULD SEND YOU TO THE CRUD PAGE, TO CHANGE THINGS-->
-                  <button type="button" name="editar" [routerLink]="['/CRUD']"
+                  <button type="button" name="editar" [routerLink]="['/CRUD/',1]"
                     class="btn btn-primary btn-sm">edit</button>
+                  <button type="button" name="remove" (click)="remove(user)"
+                    class="btn btn-danger btn-sm">Remove</button>
                 </td>
               </tr>
             </tbody>
           </table>
           <!--pager implementation on this table-->
-          <pager-nav *ngIf="pagedor" [pagedor]="pagedor"></pager-nav>
+          <pager-nav [pagedor]="pagedor"></pager-nav>
+          
         </div>
       </div>
 

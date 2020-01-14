@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/Services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/MyComponents/Users/functions/user/user';
 import { ServiceService } from 'src/app/Services/services.service';
@@ -16,12 +17,13 @@ import { ModalService } from 'src/app/Services/modal.service';
 export class AllusersComponent implements OnInit {
   //Variables to use so we can pagete each user from our DB and to set an alert for the moment an admin wants to delete a user.
   users: User[];
-  pager: any;
+  pagedor: any;
   selectedUser: User;
 
   
   constructor(
     private ServiceService: ServiceService,
+    private _userService: UserService,
     private modalService: ModalService,
     private authService: AuthService,
     private activateRoute: ActivatedRoute
@@ -33,30 +35,21 @@ export class AllusersComponent implements OnInit {
     this.activateRoute.paramMap.subscribe(params =>
     {
       let page: number = +params.get('page');
-
-      if (!page) 
+    
+      if (page == undefined) 
       {
         page = 0; //if is not page, then iniciate it on 0 (?I belive so)
+      }
+      else if(page > 0)
+      {
+        page--;
       }
       console.log('page: '+page);
 
       //Getting users to pagete them (error on the contet part! )
-      this.ServiceService.getUsers(page).pipe(
-        tap((response: any) => 
-        {
-          console.log('UserComponent : tap 3');
-          (response.content as User[]).forEach(user => console.log(user.name)); //goint through each user!
-        })
-      ).subscribe((response: any) => 
-      {
-        this.users = response.content as User[];
-        this.pager = response;
-        console.log('users');
-      },
-      err =>
-      {
-        console.log('errror');
-      });
+      this.getUsers(page);
+
+      
     });
 
 
@@ -72,13 +65,27 @@ export class AllusersComponent implements OnInit {
   }
 
 
+  private getUsers(page: number): void
+  {
+    console.log('Here!!!');
+    this._userService.getUsersPaginate(page,1).subscribe(response=>
+    {
+      this.users = response.content as User[];
+      this.pagedor = response;
+      console.log(this.users);
+    },
+    err=>
+    {
+      console.log(err)
+    });
+  }
 
   //Customized sweetalert for notifying the user whether if they want to delete another user or not
   delete(user: User): void 
   {
     Swal.fire({
       title: 'Está seguro?',
-      text: `¿Seguro que desea eliminar al cliente ${user.name} ${user.lastName}?`,
+      text: `¿Seguro que desea eliminar al usuario ${user.name} ${user.lastName}?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -89,15 +96,15 @@ export class AllusersComponent implements OnInit {
       if (result.value) {
 
         //Confirmation once the user is deleted
-        this.ServiceService.delete(user.id).subscribe(
-          () => {
-            this.users = this.users.filter(cli => cli !== user)
-            Swal.fire(
-              'User Deleted!',
-              `User ${user.name} successfully deleted`, 'success'
-            )
-          }
-        )
+        // this.ServiceService.delete(user.id).subscribe(
+        //   () => {
+        //     this.users = this.users.filter(cli => cli !== user)
+        //     Swal.fire(
+        //       'User Deleted!',
+        //       `User ${user.name} successfully deleted`, 'success'
+        //     )
+        //   }
+        // )
 
       }
     });

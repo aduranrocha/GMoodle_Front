@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DocumentService {
-  urlEndPoint: string = 'http://localhost:8080/api/document';
+  urlEndPoint: string = 'http://localhost:8080/document';
   httpHeaders = new HttpHeaders({'Content-type': 'application/json'});
   constructor(private http: HttpClient,
               private _authService: AuthService) { }
@@ -44,4 +44,19 @@ export class DocumentService {
     return this.http.delete(`${this.urlEndPoint}/${id}`,{headers: this.addAuthorizationHeader()});
   }
 
+  public upload(file: File,idUser, idActivity)
+  {
+    let formData = new FormData();
+    formData.append('file',file);
+    formData.append('idUser',idUser);
+    formData.append('idActivity',idActivity);
+    let httpHeaders = new HttpHeaders();
+    let token = this._authService.token;
+    if(token != null)
+    {
+      httpHeaders =  httpHeaders.append('Authorization', 'Bearer '+ token); 
+    }
+    
+    return this.http.post(`${this.urlEndPoint}/upload`,formData,{headers: httpHeaders});
+  }
 }

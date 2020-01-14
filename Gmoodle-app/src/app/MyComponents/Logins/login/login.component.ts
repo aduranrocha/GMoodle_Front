@@ -44,11 +44,21 @@ export class LoginComponent implements OnInit {
       {
         this.router.navigate(['/Welcome']);
       }
-      else
+      
+      else if(!this.authService.user.isDemoUser && this.authService.hasRole('ROLE_STUDENT '))
       {
         this.router.navigate(['/Welcome']);
       }
-      this.router.navigate(['/Admin']);
+      
+      else if (this.authService.hasRole('ROLE_ADMIN'))
+      {
+        this.router.navigate(['/Admin']);
+      }
+      
+      else if (this.authService.hasRole('ROLE_TEACHER'))
+      {
+        this.router.navigate(['/Teacher']);
+      }
 
     },
       error => 

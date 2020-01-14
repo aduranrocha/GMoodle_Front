@@ -54,12 +54,14 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent }, //Register page to singup with your email
   { path: 'password', component: ForgotPasswordComponent }, //Reset your password
   //HOMES
-  { path: 'Admin', component: HomeAdminComponent  } , // Admi's home page only accessed by ROLE_ADMIN
-  { path: 'Student', component: HomeStudentComponent  } , // Studen's home page only accessed by ROLE_STUDENT
-  { path: 'Teacher', component: HomeTeacherComponent  } , //Teacher's home page only accessed by ROLE_TEACHER
+  { path: 'Admin', component: HomeAdminComponent, canActivate: [AuthGuard, RoleGuard],  data: {role: 'ROLE_ADMIN'}} , // Admi's home page only accessed by ROLE_ADMIN
+  { path: 'Student', component: HomeStudentComponent, canActivate: [AuthGuard]  } , // Studen's home page only accessed by ROLE_STUDENT
+  { path: 'Teacher', component: HomeTeacherComponent   } , //Teacher's home page only accessed by ROLE_TEACHER
   //CRUDS
   { path: 'CRUD', component: FormComponent}, //Form where all the users are created and deleted, Redirects to List
+  { path: 'CRUD/:id', component: FormComponent}, //Form where all the users are created and deleted, Redirects to List
   { path: 'List', component: AllusersComponent}, //ReadAll of the users, redirects to CRUD
+  { path: 'List/:page', component: AllusersComponent}, //ReadAll of the users, redirects to CRUD
   
 
   //TEMPORALES 

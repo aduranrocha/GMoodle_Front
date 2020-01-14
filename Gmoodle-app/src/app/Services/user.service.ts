@@ -112,9 +112,9 @@ export class UserService {
     return this.http.get(this.urlEndPoint,{headers: this.addAuthorizationHeader()});
   }
 
-  public getUsersPaginate(page: number):Observable<any>
+  public getUsersPaginate(page: number,items: number):Observable<any>
   {
-    return this.http.get(`${this.urlEndPoint}/page/${page}`,{headers: this.addAuthorizationHeader()});
+    return this.http.get(`${this.urlEndPoint}/page/${items}/${page}`,{headers: this.addAuthorizationHeader()});
   }
   
   public isFirstTime(id: number):Observable<any>
