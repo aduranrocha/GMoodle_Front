@@ -1,0 +1,42 @@
+/* cards */
+.cards-index{
+    position: relative;
+    z-index: 1040;
+  }
+  .card-common {
+    box-shadow: 1px 2px 5px #999;
+    transition: all .4s;
+  }
+  
+  .card-common:hover {
+    box-shadow: 2px 3px 15px #999;
+    transform: translateY(-1px);
+  }
+  /* end of cards */
+  
+  /* listCourseCard */
+  .course {
+    box-shadow: 1px 2px 5px #999;
+    transition: all .4s;
+  }
+  .course:hover {
+    box-shadow: 2px 3px 15px #999;
+    transform: translateY(-1px);
+  }
+  .course-index{
+    position: relative;
+    z-index: -12;
+  }
+  .btn-course{
+    background-color:#60B5F5  ;
+  }
+  .btn-course:hover{
+    color: #fff;
+      background-color:#79E7F4
+      ;
+      border-color: 
+      #BCFAF7
+  
+      ;
+  }
+  /* listCourseCard */
