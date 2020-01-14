@@ -54,4 +54,9 @@ export class DocumentsComponent implements OnInit {
     }
     console.log(this.files);
   }
+
+  private uploadFile()
+  {
+    
+  }
 }
