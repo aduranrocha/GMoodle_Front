@@ -60,7 +60,7 @@ const routes: Routes = [
   { path: 'Teacher', component: HomeTeacherComponent }, //Teacher's home page only accessed by ROLE_TEACHER
   
   //? Dashboards Routes
-  { path: 'Admin/Dashboard', component: AdminComponent }, //List Groups with a modal to upload a new group
+  { path: 'admin/Dashboard', component: AdminComponent }, //List Groups with a modal to upload a new group
   { path: 'student/Dashboard', component: DashStudentComponent }, //List Groups with a modal to upload a new group
 
 
@@ -82,10 +82,10 @@ const routes: Routes = [
   { path: 'Evaluations', component: ListEvaluationsComponent }, //List Groups with a modal to upload a new group
 
   //? Student Routes 
-  { path: 'Student/Activities', component: ListactivitiesComponent }, //List Groups with a modal to upload a new group
-  { path: 'Student/Documents', component: ListdocumentComponent }, //List Groups with a modal to upload a new group
-  { path: 'Student/Evaluations', component: ListactivitiesComponent }, //List Groups with a modal to upload a new group
-  { path: 'Student/Users', component: ListUsersComponent }, //List Groups with a modal to upload a new group
+  { path: 'Student/Activities:id', component: ListactivitiesComponent }, //All activities of that teacher
+  { path: 'Student/Documents:id', component: ListdocumentComponent }, //All of documents of that teacher
+  { path: 'Student/Evaluations:id', component: ListactivitiesComponent }, //All evaluations of that teacher
+  { path: 'Student/Users', component: ListUsersComponent }, //List of all students and teachers
 
 ];
 
