@@ -1,0 +1,98 @@
+<app-nav-student></app-nav-student>
+<section>
+    <!--CARDS, THEY SHOULD PILE UP IF THERE ARE USERS ON MY DATABASE-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row align-items-center mb-5">
+                    <div class="col-xl-9">
+                        <h4 class="text-muted mb-4">Generation's Staff</h4>
+                        <div>
+                            <div *ngIf="user?.length == 0" class="alert alert-info">
+                                No hay registros en la base de datos!
+                            </div>
+
+                            <div id="accordion" *ngIf="user?.length>0">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <button class="btn btn-block bg-secondary text-light text-left"
+                                            data-toggle="collapse" data-target="#collapseOne">
+                                            <!--IMPORTANT ONLY TEACHER AND STUDENTS PHOTOS-->
+                                            <img src="http://localhost:8080/api/uploads/img/{{user.photo}}"
+                                                alt="{{user.photo}}" width="50" class="mr-3 rounded">
+                                            {{ user.name }}
+                                        </button>
+                                    </div>
+                                    <div class="collapse show" id="collapseOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th scope="col">First Name</th>
+                                                        <th scope="col">Last Name</th>
+                                                        <th scope="col">Email</th>
+                                                        <th scope="col">Degree</th>
+                                                        <th scope="col">Birthday</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let user of users">
+
+                                                        <th scope="row">{{user.name}}</th>
+                                                        <td>{{user.lastname}}</td>
+                                                        <td>{{user.email}}</td>
+                                                        <td>{{user.degree}}</td>
+                                                        <td>{{user.birthDay}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <button class="btn btn-block bg-secondary text-light text-left"
+                                            data-toggle="collapse" data-target="#collapseTwo">
+                                            <img src="http://localhost:8080/api/uploads/img/{{user.photo}}"
+                                                alt="{{user.photo}}" width="50" class="mr-3 rounded">
+                                            {{ user.name }}
+                                        </button>
+                                    </div>
+                                    <div class="collapse" id="collapseTwo" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Role</th>
+                                                        <th scope="col">First Name</th>
+                                                        <th scope="col">Last Name</th>
+                                                        <th scope="col">Email</th>
+                                                        <th scope="col">Degree</th>
+                                                        <th scope="col">Birthday</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">{{ user.role }}</th>
+                                                        <td>{{user.name}}</td>
+                                                        <td>{{user.lastname}}</td>
+                                                        <td>{{user.email}}</td>
+                                                        <td>{{user.degree}}</td>
+                                                        <td>{{user.birthDay}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

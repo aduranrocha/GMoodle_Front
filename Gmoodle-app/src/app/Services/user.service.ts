@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class UserService {
-  urlEndPoint: string = 'http://localhost:8080/admin';
+  urlEndPoint: string = 'http://localhost:8080/user';
   httpHeaders = new HttpHeaders({'Content-type': 'application/json'});
   constructor(private http: HttpClient,
               private _authService: AuthService) { }
@@ -97,4 +97,14 @@ export class UserService {
         })
       );
     }
+
+  /**
+   **Get users type teacher
+   */
+  public getTeachers():Observable<any>
+  {
+    return this.http.get(`${this.urlEndPoint}/teachers`,{headers: this.addAuthorizationHeader()});
+  }
+
+
 }

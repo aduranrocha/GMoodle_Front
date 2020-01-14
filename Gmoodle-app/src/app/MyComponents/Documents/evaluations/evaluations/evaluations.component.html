@@ -1,0 +1,114 @@
+<!-- LIST OF ALL EVAULATIONS UPLOAD THROUGH A MODAL -->
+
+<!--This  should let you upload an Evaluation, only if you are a teacher. Then te students will be able to check it out-->
+<app-home-admin></app-home-admin>
+
+<!-- tables -->
+
+<section>
+    <!--SOME SPACE BETWEEN TOPNAV AND THIS SECTION-->
+    <div class=" col-xl-10 col-lg-9 col-md-8 ml-auto">
+        <div class="row pt-md-5 mt-md-3">
+            <div class="col-xl-3 col-sm-6 p-2">
+            </div>
+        </div>
+    </div>
+
+    <!--JUSTIFICATION FROM THE LEFTNAV-->
+    <div class="row ml-0">
+        <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+
+
+
+            <!--CARDS WITH CRUD AND STUFF I GUESS-->
+            <div class="card border-primary mb-3">
+                <div class="card-header">Evaluations</div>
+                <div class="card-body text-primary">
+                    <h5 class="card-title">List of all Evaluations</h5>
+                    <div class="my-2 text-left">
+                        <!-- THIS BUTTON SHOULD LET YOU UPLOAD A NEW EVALUATION IF YOU'RE A TEACHER OR ADMIN-->
+                        <button *ngIf="authService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary"
+                            type="button" data-toggle="modal" data-target="#upload">
+                            Upload a new Evaluations
+                        </button>
+                    </div>
+
+                    <!--ngIf change; users to evaluations-->
+                    <div *ngIf="users?.length == 0" class="alert alert-info">
+                        No Evaluations added yet
+                    </div>
+
+
+                    <table class="table table-bordered table-striped" *ngIf="Evualuations?.length>0">
+                        <thead>
+                            <tr>
+                                <th *ngIf="authService.hasRole('ROLE_USER')">#</th>
+                                <th>Evaluation title</th>
+                                <th>Summary</th>
+                                <th>Creation Date</th>
+                                <th>More</th>
+                            </tr>
+                        </thead>
+                        <!-- CHANGE PATH!!! -->
+                        <tbody>
+                            <tr *ngFor="let User of Users">
+
+                                <td>{{ evaluation.id }}</td>
+                                <td>{{ evaluation.title }}</td>
+                                <td>{{ evaluation.summary }}</td>
+                                <td>{{ course.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+                                <td *ngIf="authService.hasRole('ROLE_ADMIN')">
+                                    <!-- THIS BUTTON SHOULD DELTE EVERYTHING-->
+                                    <button type="button" name="editar" class="btn btn-danger btn-sm">Add New</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--pager implementation on this table-->
+                    <pager-nav *ngIf="pagedor" [pagedor]="pagedor"></pager-nav>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- end of tables -->
+
+<!--modal logout-->
+<div class="modal fade" id="upload">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Upload a new Evaluation</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="EvaluationTitle">Title</label>
+                    <input type="text" class="form-control" id="EvaluationTitle" placeholder="First Evaluation">
+                </div>
+                <form>
+
+                    <div class="form-group">
+                        <label for="EvaluationSummary">Summary</label>
+                        <textarea class="form-control" id="EvaluationSummary" rows="3"></textarea>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" data-dismiss="modal">Upload</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/modal logout-->
+
+<app-footer></app-footer>

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CoruseService {
-  urlEndPoint: string = 'http://localhost:8080/api/course';
+  urlEndPoint: string = 'http://localhost:8080/course';
   httpHeaders = new HttpHeaders({'Content-type': 'application/json'});
   
   constructor(private http: HttpClient, private _authService: AuthService) { }
@@ -31,9 +31,9 @@ export class CoruseService {
     return this.http.post<Course>(this.urlEndPoint,course,{headers: this.addAuthorizationHeader()});
   }
 
-  public update(course: Course, id: number):Observable<Course>
+  public update(course: Course, id: number):Observable<any>
   {
-    return this.http.put<Course>(`${this.urlEndPoint}/${id}`,course,{headers: this.addAuthorizationHeader()});
+    return this.http.put(`${this.urlEndPoint}/${id}`,course,{headers: this.addAuthorizationHeader()});
   }
 
   public delete(id: number):Observable<any>
@@ -44,5 +44,10 @@ export class CoruseService {
   public getCourses(page: number):Observable<any>
   {
     return this.http.get(`${this.urlEndPoint}/page/${page}`,{headers: this.addAuthorizationHeader()});
+  }
+
+  public getById(id: number):Observable<Course>
+  {
+    return this.http.get<Course>(`${this.urlEndPoint}/${id}`,{headers: this.addAuthorizationHeader()});
   }
 }

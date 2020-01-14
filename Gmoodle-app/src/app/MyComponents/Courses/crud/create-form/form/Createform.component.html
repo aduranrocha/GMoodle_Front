@@ -96,33 +96,45 @@
                         <div class="card-header py-3" id="headingTwo">
                             <h5 class="mb-0">
                                 <button class="btn text-success collapsed" data-toggle="collapse"
-                                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    data-target="#collapseTwo" #editButton aria-expanded="false" aria-controls="collapseTwo">
                                     Update a Course
                                 </button>
                             </h5>
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
-                                <form>
+                                <form [formGroup]="formUpdate" (submit)="update($event)">
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="coursenameUpdate"><strong>Course
-                                                        Name</strong></label><input class="form-control" type="text"
-                                                    placeholder="Java FullStack" name="CoursenameUpdate" /></div>
+                                            <div class="form-group"><label for="coursenameCreate"><strong>Course
+                                                        Name</strong></label>
+                                                        <input formControlName="nameCourse" class="form-control" type="text"
+                                                    placeholder="Java FullStack" name="CoursenameCreate" /></div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group"><label for="teacherUpdate"><strong>Teacher
-                                                    </strong></label><input class="form-control" type="text"
-                                                    placeholder="'El Macho'" name="teacherUpdate" />
+                                            <div class="form-group">
+                                                <label for="teacherCreate">
+                                                    <strong>Teacher</strong>
+                                                </label>
+                                                    <ng-select 
+                                                    formControlName="teacher"
+                                                    class=""
+                                                    [items]="teachers"
+                                                    bindLabel="name"
+                                                    bindValue="idUser"
+                                                    placeholder="Select item"
+                                                    appendTo="body">
+                                                    </ng-select>
                                             </div>
                                         </div>
                                     </div>
-                                
+                                   
 
                                     <div class="form-group">
                                         <label for="Summary"><strong>Summary</strong></label>
-                                        <textarea class="form-control" name="SumaryUpdate" rows="3"></textarea>
+                                        <textarea formControlName="summary" class="form-control" name="SumaryCreate" rows="3"></textarea>
                                     </div>
+
                                     <div class="form-group"><button class="btn btn-success btn-sm" type="submit"
                                             name="Update">Update
                                             Settings</button></div>

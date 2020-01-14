@@ -49,10 +49,10 @@
                             Create a new Course
                         </button>
                     </div>
-                    <div *ngIf="User?.length == 0" class="alert alert-info">
+                    <div *ngIf="courses?.length == 0" class="alert alert-info">
                         No Course added yet
                     </div>
-                    <table class="table table-bordered table-striped" *ngIf="courses.length > 0">
+                    <table class="table table-bordered table-striped" *ngIf="courses?.length > 0">
                         <thead>
                             <tr>
                                 <th *ngIf="authService.hasRole('ROLE_USER')">#</th>
@@ -63,14 +63,15 @@
                         </thead>
                         <!-- CHANGE PATH!!! -->
                         <tbody>
-                            <tr *ngFor="let course of courses">
+                            <tr *ngFor="let course of courses; let index = index">
                                 <td>{{ course.nameCourse}}</td>
-                                <td>course.teacher</td>
+                                <td>{{ course.users.userName }}</td>
                                 <td>{{ course.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
                                 <td *ngIf="authService.hasRole('ROLE_ADMIN')">
                                     <!-- THIS BUTTON SHOULD SEND YOU TO THE CRUD PAGE, TO CHANGE THINGS-->
-                                    <button type="button" name="editar" [routerLink]="['/CourseCrud']"
+                                    <button type="button" name="editar" [routerLink]="['/CourseCrud/',course.idCourse]"
                                         class="btn btn-primary btn-sm">edit</button>
+                                    <button (click)="remove(course.idCourse, index)" type="button" name="remove" class="btn btn-danger btn-sm">remove</button>
                                 </td>
                             </tr>
                         </tbody>
