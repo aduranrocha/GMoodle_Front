@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DocumentService } from 'src/app/Services/document.service';
 import { AuthService } from '../../Users/functions/auth/auth.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-documents',
@@ -8,14 +9,26 @@ import { AuthService } from '../../Users/functions/auth/auth.service';
   styleUrls: ['./documents.component.css']
 })
 export class DocumentsComponent implements OnInit {
-  private documents: Document[];
-  constructor(private _documentService: DocumentService, private authService: AuthService) { }
+  private documents: Document[] = [];
+  private form: FormGroup;
+  private files: File[] = [];
+  constructor(private _documentService: DocumentService,
+     private authService: AuthService,
+     private formBuilder: FormBuilder) { }
 
   ngOnInit() 
   {
     this.getDocuments(0);
+    this.formInit();
   }
 
+  formInit():void 
+  {
+    this.form = this.formBuilder.group({
+      fileName: ['',Validators.required],
+      files: [null,Validators.required]
+    });
+  }
 
   private getDocuments(page: number)
   {
@@ -28,5 +41,17 @@ export class DocumentsComponent implements OnInit {
       {
         console.log(err);
       });
+  }
+
+  private onFileSelected(event: any)
+  {
+    console.log('on selected file')
+    let elements = event.target.files.length;
+
+    for(let i = 0; i< elements; i++)
+    {
+      this.files.push(event.target.files[i]);
+    }
+    console.log(this.files);
   }
 }
