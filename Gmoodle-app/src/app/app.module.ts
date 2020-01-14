@@ -41,30 +41,28 @@ import { EvaluationsComponent } from './MyComponents/Documents/evaluations/evalu
 import { ListUsersComponent } from './MyComponents/Student/ListUsers/list-users.component';
 import { ListdocumentComponent } from './MyComponents/Student/ListDocuments/listdocument.component';
 import { ListEvaluationsComponent } from './MyComponents/Student/ListEvaluations/list-evaluations/list-evaluations.component';
-
-
-
+import { ListactivitiesComponent } from './MyComponents/Student/ListActivities/listactivities/listactivities.component';
 
 registerLocaleData(localeES, 'es');
 
-
 // Path is used to give the path a certain name, or protect certain path throu Guards, AuthGuard is a general guard while RoleGuard will circle through roles and assign a certain path depending the role
 const routes: Routes = [
-  //LOGIN
+  //?LOGIN
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent  } , // login page
   { path: 'register', component: RegisterComponent }, //Register page to singup with your email
   { path: 'password', component: ForgotPasswordComponent }, //Reset your password
-  //HOMES
+  //?HOMES
   { path: 'Admin', component: HomeAdminComponent  } , // Admi's home page only accessed by ROLE_ADMIN
   { path: 'Student', component: HomeStudentComponent  } , // Studen's home page only accessed by ROLE_STUDENT
   { path: 'Teacher', component: HomeTeacherComponent  } , //Teacher's home page only accessed by ROLE_TEACHER
-  //CRUDS
+  //?CRUDS
   { path: 'CRUD', component: FormComponent}, //Form where all the users are created and deleted, Redirects to List
   { path: 'List', component: AllusersComponent}, //ReadAll of the users, redirects to CRUD
   
 
   //TEMPORALES 
+   //? General Routes 
   { path: 'Profile', component: ProfileComponent}, //Profile!
   { path: 'CourseCrud', component: CreateFormComponent}, //Crud for the courses 
   { path: 'ListCourse', component: AllCoursesComponent}, //ReadAll of the courses
@@ -73,7 +71,13 @@ const routes: Routes = [
   { path: 'Activities', component: ActivitiesComponent}, //List Activies with a modal to upload a new activity
   { path: 'GroupCrud', component: AllgroupsComponent}, //Group Crud
   { path: 'ListGroup', component: GroupFormComponent}, //List Groups with a modal to upload a new group
-  { path: 'Evaluations', component: EvaluationsComponent}, //List Groups with a modal to upload a new group
+  { path: 'Evaluations', component: ListEvaluationsComponent}, //List Groups with a modal to upload a new group
+   
+    //? Student Routes 
+  { path: 'Student/Activities', component: ListactivitiesComponent}, //List Groups with a modal to upload a new group
+  { path: 'Student/Documents', component: ListdocumentComponent}, //List Groups with a modal to upload a new group
+  { path: 'Student/Evaluations', component: ListactivitiesComponent}, //List Groups with a modal to upload a new group
+  { path: 'Student/Users', component: ListUsersComponent}, //List Groups with a modal to upload a new group
 
 ];
 
@@ -108,6 +112,7 @@ const routes: Routes = [
     ListUsersComponent,
     ListdocumentComponent,
     ListEvaluationsComponent,
+    ListactivitiesComponent,
    
     
     

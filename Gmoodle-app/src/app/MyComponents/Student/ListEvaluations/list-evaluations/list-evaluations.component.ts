@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-evaluations.component.css']
 })
 export class ListEvaluationsComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {
