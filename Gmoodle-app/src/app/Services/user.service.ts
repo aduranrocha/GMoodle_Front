@@ -1,3 +1,4 @@
+import { User } from './../../../../Moodle-Project-app/src/app/users/user/user';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -109,6 +110,26 @@ export class UserService {
   public getUsers():Observable<any>
   {
     return this.http.get(this.urlEndPoint,{headers: this.addAuthorizationHeader()});
+  }
+
+  public getUsersPaginate(page: number):Observable<any>
+  {
+    return this.http.get(`${this.urlEndPoint}/page/${page}`,{headers: this.addAuthorizationHeader()});
+  }
+  
+  public isFirstTime(id: number):Observable<any>
+  {
+    return this.http.get(`${this.urlEndPoint}/page/${id}`,{headers: this.addAuthorizationHeader()});
+  }
+
+  public register(user: User):Observable<User>
+  {
+    return this.http.post<User>(`${this.urlEndPoint}/register`,user,{headers: this.addAuthorizationHeader()});
+  }
+
+  public forgotPassword(user: User):Observable<any>
+  {
+    return this.http.post<User>(`${this.urlEndPoint}/forogtpassword`,user,{headers: this.addAuthorizationHeader()});
   }
 
 

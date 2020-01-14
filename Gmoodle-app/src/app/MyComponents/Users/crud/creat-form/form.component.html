@@ -153,7 +153,7 @@
                     <div class="card">
                         <div class="card-header py-3" id="headingTwo">
                             <h5 class="mb-0">
-                                <button class="btn text-success collapsed" data-toggle="collapse"
+                                <button #buttonUpdate class="btn text-success collapsed" data-toggle="collapse"
                                     data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     Update a User
                                 </button>
@@ -264,106 +264,7 @@
                             </div>
                         </div>
                     </div>
-                    <!--THIRD CARD-->
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                            <h5 class="mb-0">
-                                <button class="btn text-danger collapsed" data-toggle="collapse"
-                                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Delete a User
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                            data-parent="#accordion">
-                            <div class="card-body">
-                                <form [formGroup]="formUserDelete" >
-                                    <div class="form-row">
-                                        <div class="col-xl-3">
-                                            <div class="form-group"><label for="userIdDelete">
-                                                <strong>User Id</strong></label>
-                                                <input formControlName="id" class="form-control" type="text"
-                                                    placeholder="1" name="userIdDelete" required/></div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col">
-                                            <div class="form-group"><label
-                                                    for="usernameDetele"><strong>Username</strong></label><input
-                                                    class="form-control" type="text" placeholder="AryNG"
-                                                    name="usernameDetele" /></div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group"><label for="email"><strong>Email
-                                                        Address</strong></label><input class="form-control" type="email"
-                                                    placeholder="user@example.com" name="email" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col">
-                                            <div class="form-group"><label
-                                                    for="passwordDelete"><strong>Password</strong></label><input
-                                                    class="form-control" type="password" placeholder="password"
-                                                    name="passwordDelete" /></div>
-                                        </div>
-                                        <div class="col">
-                        
-                                            <div class="form-group">
-                                                <label for="roleDelete"><strong>Role</strong></label>
-                                     
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col">
-                                            <div class="form-group"><label for="first_nameDelete"><strong>First
-                                                        Name</strong></label><input class="form-control" type="text"
-                                                    placeholder="Aranza" name="first_nameDelete" />
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group"><label for="last_nameDelete"><strong>Last
-                                                        Name</strong></label><input class="form-control" type="text"
-                                                    placeholder="Negrete" name="last_nameDelete" /></div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col">
-                                            <div class="form-group"><label
-                                                    for="addressDelete"><strong>Addres</strong></label><input
-                                                    class="form-control" type="text" placeholder="Sunset Blvd, 38"
-                                                    name="addressDelete" />
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group"><label for="PhoneDelete"><strong>Phone</strong>
-                                                </label><input class="form-control" type="text"
-                                                    placeholder="(541) 754-3010" name="PhoneDelete" /></div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col">
-                                            <div class="form-group"><label
-                                                    for="degreeDelete"><strong>Degree</strong></label><input
-                                                    class="form-control" type="text" placeholder="Java FullStack"
-                                                    name="addressDelete" />
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group"><label for="birthdayDelete"><strong>Birthday</strong>
-                                                </label><input class="form-control" type="date"
-                                                    placeholder="(541) 754-3010" name="birthdayDelete" /></div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button [disabled]="formUserDelete.invalid" (click)="delete($event)" class="btn btn-danger btn-sm"  name="Delete">Delete
-                                            Settings</button></div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                  
                 </div>
 
 

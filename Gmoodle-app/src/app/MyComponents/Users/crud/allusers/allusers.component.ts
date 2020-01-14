@@ -41,7 +41,7 @@ export class AllusersComponent implements OnInit {
       console.log('page: '+page);
 
       //Getting users to pagete them (error on the contet part! )
-      this.ServiceService.getUser(page).pipe(
+      this.ServiceService.getUsers(page).pipe(
         tap((response: any) => 
         {
           console.log('UserComponent : tap 3');
@@ -55,7 +55,7 @@ export class AllusersComponent implements OnInit {
       },
       err =>
       {
-        console.log(err);
+        console.log('errror');
       });
     });
 

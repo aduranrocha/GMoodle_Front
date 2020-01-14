@@ -14,4 +14,5 @@ export class User {
 	roles: any[] = [];
 	createAt : string;
 	degree: string;
+	isDemoUser: boolean;
 }

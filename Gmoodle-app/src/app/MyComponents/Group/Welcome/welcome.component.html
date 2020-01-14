@@ -42,16 +42,17 @@
 
     <h4 class="text-muted mb-4">Choose a Group</h4>
     <div id="accordion">
-        <div class="card">
+        <div class="card" *ngFor="let group of groupClass; let i = index">
             <div class="card-header">
                 <button class="btn btn-block bg-light text-dark text-left" data-toggle="collapse"
-                    data-target="#collapseOne">
-                    {{group.title}}
+                [attr.data-target]="'#collapse'+i" >
+                    {{group.nameGroup}}
                 </button>
             </div>
-            <div class="collapse show" id="collapseOne" data-parent="#accordion">
+        <div class="collapse show" id="collapse{{i}}" data-parent="#accordion">
                 <div class="card-body">
-                    <p>
+                    <button (click)="choose(i)" type="submit" class="btn btn-primary mb-2" data-toggle="modal" data-target="#exampleModalCenter">Join</button>
+                    <!-- <p>
                         You want to joint? Please introduce this group password!
                     </p>
                     <form class="form-inline">
@@ -65,12 +66,11 @@
                             <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
                         </div>
                         <button type="submit" class="btn btn-primary mb-2">Join</button>
-                    </form>
-
+                    </form> -->
                 </div>
             </div>
         </div>
-        <div class="card">
+        <!-- <div class="card">
             <div class="card-header">
                 <button class="btn btn-block bg-light text-dark text-left" data-toggle="collapse"
                     data-target="#collapseTwo">
@@ -96,10 +96,42 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
     </div>
 
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">{{groupName}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form class="form-inline">
+                <div class="form-group mb-2">
+                    <label for="staticEmail2" class="sr-only">
+
+                    </label>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="inputPassword2" class="sr-only">Password</label>
+                    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Join</button>
+            </form> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <!--/List-->

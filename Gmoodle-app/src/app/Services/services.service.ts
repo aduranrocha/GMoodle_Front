@@ -14,7 +14,7 @@ import { AuthService } from '../MyComponents/Users/functions/auth/auth.service';
 })
 export class ServiceService {
   //Host of my backend and the Headers need to make patitions
-  private urlEndPoint: string = 'http://localhost:8080/admin'; //PATH FOR THE BACK
+  private urlEndPoint: string = 'http://localhost:8080/user'; //PATH FOR THE BACK
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 

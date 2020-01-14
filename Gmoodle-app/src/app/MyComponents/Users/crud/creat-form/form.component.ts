@@ -1,5 +1,5 @@
 //This is the functionality part for the CRUD form (form.html) where all the create and delete boxtext are!
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/MyComponents/Users/functions/user/user';
 import { ServiceService } from 'src/app/Services/services.service';
 import {  ActivatedRoute, Router } from '@angular/router';
@@ -15,6 +15,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 export class FormComponent implements OnInit 
 {
+  @ViewChild('buttonUpdate',{static: true}) editButton;
   //*Variables delcaration
   title: string = "Create User";
   
@@ -50,9 +51,19 @@ export class FormComponent implements OnInit
       this.activateRouter.paramMap.subscribe(params =>
         {
           let id = + params.get('id');
-          if(id)
+          if(id != undefined)
           {
-            this.userService.getUser(id).subscribe((user) => this.user = user);
+            this.editButton.nativeElement.click();
+
+            this._userService.getUsersPaginate(o).subscribe(response =>
+            {
+              console.log(response);
+            },
+            err =>
+            {
+              console.log(err);
+            }
+            );
           }
       });
 

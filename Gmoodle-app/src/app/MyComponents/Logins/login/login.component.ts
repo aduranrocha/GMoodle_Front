@@ -1,8 +1,10 @@
+import { UserService } from 'src/app/Services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/MyComponents/Users/functions/user/user';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/MyComponents/Users/functions/auth/auth.service';
 import { Router } from '@angular/router';
+import { ENETRESET } from 'constants';
 
 
 @Component({
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   title: string = 'Please Login';
   user: User;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private _userService: UserService, private authService: AuthService, private router: Router) {
     this.user = new User();
   }
 
@@ -37,6 +39,15 @@ export class LoginComponent implements OnInit {
       let user = this.authService.user;
 
       Swal.fire('Login', `Welcome ${user.username}, you are now logged!`, 'success');
+
+      if(this.authService.user.isDemoUser && this.authService.hasRole('ROLE_STUDENT '))
+      {
+        this.router.navigate(['/Welcome']);
+      }
+      else
+      {
+        this.router.navigate(['/Welcome']);
+      }
       this.router.navigate(['/Admin']);
 
     },
