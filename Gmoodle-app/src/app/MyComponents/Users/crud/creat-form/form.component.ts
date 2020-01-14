@@ -170,6 +170,7 @@ public save(event: Event): void
   this.user.address = this.formUser.get('address').value;
   this.user.birthDay = this.formUser.get('birthDay').value;
   this.user.phoneNumber = this.formUser.get('phone').value;
+  this.user.degree = this.formUser.get('degree').value;
  
   //*Create array with roles
   let roles = this.formUser.get('roles').value;

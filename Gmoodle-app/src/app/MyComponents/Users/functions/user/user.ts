@@ -13,6 +13,5 @@ export class User {
 	photo : string;
 	roles: any[] = [];
 	createAt : string;
-
-	
+	degree: string;
 }

@@ -109,5 +109,5 @@ export class AllusersComponent implements OnInit {
       this.modalService.openModal();
     }
 
-
+    
 }

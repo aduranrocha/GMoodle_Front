@@ -34,7 +34,7 @@ export class UserService {
    */
   public create(user: User):Observable<any>
   {
-    return this.http.post(`${this.urlEndPoint}/create`,user,{headers: this.addAuthorizationHeader()}).pipe(
+    return this.http.post(this.urlEndPoint,user,{headers: this.addAuthorizationHeader()}).pipe(
       map((response: any) => response.user as User), 
       catchError(e => 
       {
@@ -80,23 +80,23 @@ export class UserService {
   }
 
 
-    //Delete method also using the id (BORRAR PARTE DE FRONT!)
-    delete(id: number): Observable<User> 
-    {
-      console.log('DELETE')
-      return this.http.delete<User>(`${this.urlEndPoint}/${id}`, { headers: this.addAuthorizationHeader() }).pipe(
-        catchError(e => {
-  
-          if (this._authService.isNotAthorized(e)) {
-            return throwError(e);
-          }
-  
-          console.error(e.error.message);
-          Swal.fire('An Error has ocurred' + e.error.message, e.error.error, 'error');
+  //Delete method also using the id (BORRAR PARTE DE FRONT!)
+  delete(id: number): Observable<User> 
+  {
+    console.log('DELETE')
+    return this.http.delete<User>(`${this.urlEndPoint}/${id}`, { headers: this.addAuthorizationHeader() }).pipe(
+      catchError(e => {
+
+        if (this._authService.isNotAthorized(e)) {
           return throwError(e);
-        })
-      );
-    }
+        }
+
+        console.error(e.error.message);
+        Swal.fire('An Error has ocurred' + e.error.message, e.error.error, 'error');
+        return throwError(e);
+      })
+    );
+  }
 
   /**
    **Get users type teacher
@@ -104,6 +104,11 @@ export class UserService {
   public getTeachers():Observable<any>
   {
     return this.http.get(`${this.urlEndPoint}/teachers`,{headers: this.addAuthorizationHeader()});
+  }
+
+  public getUsers():Observable<any>
+  {
+    return this.http.get(this.urlEndPoint,{headers: this.addAuthorizationHeader()});
   }
 
 

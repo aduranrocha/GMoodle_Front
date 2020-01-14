@@ -72,7 +72,7 @@
             <!-- CHANGE PATH!!! -->
             <!-- USER IMAGE!! -->
             <tbody>
-              <tr *ngFor="let User of Users">
+              <tr *ngFor="let user of users">
                 <!-- client of clients-->
                 <td *ngIf="authService.hasRole('ROLE_USER')"><img (click)="abrirModal(user)" *ngIf="user?.photo"
                     src="http://localhost:8080/api/uploads/img/{{user.photo}}" alt="{{user.photo}}"
