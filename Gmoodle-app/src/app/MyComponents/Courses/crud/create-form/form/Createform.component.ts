@@ -42,6 +42,7 @@ export class CreateFormComponent implements OnInit {
     {
       let id = params.get('id');
       this.idCourse = Number(id);
+      console.log(params);
       if(id != undefined)
       {
         this.editButton.nativeElement.click();
