@@ -27,7 +27,7 @@ import { CreateFormComponent } from './MyComponents/Courses/crud/create-form/for
 
 //Routers and Stuff
 import { RouterModule, Routes } from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es';
@@ -42,6 +42,8 @@ import { ListUsersComponent } from './MyComponents/Student/ListUsers/list-users.
 import { ListdocumentComponent } from './MyComponents/Student/ListDocuments/listdocument.component';
 import { ListEvaluationsComponent } from './MyComponents/Student/ListEvaluations/list-evaluations/list-evaluations.component';
 import { ListactivitiesComponent } from './MyComponents/Student/ListActivities/listactivities/listactivities.component';
+import { DashStudentComponent } from './MyComponents/Dashboards/Students/dash-student.component';
+import { AdminComponent } from './MyComponents/Dashboards/Admin/admin.component';
 
 registerLocaleData(localeES, 'es');
 
@@ -49,35 +51,41 @@ registerLocaleData(localeES, 'es');
 const routes: Routes = [
   //?LOGIN
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent  } , // login page
+  { path: 'login', component: LoginComponent }, // login page
   { path: 'register', component: RegisterComponent }, //Register page to singup with your email
   { path: 'password', component: ForgotPasswordComponent }, //Reset your password
   //?HOMES
-  { path: 'Admin', component: HomeAdminComponent  } , // Admi's home page only accessed by ROLE_ADMIN
-  { path: 'Student', component: HomeStudentComponent  } , // Studen's home page only accessed by ROLE_STUDENT
-  { path: 'Teacher', component: HomeTeacherComponent  } , //Teacher's home page only accessed by ROLE_TEACHER
-  //?CRUDS
-  { path: 'CRUD', component: FormComponent}, //Form where all the users are created and deleted, Redirects to List
-  { path: 'List', component: AllusersComponent}, //ReadAll of the users, redirects to CRUD
+  { path: 'Admin', component: HomeAdminComponent }, // Admi's home page only accessed by ROLE_ADMIN
+  { path: 'Student', component: HomeStudentComponent }, // Studen's home page only accessed by ROLE_STUDENT
+  { path: 'Teacher', component: HomeTeacherComponent }, //Teacher's home page only accessed by ROLE_TEACHER
   
+  //? Dashboards Routes
+  { path: 'Admin/Dashboard', component: AdminComponent }, //List Groups with a modal to upload a new group
+  { path: 'student/Dashboard', component: DashStudentComponent }, //List Groups with a modal to upload a new group
+
+
+  //?CRUDS
+  { path: 'CRUD', component: FormComponent }, //Form where all the users are created and deleted, Redirects to List
+  { path: 'List', component: AllusersComponent }, //ReadAll of the users, redirects to CRUD
+
 
   //TEMPORALES 
-   //? General Routes 
-  { path: 'Profile', component: ProfileComponent}, //Profile!
-  { path: 'CourseCrud', component: CreateFormComponent}, //Crud for the courses 
-  { path: 'ListCourse', component: AllCoursesComponent}, //ReadAll of the courses
-  { path: 'Documents', component: DocumentsComponent}, //List of all documents with a modal to upload documents
-  { path: 'Welcome', component: WelcomeComponent}, //Select a group! like cohort 17,18,19...
-  { path: 'Activities', component: ActivitiesComponent}, //List Activies with a modal to upload a new activity
-  { path: 'GroupCrud', component: AllgroupsComponent}, //Group Crud
-  { path: 'ListGroup', component: GroupFormComponent}, //List Groups with a modal to upload a new group
-  { path: 'Evaluations', component: ListEvaluationsComponent}, //List Groups with a modal to upload a new group
-   
-    //? Student Routes 
-  { path: 'Student/Activities', component: ListactivitiesComponent}, //List Groups with a modal to upload a new group
-  { path: 'Student/Documents', component: ListdocumentComponent}, //List Groups with a modal to upload a new group
-  { path: 'Student/Evaluations', component: ListactivitiesComponent}, //List Groups with a modal to upload a new group
-  { path: 'Student/Users', component: ListUsersComponent}, //List Groups with a modal to upload a new group
+  //? General Routes 
+  { path: 'Profile', component: ProfileComponent }, //Profile!
+  { path: 'CourseCrud', component: CreateFormComponent }, //Crud for the courses 
+  { path: 'ListCourse', component: AllCoursesComponent }, //ReadAll of the courses
+  { path: 'Documents', component: DocumentsComponent }, //List of all documents with a modal to upload documents
+  { path: 'Welcome', component: WelcomeComponent }, //Select a group! like cohort 17,18,19...
+  { path: 'Activities', component: ActivitiesComponent }, //List Activies with a modal to upload a new activity
+  { path: 'GroupCrud', component: AllgroupsComponent }, //Group Crud
+  { path: 'ListGroup', component: GroupFormComponent }, //List Groups with a modal to upload a new group
+  { path: 'Evaluations', component: ListEvaluationsComponent }, //List Groups with a modal to upload a new group
+
+  //? Student Routes 
+  { path: 'Student/Activities', component: ListactivitiesComponent }, //List Groups with a modal to upload a new group
+  { path: 'Student/Documents', component: ListdocumentComponent }, //List Groups with a modal to upload a new group
+  { path: 'Student/Evaluations', component: ListactivitiesComponent }, //List Groups with a modal to upload a new group
+  { path: 'Student/Users', component: ListUsersComponent }, //List Groups with a modal to upload a new group
 
 ];
 
@@ -113,9 +121,11 @@ const routes: Routes = [
     ListdocumentComponent,
     ListEvaluationsComponent,
     ListactivitiesComponent,
-   
-    
-    
+    DashStudentComponent,
+    AdminComponent,
+
+
+
   ],
   imports: [
     FormsModule,
@@ -123,7 +133,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [ServiceService,, { provide: LOCALE_ID, useValue: 'es' }],
+  providers: [ServiceService, , { provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
