@@ -3,6 +3,7 @@ import { CoruseService } from 'src/app/Services/coruse.service';
 import { Course } from 'src/app/models/course';
 import { AuthService } from 'src/app/MyComponents/Users/functions/auth/auth.service';
 import  Swal  from 'sweetalert2';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-allcur',
@@ -11,22 +12,48 @@ import  Swal  from 'sweetalert2';
 })
 export class AllCoursesComponent implements OnInit {
 
+  private page: number;
+  private itemsPerPage: number = 1;
+  private totalItems: number;
   private courses: Course[];
-  constructor(private _courseService: CoruseService, private authService: AuthService) { }
+  constructor(private _courseService: CoruseService,
+     private activatedRoute: ActivatedRoute,
+     private authService: AuthService,
+     private router: Router) { }
   
 
   ngOnInit() 
   {
-    this.getCouses(0);
+    this.activatedRoute.paramMap.subscribe(params =>
+      {
+        let page: number = +params.get('page');
+      
+        if (page == undefined) 
+        {
+          page = 0; //if is not page, then iniciate it on 0 (?I belive so)
+        }
+        else if(page > 0)
+        {
+          page--;
+        }
+        console.log('page: '+page);
+  
+        //Getting users to pagete them (error on the contet part! )
+        this.getCouses(page);
+  
+        
+      });
   }
 
 
   private getCouses(page: number)
   {
-    this._courseService.getCourses(page).subscribe(response =>
+    this._courseService.getCourses(page,this.itemsPerPage).subscribe(response =>
     {
       //*Add pagination content to course
       this.courses = response.content as Course[];
+      this.totalItems = response.totalElements;
+      this.page = response.number + 1;
       console.log(response);
     },  
     err =>
@@ -68,6 +95,11 @@ export class AllCoursesComponent implements OnInit {
       
     });
     
+  }
+
+  private goToPage(page: number)
+  {
+    this.router.navigate(['List/',page]);
   }
 
 }

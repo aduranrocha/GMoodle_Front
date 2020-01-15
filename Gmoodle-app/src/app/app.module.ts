@@ -27,7 +27,7 @@ import { CreateFormComponent } from './MyComponents/Courses/crud/create-form/for
 
 //Routers and Stuff
 import { RouterModule, Routes } from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es';
@@ -40,41 +40,64 @@ import { AllgroupsComponent } from './MyComponents/Group/Crud/AllGroups/allgroup
 import { EvaluationsComponent } from './MyComponents/Documents/evaluations/evaluations/evaluations.component';
 import { ListUsersComponent } from './MyComponents/Student/ListUsers/list-users.component';
 
-//*Dependences
+
 import { NgSelectModule } from '@ng-select/ng-select';
-
+import { ListdocumentComponent } from './MyComponents/Student/ListDocuments/listdocument.component';
+import { ListEvaluationsComponent } from './MyComponents/Student/ListEvaluations/list-evaluations/list-evaluations.component';
+import { ListactivitiesComponent } from './MyComponents/Student/ListActivities/listactivities/listactivities.component';
+import { DashStudentComponent } from './MyComponents/Dashboards/Students/dash-student.component';
+import { AdminComponent } from './MyComponents/Dashboards/Admin/admin.component';
+//*Dependence
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 registerLocaleData(localeES, 'es');
-
 
 // Path is used to give the path a certain name, or protect certain path throu Guards, AuthGuard is a general guard while RoleGuard will circle through roles and assign a certain path depending the role
 const routes: Routes = [
-  //LOGIN
+  //?LOGIN
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent  } , // login page
+  { path: 'login', component: LoginComponent }, // login page
   { path: 'register', component: RegisterComponent }, //Register page to singup with your email
   { path: 'password', component: ForgotPasswordComponent }, //Reset your password
-  //HOMES
-  { path: 'Admin', component: HomeAdminComponent, canActivate: [AuthGuard, RoleGuard],  data: {role: 'ROLE_ADMIN'}} , // Admi's home page only accessed by ROLE_ADMIN
-  { path: 'Student', component: HomeStudentComponent, canActivate: [AuthGuard]  } , // Studen's home page only accessed by ROLE_STUDENT
-  { path: 'Teacher', component: HomeTeacherComponent   } , //Teacher's home page only accessed by ROLE_TEACHER
+
   //CRUDS
+
+  //?HOMES
+  { path: 'Admin', component: HomeAdminComponent, canActivate: [AuthGuard, RoleGuard],  data: {role: 'ROLE_ADMIN'}}, // Admi's home page only accessed by ROLE_ADMIN
+  { path: 'Student', component: HomeStudentComponent, canActivate: [AuthGuard]  }, // Studen's home page only accessed by ROLE_STUDENT
+  { path: 'Teacher', component: HomeTeacherComponent, canActivate: [AuthGuard]  }, //Teacher's home page only accessed by ROLE_TEACHER
+  
+  //? Dashboards Routes
+  { path: 'admin/Dashboard', component: AdminComponent }, //List Groups with a modal to upload a new group
+  { path: 'student/Dashboard', component: DashStudentComponent }, //List Groups with a modal to upload a new group
+
+
+  //?CRUDS
   { path: 'CRUD', component: FormComponent}, //Form where all the users are created and deleted, Redirects to List
   { path: 'CRUD/:id', component: FormComponent}, //Form where all the users are created and deleted, Redirects to List
   { path: 'List', component: AllusersComponent}, //ReadAll of the users, redirects to CRUD
   { path: 'List/:page', component: AllusersComponent}, //ReadAll of the users, redirects to CRUD
-  
+
 
   //TEMPORALES 
-  { path: 'Profile', component: ProfileComponent}, //Profile!
-  { path: 'CourseCrud', component: CreateFormComponent}, //Crud for the courses 
+
+
+  //? General Routes 
+  { path: 'Profile', component: ProfileComponent }, //Profile!
+  { path: 'CourseCrud', component: CreateFormComponent }, //Crud for the courses 
   { path: 'CourseCrud/:id', component: CreateFormComponent}, //Crud for the courses 
-  { path: 'ListCourse', component: AllCoursesComponent}, //ReadAll of the courses
-  { path: 'Documents', component: DocumentsComponent}, //List of all documents with a modal to upload documents
-  { path: 'Welcome', component: WelcomeComponent}, //Select a group! like cohort 17,18,19...
-  { path: 'Activities', component: ActivitiesComponent}, //List Activies with a modal to upload a new activity
-  { path: 'GroupCrud', component: AllgroupsComponent}, //Group Crud
-  { path: 'ListGroup', component: GroupFormComponent}, //List Groups with a modal to upload a new group
-  { path: 'Evaluations', component: EvaluationsComponent}, //List Groups with a modal to upload a new group
+  { path: 'ListCourse', component: AllCoursesComponent }, //ReadAll of the courses
+  { path: 'Documents', component: DocumentsComponent }, //List of all documents with a modal to upload documents
+  { path: 'Welcome', component: WelcomeComponent }, //Select a group! like cohort 17,18,19...
+  { path: 'Activities', component: ActivitiesComponent }, //List Activies with a modal to upload a new activity
+  { path: 'GroupCrud', component: AllgroupsComponent }, //Group Crud
+  { path: 'ListGroup', component: GroupFormComponent }, //List Groups with a modal to upload a new group
+  { path: 'Evaluations', component: ListEvaluationsComponent }, //List Groups with a modal to upload a new group
+
+  //? Student Routes 
+  { path: 'Student/Activities:id', component: ListactivitiesComponent }, //All activities of that teacher
+  { path: 'Student/Documents:id', component: ListdocumentComponent }, //All of documents of that teacher
+  { path: 'Student/Evaluations:id', component: ListactivitiesComponent }, //All evaluations of that teacher
+  { path: 'Student/Users', component: ListUsersComponent }, //List of all students and teachers
 
 ];
 
@@ -106,8 +129,15 @@ const routes: Routes = [
     GroupFormComponent,
     AllgroupsComponent,
     EvaluationsComponent,
-    ListUsersComponent
-    
+    ListUsersComponent,
+    ListdocumentComponent,
+    ListEvaluationsComponent,
+    ListactivitiesComponent,
+    DashStudentComponent,
+    AdminComponent,
+
+
+
   ],
   imports: [
     FormsModule,
@@ -115,9 +145,10 @@ const routes: Routes = [
     ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
+    NgxPaginationModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [ServiceService,, { provide: LOCALE_ID, useValue: 'es' }],
+  providers: [ServiceService, , { provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

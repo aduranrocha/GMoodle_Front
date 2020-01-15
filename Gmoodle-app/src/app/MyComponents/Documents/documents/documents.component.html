@@ -57,7 +57,7 @@
                                 <td>{{ course.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
                                 <td *ngIf="authService.hasRole('ROLE_ADMIN')">
                                     <!-- THIS BUTTON SHOULD DELTE EVERYTHING-->
-                                    <button type="button" name="editar" 
+                                    <button type="button" name="deleteDoc" 
                                         class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             </tr>

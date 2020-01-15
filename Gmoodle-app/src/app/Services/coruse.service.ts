@@ -41,9 +41,9 @@ export class CoruseService {
     return this.http.delete(`${this.urlEndPoint}/${id}`,{headers: this.addAuthorizationHeader()});
   }
 
-  public getCourses(page: number):Observable<any>
+  public getCourses(page: number, items: number):Observable<any>
   {
-    return this.http.get(`${this.urlEndPoint}/page/${page}`,{headers: this.addAuthorizationHeader()});
+    return this.http.get(`${this.urlEndPoint}/page/${items}/${page}`,{headers: this.addAuthorizationHeader()});
   }
 
   public getById(id: number):Observable<Course>

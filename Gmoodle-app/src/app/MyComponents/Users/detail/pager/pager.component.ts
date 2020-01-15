@@ -17,7 +17,7 @@ export class pagerComponent implements OnInit, OnChanges {
     constructor(){}
 
     ngOnInit(){
-     
+        console.log(this.pagedor);
         this.initpager();
     }
 //This will update the number of pages when the html corresponding is called o rendered

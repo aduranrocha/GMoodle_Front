@@ -110,7 +110,7 @@ export class ServiceService {
   //I have faith it will work out just fine if i just stick to the tutorials......
   //Update methos using only the id in this case, i'm sure all the other information of the user will be updated.... 
   update(user: User): Observable<any> {
-    return this.http.put<any>(`${this.urlEndPoint}/${user.id}`, user, {
+    return this.http.put<any>(`${this.urlEndPoint}/${user.idUser}`, user, {
       headers: this.addAuthorizationHeader()
     }).pipe(catchError(e => {
 

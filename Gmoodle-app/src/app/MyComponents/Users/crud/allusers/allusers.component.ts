@@ -5,9 +5,10 @@ import { ServiceService } from 'src/app/Services/services.service';
 
 import Swal from 'sweetalert2';
 import { tap } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/MyComponents/Users/functions/auth/auth.service';
 import { ModalService } from 'src/app/Services/modal.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-student',
@@ -19,14 +20,17 @@ export class AllusersComponent implements OnInit {
   users: User[];
   pagedor: any;
   selectedUser: User;
-
+  private page: number;
+  private itemsPerPage: number = 5;
+  private totalItems: number;
   
   constructor(
     private ServiceService: ServiceService,
     private _userService: UserService,
     private modalService: ModalService,
     private authService: AuthService,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -71,8 +75,9 @@ export class AllusersComponent implements OnInit {
     this._userService.getUsersPaginate(page,1).subscribe(response=>
     {
       this.users = response.content as User[];
-      this.pagedor = response;
-      console.log(this.users);
+      this.totalItems = response.totalElements;
+      this.page = response.number + 1;
+     console.log(response);
     },
     err=>
     {
@@ -81,7 +86,7 @@ export class AllusersComponent implements OnInit {
   }
 
   //Customized sweetalert for notifying the user whether if they want to delete another user or not
-  delete(user: User): void 
+  remove(user: User,index: number): void 
   {
     Swal.fire({
       title: 'Está seguro?',
@@ -95,6 +100,16 @@ export class AllusersComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
 
+        this._userService.delete(user.idUser).subscribe(response =>
+        {
+         
+          console.log(response);
+          this.users.splice(index,1);
+        },
+        err =>
+        {
+          console.log(err);
+        });
         //Confirmation once the user is deleted
         // this.ServiceService.delete(user.id).subscribe(
         //   () => {
@@ -114,6 +129,11 @@ export class AllusersComponent implements OnInit {
     openModal(user : User) {
       this.selectedUser = user;
       this.modalService.openModal();
+    }
+
+    private goToPage(page: number)
+    {
+      this.router.navigate(['List/',page]);
     }
 
     

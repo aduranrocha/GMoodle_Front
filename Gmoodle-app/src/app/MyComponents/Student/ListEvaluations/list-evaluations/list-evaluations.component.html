@@ -1,4 +1,5 @@
 <app-nav-student></app-nav-student>
+
 <section>
     <!--SOME SPACE BETWEEN TOPNAV AND THIS SECTION-->
     <div class=" col-xl-10 col-lg-9 col-md-8 ml-auto">
@@ -12,27 +13,26 @@
     <div class="row ml-0">
         <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 
+
             <!--CARDS, THEY SHOULD PILE UP IF THERE ARE USERS ON MY DATABASE-->
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
                         <div class="row align-items-center mb-5">
                             <div class="col-xl-9">
-                                <h4 class="text-muted mb-4">Generation Family</h4>
+                                <h4 class="text-muted mb-4"></h4>
                                 <div>
                                     <div *ngIf="user?.length == 0" class="alert alert-info">
-                                        No users available
+                                        No Evaluations available
                                     </div>
 
-                                    <div id="accordion" *ngIf="user?.length>0">
-                                        <div class="card">
+                                    <div id="accordion" *ngIf="document?.length>0">
+                                        <div *ngFor="let item of [1,2,3,4,5,6]" class="card">
                                             <div class="card-header">
                                                 <button class="btn btn-block bg-secondary text-light text-left"
                                                     data-toggle="collapse" data-target="#collapseOne">
-                                                    <!--IMPORTANT ONLY TEACHER AND STUDENTS PHOTOS-->
-                                                    <img src="http://localhost:8080/api/uploads/img/{{user.photo}}"
-                                                        alt="{{user.photo}}" width="50" class="mr-3 rounded">
-                                                    {{ user.name }}
+                                                    <!--PREVIEW OF THE DOCUMENT?????-->
+                                                    {{ evaluation.name }}
                                                 </button>
                                             </div>
                                             <div class="collapse show" id="collapseOne" data-parent="#accordion">
@@ -41,21 +41,21 @@
                                                         <thead>
                                                             <tr>
 
-                                                                <th scope="col">First Name</th>
-                                                                <th scope="col">Last Name</th>
-                                                                <th scope="col">Email</th>
-                                                                <th scope="col">Degree</th>
-                                                                <th scope="col">Birthday</th>
+                                                                <th scope="col">Posted by</th>
+                                                                <th scope="col">Summary</th>
+                                                                <th scope="col">Download</th>
+
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr *ngFor="let user of users">
-
                                                                 <th scope="row">{{user.name}}</th>
-                                                                <td>{{user.lastname}}</td>
-                                                                <td>{{user.email}}</td>
-                                                                <td>{{user.degree}}</td>
-                                                                <td>{{user.birthDay}}</td>
+                                                                <td>{{evaluation.summary}}</td>
+                                                                <td>
+                                                                    <button type="button" name="downDoc"
+                                                                        class="btn btn-info btn-sm">Download</button>
+                                                                </td>
+
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -66,9 +66,8 @@
                                             <div class="card-header">
                                                 <button class="btn btn-block bg-secondary text-light text-left"
                                                     data-toggle="collapse" data-target="#collapseTwo">
-                                                    <img src="http://localhost:8080/api/uploads/img/{{user.photo}}"
-                                                        alt="{{user.photo}}" width="50" class="mr-3 rounded">
-                                                    {{ user.name }}
+                                                    <!--PREVIEW OF THE DOCUMENT?????-->
+                                                    {{ evaluation.name }}
                                                 </button>
                                             </div>
                                             <div class="collapse" id="collapseTwo" data-parent="#accordion">
@@ -76,22 +75,22 @@
                                                     <table class="table table-hover">
                                                         <thead>
                                                             <tr>
-                                                                <th scope="col">Role</th>
-                                                                <th scope="col">First Name</th>
-                                                                <th scope="col">Last Name</th>
-                                                                <th scope="col">Email</th>
-                                                                <th scope="col">Degree</th>
-                                                                <th scope="col">Birthday</th>
+
+                                                                <th scope="col">Posted by</th>
+                                                                <th scope="col">Summary</th>
+                                                                <th scope="col">Download</th>
+
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <th scope="row">{{ user.role }}</th>
-                                                                <td>{{user.name}}</td>
-                                                                <td>{{user.lastname}}</td>
-                                                                <td>{{user.email}}</td>
-                                                                <td>{{user.degree}}</td>
-                                                                <td>{{user.birthDay}}</td>
+                                                            <tr *ngFor="let user of users">
+                                                                <th scope="row">{{user.name}}</th>
+                                                                <td>{{evaluation.summary}}</td>
+                                                                <td>
+                                                                    <button type="button" name="downDoc"
+                                                                        class="btn btn-info btn-sm">Download</button>
+                                                                </td>
+
                                                             </tr>
                                                         </tbody>
                                                     </table>

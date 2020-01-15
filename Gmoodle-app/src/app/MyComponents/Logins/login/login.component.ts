@@ -40,12 +40,12 @@ export class LoginComponent implements OnInit {
 
       Swal.fire('Login', `Welcome ${user.username}, you are now logged!`, 'success');
 
-      if(this.authService.user.isDemoUser && this.authService.hasRole('ROLE_STUDENT '))
+      if(this.authService.user.isDemoUser && this.authService.hasRole('ROLE_STUDENT'))
       {
         this.router.navigate(['/Welcome']);
       }
       
-      else if(!this.authService.user.isDemoUser && this.authService.hasRole('ROLE_STUDENT '))
+      else if(!this.authService.user.isDemoUser && this.authService.hasRole('ROLE_STUDENT'))
       {
         this.router.navigate(['/Welcome']);
       }

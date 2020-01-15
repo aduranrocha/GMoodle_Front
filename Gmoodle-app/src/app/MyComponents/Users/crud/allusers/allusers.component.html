@@ -28,10 +28,10 @@
       <div class="card-header">
         <ul class="nav nav-pills card-header-pills">
           <li class="nav-item">
-            <a class="nav-link " routerLink = "/CRUD">User Settings</a>
+            <a class="nav-link " routerLink="/CRUD">User Settings</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" >Users List</a>
+            <a class="nav-link">Users List</a>
           </li>
 
         </ul>
@@ -45,7 +45,7 @@
           <div class="my-2 text-left">
             <!-- THIS BUTTON SHOULD SEND YOU TO THE CRUD PAGE, TO CHANGE THINGS-->
             <button *ngIf="authService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary" type="button"
-              [routerLink]="['/CRUD/page']">
+              [routerLink]="['/CRUD']">
               Create a new user
             </button>
           </div>
@@ -72,8 +72,7 @@
             <!-- CHANGE PATH!!! -->
             <!-- USER IMAGE!! -->
             <tbody>
-              {{users | json}}
-              <tr *ngFor="let user of users">
+              <tr *ngFor="let user of users | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems}; let i = index">
                 <!-- client of clients-->
                 <td *ngIf="authService.hasRole('ROLE_USER')"><img (click)="abrirModal(user)" *ngIf="user?.photo"
                     src="http://localhost:8080/api/uploads/img/{{user.photo}}" alt="{{user.photo}}"
@@ -90,19 +89,24 @@
                 <td>{{ user.phoneNumber }}</td>
                 <td>{{ user.degree }}</td>
                 <td>{{ user.birthDate }}</td>
-                <td>{{ user.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+                <td></td>
+                <!-- <td>{{ user.createAt | date:"EEEE dd, MMMM yyyy"}}</td> -->
                 <td *ngIf="authService.hasRole('ROLE_ADMIN')">
                   <!-- THIS BUTTON SHOULD SEND YOU TO THE CRUD PAGE, TO CHANGE THINGS-->
                   <button type="button" name="editar" [routerLink]="['/CRUD/',1]"
                     class="btn btn-primary btn-sm">edit</button>
-                  <button type="button" name="remove" (click)="remove(user)"
+                  <button type="button" name="remove" (click)="remove(user,i)"
                     class="btn btn-danger btn-sm">Remove</button>
                 </td>
               </tr>
             </tbody>
           </table>
           <!--pager implementation on this table-->
-          <pager-nav [pagedor]="pagedor"></pager-nav>
+          <nav aria-label="Page navigation example">
+            
+            <pagination-controls class="pagination" (pageChange)="goToPage($event)"></pagination-controls>
+        </nav>
+            <!-- <pager-nav [pagedor]="pagedor"></pager-nav> -->
           
         </div>
       </div>

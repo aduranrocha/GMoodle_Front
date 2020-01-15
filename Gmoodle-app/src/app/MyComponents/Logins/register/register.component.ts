@@ -4,6 +4,7 @@ import { UserService } from 'src/app/Services/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../Users/functions/user/user';
+import { AuthService } from '../../Users/functions/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
   form: FormGroup;
   user: User;
 
-  constructor(private formBuilder: FormBuilder, private _userService: UserService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private _userService: UserService, private router: Router, private _authService: AuthService) { }
 
   ngOnInit() 
   {
@@ -41,6 +42,7 @@ export class RegisterComponent implements OnInit {
 
   private save():void
   {
+    console.log('ON SAVE')
     this.user = new User();
     this.user.name = this.form.get('name').value;
     this.user.lastName = this.form.get('lastname').value;
@@ -51,14 +53,22 @@ export class RegisterComponent implements OnInit {
     this.user.phoneNumber = this.form.get('phone').value;
     this.user.degree = this.form.get('degree').value;
     this.user.birthDate = this.form.get('birthDate').value;
+    
     let role = {name: "ROLE_STUDENT"};
+    console.log(this.user);
     this.user.roles.push(role);
 
 
     this._userService.register(this.user).subscribe(response =>
       {
         console.log(response);
-        this.router.navigate(['/Welcome']);
+        this._authService.login(this.user).subscribe(response=>{
+          this.router.navigate(['/Welcome']);
+        },
+        err =>
+        {
+          console.log(err);
+        });
       },
       err =>
       {

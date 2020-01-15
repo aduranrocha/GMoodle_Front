@@ -18,10 +18,11 @@ export class FormComponent implements OnInit
   @ViewChild('buttonUpdate',{static: true}) editButton;
   //*Variables delcaration
   title: string = "Create User";
-  
+  private itemsPerPage: number = 10;
+  private idUser: number;
   //*Objects declaration
   //we create a new user and put a nice title!
-  private user: User= new User ();
+  private user: User= new User();
   private formUser: FormGroup;
   private formUserUpdate: FormGroup;
   private formUserDelete: FormGroup;
@@ -50,20 +51,12 @@ export class FormComponent implements OnInit
       this.formUserDeleteInint();
       this.activateRouter.paramMap.subscribe(params =>
         {
-          let id = + params.get('id');
+          let id =  params.get('id');
           if(id != undefined)
           {
             this.editButton.nativeElement.click();
-
-            this._userService.getUsersPaginate(o).subscribe(response =>
-            {
-              console.log(response);
-            },
-            err =>
-            {
-              console.log(err);
-            }
-            );
+            this.getUser(Number(id));
+          
           }
       });
 
@@ -125,18 +118,21 @@ private formUserDeleteInint(): void
 
 update(event: Event) : void{
   //*Prevent refresh page
+  console.log('in update')
   event.preventDefault();
 
   //*Add data from form to object user
-  this.user.id = this.formUserUpdate.get('id').value;
+  this.user.idUser = this.formUserUpdate.get('id').value;
   this.user.username = this.formUserUpdate.get('username').value;
   this.user.email = this.formUserUpdate.get('email').value;
   this.user.password= this.formUserUpdate.get('password').value;
   this.user.name = this.formUserUpdate.get('name').value;
   this.user.lastName = this.formUserUpdate.get('lastName').value;
   this.user.address = this.formUserUpdate.get('address').value;
-  this.user.birthDay = this.formUserUpdate.get('birthDay').value;
+  this.user.birthDate = this.formUserUpdate.get('birthDay').value;
   this.user.phoneNumber = this.formUserUpdate.get('phone').value;
+  this.user.degree = this.formUserUpdate.get('degree').value;
+
 
   //*Create array with roles
   let roles = this.formUserUpdate.get('roles').value;
@@ -146,12 +142,13 @@ update(event: Event) : void{
     this.user.roles.push({name: role});
   }
   
+  console.log(this.user);
   //*Send user to ap
   this.userService.update(this.user).subscribe(json =>
   {
-    console.log(json);
-    this.router.navigate(['/CRUD']) //this will re-direct to the form page (crud)
-    Swal.fire('User Updated!', `${json.message} : ${json.user.name}`, 'success');
+    //console.log(json);
+   this.router.navigate(['/List']) //this will re-direct to the form page (crud)
+    //Swal.fire('User Updated!', `${json.message} : ${json.user.name}`, 'success');
     //Clear form
     this.formUserUpdate.reset();
   },
@@ -168,9 +165,9 @@ update(event: Event) : void{
  */
 public save(event: Event): void
 {
+  console.log('In save function');
   //*Prevent refresh page
   event.preventDefault();
-  console.log('In save function');
 
   //*Add data from form to object user
   this.user.username = this.formUser.get('username').value;
@@ -179,7 +176,7 @@ public save(event: Event): void
   this.user.name = this.formUser.get('name').value;
   this.user.lastName = this.formUser.get('lastName').value;
   this.user.address = this.formUser.get('address').value;
-  this.user.birthDay = this.formUser.get('birthDay').value;
+  this.user.birthDate = this.formUser.get('birthDay').value;
   this.user.phoneNumber = this.formUser.get('phone').value;
   this.user.degree = this.formUser.get('degree').value;
  
@@ -205,6 +202,8 @@ public save(event: Event): void
     });
 }
 
+
+//!Eliminar
 private delete(event: Event):void 
 {
   //Prevent refresh page
@@ -223,9 +222,41 @@ private delete(event: Event):void
     });
 }
 
-public getUser(): void
+public getUser(id: number): void
 {
+  this._userService.getUser(id).subscribe(response =>
+    {
+      let user = new User();
+      user = response as User;
+      let role = [];
+      //*Get roles 
+      for(let item of user.roles)
+      {
+        role.push(item.name)
 
+      }
+      console.log(role);
+      this.formUserUpdate.setValue({
+        id: user.idUser,
+        username: user.username,
+        email: user.email,
+        password: '',
+        roles: '',
+        name: user.name,
+        lastName: user.lastName,
+        address: user.address,
+        phone:  user.phoneNumber,
+        degree: user.degree,
+        birthDay: user.birthDate,
+      });
+
+    //  this.rolesModel = [{id: 'ROLE_USER', name: 'Admin'}]
+    },
+    err =>
+    {
+      console.log(err);
+    }
+    );
 }
 
 

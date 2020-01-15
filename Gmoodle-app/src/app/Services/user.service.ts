@@ -60,7 +60,7 @@ export class UserService {
    */
   public update(user: User):Observable<any>
   {
-    return this.http.put<any>(`${this.urlEndPoint}/${user.id}`, user, { headers: this.addAuthorizationHeader()}).pipe(
+    return this.http.put<any>(`${this.urlEndPoint}/${user.idUser}`, user, { headers: this.addAuthorizationHeader()}).pipe(
       catchError(e => 
       {
         if (this._authService.isNotAthorized(e)) 
@@ -107,6 +107,12 @@ export class UserService {
     return this.http.get(`${this.urlEndPoint}/teachers`,{headers: this.addAuthorizationHeader()});
   }
 
+  public getUser(id: number):Observable<User>
+  {
+    return this.http.get<User>(`${this.urlEndPoint}/${id}`,{headers: this.addAuthorizationHeader()});
+
+  }
+
   public getUsers():Observable<any>
   {
     return this.http.get(this.urlEndPoint,{headers: this.addAuthorizationHeader()});
@@ -124,7 +130,7 @@ export class UserService {
 
   public register(user: User):Observable<User>
   {
-    return this.http.post<User>(`${this.urlEndPoint}/register`,user,{headers: this.addAuthorizationHeader()});
+    return this.http.post<User>(`${this.urlEndPoint}/signup`,user,{headers: this.httpHeaders});
   }
 
   public forgotPassword(user: User):Observable<any>
