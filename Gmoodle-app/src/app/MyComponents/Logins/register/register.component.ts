@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
     this.user.address = this.form.get('address').value;
     this.user.phoneNumber = this.form.get('phone').value;
     this.user.degree = this.form.get('degree').value;
-    this.user.birthDay = this.form.get('birthDate').value;
+    this.user.birthDate = this.form.get('birthDate').value;
     let role = {name: "ROLE_STUDENT"};
     this.user.roles.push(role);
 

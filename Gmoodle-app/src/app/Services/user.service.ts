@@ -1,4 +1,4 @@
-import { User } from './../../../../Moodle-Project-app/src/app/users/user/user';
+//import { User } from './../../../../Moodle-Project-app/src/app/users/user/user';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';

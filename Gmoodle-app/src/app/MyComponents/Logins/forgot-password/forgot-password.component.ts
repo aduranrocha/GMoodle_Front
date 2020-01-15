@@ -1,7 +1,7 @@
-import { User } from './../../../../../../Moodle-Project-app/src/app/users/user/user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/Services/user.service';
+import { User } from '../../Users/functions/user/user';
 
 @Component({
   selector: 'app-forgot-password',
