@@ -46,6 +46,7 @@ import { DashStudentComponent } from './MyComponents/Dashboards/Students/dash-st
 import { AdminComponent } from './MyComponents/Dashboards/Admin/admin.component';
 import { SettingsComponent } from './MyComponents/Settings/settings/settings.component';
 import { TeacherComponent } from './MyComponents/Dashboards/teacher/teacher.component';
+import { NotFoundComponent } from './MyComponents/NotFound/not-found.component';
 
 registerLocaleData(localeES, 'es');
 
@@ -75,7 +76,8 @@ const routes: Routes = [
   //TEMPORALES 
   //? General Routes 
   { path: 'Profile', component: ProfileComponent }, //Profile! //! FOR ALL USERS!
-  { path: 'Settings', component: SettingsComponent }, //Profile! //! FOR ALL USERS!
+  { path: 'Settings', component: SettingsComponent }, //Settings! //! FOR ALL USERS!
+  { path: 'NotFound', component: NotFoundComponent }, //NotFound! //! FOR ALL USERS!
 
 
   { path: 'CourseCrud', component: CreateFormComponent }, //Crud for the courses 
@@ -85,7 +87,7 @@ const routes: Routes = [
   { path: 'Activities', component: ActivitiesComponent }, //List Activies with a modal to upload a new activity
   { path: 'GroupCrud', component: GroupFormComponent  }, //Group Crud
   { path: 'ListGroup', component: AllgroupsComponent}, //List Groups with a modal to upload a new group
-  { path: 'Evaluations', component: ListEvaluationsComponent }, //List Groups with a modal to upload a new group
+  { path: 'Evaluations', component: EvaluationsComponent }, //List Groups with a modal to upload a new group
 
   //? Student Routes 
   { path: 'Student/Activities:id', component: ListactivitiesComponent }, //All activities of that teacher
@@ -137,6 +139,7 @@ const routes: Routes = [
     AdminComponent,
     SettingsComponent,
     TeacherComponent,
+    NotFoundComponent,
 
 
 
