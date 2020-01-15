@@ -44,6 +44,7 @@ import { ListEvaluationsComponent } from './MyComponents/Student/ListEvaluations
 import { ListactivitiesComponent } from './MyComponents/Student/ListActivities/listactivities/listactivities.component';
 import { DashStudentComponent } from './MyComponents/Dashboards/Students/dash-student.component';
 import { AdminComponent } from './MyComponents/Dashboards/Admin/admin.component';
+import { SettingsComponent } from './MyComponents/Settings/settings/settings.component';
 
 registerLocaleData(localeES, 'es');
 
@@ -71,7 +72,10 @@ const routes: Routes = [
 
   //TEMPORALES 
   //? General Routes 
-  { path: 'Profile', component: ProfileComponent }, //Profile!
+  { path: 'Profile', component: ProfileComponent }, //Profile! //! FOR ALL USERS!
+  { path: 'Settings', component: SettingsComponent }, //Profile! //! FOR ALL USERS!
+
+
   { path: 'CourseCrud', component: CreateFormComponent }, //Crud for the courses 
   { path: 'ListCourse', component: AllCoursesComponent }, //ReadAll of the courses
   { path: 'Documents', component: DocumentsComponent }, //List of all documents with a modal to upload documents
@@ -123,6 +127,7 @@ const routes: Routes = [
     ListactivitiesComponent,
     DashStudentComponent,
     AdminComponent,
+    SettingsComponent,
 
 
 
