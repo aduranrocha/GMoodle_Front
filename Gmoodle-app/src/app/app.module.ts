@@ -83,8 +83,8 @@ const routes: Routes = [
   { path: 'Documents', component: DocumentsComponent }, //List of all documents with a modal to upload documents
   { path: 'Welcome', component: WelcomeComponent }, //Select a group! like cohort 17,18,19...
   { path: 'Activities', component: ActivitiesComponent }, //List Activies with a modal to upload a new activity
-  { path: 'GroupCrud', component: AllgroupsComponent }, //Group Crud
-  { path: 'ListGroup', component: GroupFormComponent }, //List Groups with a modal to upload a new group
+  { path: 'GroupCrud', component: GroupFormComponent  }, //Group Crud
+  { path: 'ListGroup', component: AllgroupsComponent}, //List Groups with a modal to upload a new group
   { path: 'Evaluations', component: ListEvaluationsComponent }, //List Groups with a modal to upload a new group
 
   //? Student Routes 
