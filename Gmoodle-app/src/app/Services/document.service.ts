@@ -24,9 +24,9 @@ export class DocumentService {
     return this.httpHeaders;
   }
 
-  public getAllPaginate(page: number):Observable<any>
+  public getAllPaginate(page: number,items: number):Observable<any>
   {
-    return this.http.get(`${this.urlEndPoint}/page/${page}`,{headers: this.addAuthorizationHeader()});
+    return this.http.get(`${this.urlEndPoint}/page/${items}/${page}`,{headers: this.addAuthorizationHeader()});
   }
 
   public create(document: Document):Observable<Document>

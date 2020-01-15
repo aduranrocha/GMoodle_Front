@@ -50,6 +50,7 @@ import { AdminComponent } from './MyComponents/Dashboards/Admin/admin.component'
 //*Dependence
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { SettingsComponent } from './MyComponents/Settings/settings/settings.component';
+import { TeacherComponent } from './MyComponents/Dashboards/teacher/teacher.component';
 
 registerLocaleData(localeES, 'es');
 
@@ -71,6 +72,7 @@ const routes: Routes = [
   //? Dashboards Routes
   { path: 'admin/Dashboard', component: AdminComponent }, //List Groups with a modal to upload a new group
   { path: 'student/Dashboard', component: DashStudentComponent }, //List Groups with a modal to upload a new group
+  { path: 'teacher/Dashboard', component: TeacherComponent }, //List Groups with a modal to upload a new group
 
 
   //?CRUDS
@@ -92,19 +94,28 @@ const routes: Routes = [
   { path: 'CourseCrud/:id', component: CreateFormComponent}, //Crud for the courses 
   { path: 'ListCourse', component: AllCoursesComponent }, //ReadAll of the courses
   { path: 'Documents', component: DocumentsComponent }, //List of all documents with a modal to upload documents
+  { path: 'Documents/:page', component: DocumentsComponent }, //List of all documents with a modal to upload documents
   { path: 'Welcome', component: WelcomeComponent }, //Select a group! like cohort 17,18,19...
   { path: 'Activities', component: ActivitiesComponent }, //List Activies with a modal to upload a new activity
-  { path: 'GroupCrud', component: AllgroupsComponent }, //Group Crud
-  { path: 'ListGroup', component: GroupFormComponent }, //List Groups with a modal to upload a new group
-  { path: 'Evaluations', component: ListEvaluationsComponent }, //List Groups with a modal to upload a new group
+  { path: 'GroupCrud', component: GroupFormComponent  }, //Group Crud
+  { path: 'GroupCrud/:id', component: GroupFormComponent  }, //Group Crud
+  { path: 'ListGroup', component: AllgroupsComponent}, //List Groups with a modal to upload a new group
+  { path: 'ListGroup/:page', component: AllgroupsComponent}, //List Groups with a modal to upload a new group
+  { path: 'Evaluations', component: EvaluationsComponent }, //List Groups with a modal to upload a new group
 
   //? Student Routes 
   { path: 'Student/Activities:id', component: ListactivitiesComponent }, //All activities of that teacher
   { path: 'Student/Documents:id', component: ListdocumentComponent }, //All of documents of that teacher
-  { path: 'Student/Evaluations:id', component: ListactivitiesComponent }, //All evaluations of that teacher
+  { path: 'Student/Evaluations:id', component: ListEvaluationsComponent }, //All evaluations of that teacher
   { path: 'Student/Users', component: ListUsersComponent }, //List of all students and teachers
 
-];
+
+  //? Teacher Routes
+  { path: 'teacher/students/list:id', component: AllusersComponent },//show all users from a certain group
+  { path: 'teacher/documents/documents:id', component: ListdocumentComponent },//show all documents from a certain group
+  { path: 'teacher/evaluations/evaluations:id', component: ListEvaluationsComponent }, //All evaluations from a certain group
+  { path: 'teacher/activities/activities:id', component: ListactivitiesComponent },
+]; //All activities from a certain group
 
 
 @NgModule({
@@ -141,6 +152,7 @@ const routes: Routes = [
     DashStudentComponent,
     AdminComponent,
     SettingsComponent,
+    TeacherComponent,
 
 
 

@@ -51,7 +51,7 @@
                             <div class="card-body">
                                 <form [formGroup]="formCreate">
                                     <div class="form-row">
-                                        <div class="col">
+                                        <div class="col-xl-3">
                                             <div class="form-group">
                                                 <label for="Groupname">
                                                     <strong>Group name</strong>
@@ -104,7 +104,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <button class="btn btn-primary btn-sm" type="submit"name="Crete">Save Settings</button>
+                                            <button (click)="create()" class="btn btn-primary btn-sm" type="submit"name="Crete">Save Settings</button>
                                         </div>
                                     </div>
                                 </form>
@@ -116,7 +116,7 @@
                     <div class="card">
                         <div class="card-header py-3" id="headingTwo">
                             <h5 class="mb-0">
-                                <button class="btn text-success collapsed" data-toggle="collapse"
+                                <button #updateButton class="btn text-success collapsed" data-toggle="collapse"
                                     data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     Update a Group
                                 </button>
@@ -124,16 +124,18 @@
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
-                                <form>
+                                <form [formGroup]="formUpdate">
                                     <div class="form-row">
                                         <div class="col-xl-3">
                                             <div class="form-group"><label for="groupIdUpdate"><strong>Group
-                                                        Id</strong></label><input class="form-control" type="text"
+                                                        Id</strong></label>
+                                                        <input disabled formControlName="id" class="form-control" type="text"
                                                     placeholder="1" name="groupIdUpdate" /></div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group"><label for="EnrolmentkeyUpdate"><strong>Enrolment
-                                                        Key</strong></label><input class="form-control" type="password"
+                                                        Key</strong></label>
+                                                        <input formControlName="password" class="form-control" type="password"
                                                     placeholder="password" name="EnrolmentkeyUpdate" />
                                             </div>
                                         </div>
@@ -142,13 +144,13 @@
                                         <div class="col">
                                             <div class="form-group"><label for="StartDayUpdate"><strong>Start
                                                         Day</strong>
-                                                </label><input class="form-control" type="date" name="StartDayUpdate" />
+                                                </label><input formControlName="startDay" class="form-control" type="date" name="StartDayUpdate" />
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group"><label for="EndDateUpdate"><strong>End
                                                         Day</strong>
-                                                </label><input class="form-control" type="date" name="EndDateUpdate" />
+                                                </label><input formControlName="endDay" class="form-control" type="date" name="EndDateUpdate" />
                                             </div>
                                         </div>
 
@@ -156,19 +158,21 @@
                                     <div class="form-row">
                                         <div class="col">
                                             <div class="form-group"><label for="numerStudentsUpdate"><strong>No.
-                                                        Student</strong></label><input class="form-control" type="text"
+                                                        Student</strong></label>
+                                                        <input formControlName="noStudent"  class="form-control" type="text"
                                                     placeholder="Max of 30 Student" name="numerStudentsUpdate" />
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="SummaryGroupUpdate">Example textarea</label>
-                                                <textarea class="form-control" id="SummaryGroupUpdate"
+                                                <label   for="SummaryGroupUpdate">Example textarea</label>
+                                                <textarea formControlName="summaryGroup" class="form-control" id="SummaryGroupUpdate"
                                                     rows="3"></textarea>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group"><button class="btn btn-Success btn-sm" type="submit"
+                                    <div class="form-group"><button class="btn btn-Success btn-sm" 
+                                        (click)="update()"
                                             name="Update">Save
                                             Settings</button></div>
                                 </form>

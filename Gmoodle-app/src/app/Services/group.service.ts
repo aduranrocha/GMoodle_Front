@@ -32,6 +32,10 @@ export class GroupService {
   {
     return this.http.get<GroupClass[]>(this.urlEndPoint,{headers: this.addAuthorizationHeader()});
   }
+  public getPaginate(page: number, items: number):Observable<any>
+  {
+    return this.http.get(`${this.urlEndPoint}/page/${items}/${page}`,{headers: this.addAuthorizationHeader()});
+  }
 
   public getById(id: number):Observable<GroupClass>
   {

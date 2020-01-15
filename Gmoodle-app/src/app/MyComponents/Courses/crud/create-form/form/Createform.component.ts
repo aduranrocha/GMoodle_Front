@@ -72,7 +72,8 @@ export class CreateFormComponent implements OnInit {
       {
         nameCourse: ['',Validators.required],
         teacher: ['',Validators.required],
-        summary: ['',Validators.required]
+        summary: ['',Validators.required],
+        
       }
     );
   }

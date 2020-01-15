@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DocumentService } from 'src/app/Services/document.service';
 import { AuthService } from '../../Users/functions/auth/auth.service';
@@ -10,15 +11,41 @@ import { Document } from 'src/app/models/document';
   styleUrls: ['./documents.component.css']
 })
 export class DocumentsComponent implements OnInit {
-  private documents: Document[] = [];
+  private documents: Document[];
   private form: FormGroup;
+  private page: number;
+  private itemsPerPage: number = 5;
+  private totalItems: number;
+
+   
   private files: File[] = [];
   constructor(private _documentService: DocumentService,
      private authService: AuthService,
+     private activatedRoute: ActivatedRoute,
+     private router: Router,
      private formBuilder: FormBuilder) { }
 
   ngOnInit() 
   {
+    this.activatedRoute.paramMap.subscribe(params =>
+      {
+        let page: number = +params.get('page');
+      
+        if (page == undefined) 
+        {
+          page = 0; //if is not page, then iniciate it on 0 (?I belive so)
+        }
+        else if(page > 0)
+        {
+          page--;
+        }
+        console.log('page: '+page);
+  
+        //Getting users to pagete them (error on the contet part! )
+        this.getDocuments(page);
+  
+        
+      });
     this.getDocuments(0);
     this.formInit();
   }
@@ -33,10 +60,12 @@ export class DocumentsComponent implements OnInit {
 
   private getDocuments(page: number)
   {
-    this._documentService.getAllPaginate(page).subscribe(response =>
+    this._documentService.getAllPaginate(page, this.itemsPerPage).subscribe(response =>
       {
         console.log(response);
         this.documents = response.content as Document[];
+        this.totalItems = response.totalElements;
+        this.page = response.number + 1;
       },
       err =>
       {
@@ -55,6 +84,18 @@ export class DocumentsComponent implements OnInit {
     }
     console.log(this.files);
   }
+  private remove(id: number, index: number)
+  {
+    this._documentService.delete(id).subscribe(response =>{
+      console.log(response);
+      this.documents.splice(index,1);
+    },
+    err =>
+    {
+      console.log(err);
+    }
+    );
+  }
 
   private uploadFile()
   {
@@ -69,5 +110,11 @@ export class DocumentsComponent implements OnInit {
       console.log(err);
     }
     );
+  }
+
+  
+  private goToPage(page: number)
+  {
+    this.router.navigate(['ListGroup/',page]);
   }
 }

@@ -44,10 +44,10 @@
               Create a new Group
             </button>
           </div>
-          <div *ngIf="User?.length == 0" class="alert alert-info">
+          <div *ngIf="groups?.length == 0" class="alert alert-info">
             No group added yet
           </div>
-          <table class="table table-bordered table-striped" *ngIf="User?.length>0">
+          <table class="table table-bordered table-striped" *ngIf="groups?.length > 0">
             <thead>
               <tr>
                 <th *ngIf="authService.hasRole('ROLE_USER')">#</th>
@@ -64,25 +64,31 @@
             <!-- CHANGE PATH!!! -->
             <!-- Group.ts i guess,  -->
             <tbody>
-              <tr *ngFor="let Group of Groups">
+              <tr *ngFor="let group of groups | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems}; let index = index">
                 <!-- client of clients-->    
-                <td>{{ group.id }}</td>
-                <td>{{ group.name }}</td>
-                <td>{{ group.summary }}</td>
-                <td>{{ group.startDay }}</td>
-                <td>{{ group.endDay }}</td>
-                <td>{{ group.studentsNumber }}</td>
-                <td>{{ user.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+                <td>{{ group.idGroup }}</td>
+                <td>{{ group.nameGroup }}</td>
+                <td>{{ group.summaryGroup }}</td>
+                <td>{{ group.startDateGroup }}</td>
+                <td>{{ group.endDateGroup }}</td>
+                <td>{{ group.countNumber }}</td>
+                <td>{{ group.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
                 <td *ngIf="authService.hasRole('ROLE_ADMIN')">
                   <!-- THIS BUTTON SHOULD SEND YOU TO THE CRUD PAGE, TO CHANGE THINGS-->
-                  <button type="button" name="editar" [routerLink]="['/GroupCrud']"
+                  <button type="button" name="editar" [routerLink]="['/GroupCrud/',group.idGroup]"
                     class="btn btn-primary btn-sm">edit</button>
+                  <button type="button" name="editar"
+                    class="btn btn-danger btn-sm" (click)="remove(group.idGroup, index)">remove</button>
                 </td>
               </tr>
             </tbody>
           </table>
+          <nav aria-label="Page navigation example">
+            
+            <pagination-controls class="pagination" (pageChange)="goToPage($event)"></pagination-controls>
+        </nav>
           <!--pager implementation on this table-->
-          <pager-nav *ngIf="pagedor" [pagedor]="pagedor"></pager-nav>
+          <!-- <pager-nav *ngIf="pagedor" [pagedor]="pagedor"></pager-nav> -->
         </div>
       </div>
 

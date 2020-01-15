@@ -89,7 +89,8 @@
                 <td>{{ user.phoneNumber }}</td>
                 <td>{{ user.degree }}</td>
                 <td>{{ user.birthDate }}</td>
-                <td></td>
+                <td>{{ user.createAt }}</td>
+                
                 <!-- <td>{{ user.createAt | date:"EEEE dd, MMMM yyyy"}}</td> -->
                 <td *ngIf="authService.hasRole('ROLE_ADMIN')">
                   <!-- THIS BUTTON SHOULD SEND YOU TO THE CRUD PAGE, TO CHANGE THINGS-->

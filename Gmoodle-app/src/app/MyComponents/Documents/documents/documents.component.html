@@ -28,12 +28,12 @@
                     </div>
 
                     
-                    <div *ngIf="User?.length == 0" class="alert alert-info">
+                    <div *ngIf="documents?.length == 0" class="alert alert-info">
                         No Documents added yet
                     </div>
                     
 
-                    <table class="table table-bordered table-striped" *ngIf="documents.length > 0">
+                    <table class="table table-bordered table-striped" *ngIf="documents?.length > 0">
                         <thead>
                             <tr>
                                 <th *ngIf="authService.hasRole('ROLE_USER')">#</th>
@@ -46,25 +46,28 @@
                         </thead>
                         <!-- CHANGE PATH!!! -->
                         <tbody>
-                            <tr *ngFor="let document of documents">
+                            <tr *ngFor="let document of documents | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems}; let index = index">
 
                                 <td>{{ document.idDocument}}</td>
                                 <td>{{ document.titleActivity }}</td>
                                 <td>
-                                    <span *ngIf="document.isCheack" class="badge badge-success">Check</span>
-                                    <span *ngIf="!document.isCheack" class="badge badge-warning">No Check</span>
+                                    <span *ngIf="document.isCheck" class="badge badge-success">Check</span>
+                                    <span *ngIf="!document.isCheck" class="badge badge-warning">No Check</span>
                                 </td>
-                                <td>{{ course.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+                                <td>{{ document.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
                                 <td *ngIf="authService.hasRole('ROLE_ADMIN')">
                                     <!-- THIS BUTTON SHOULD DELTE EVERYTHING-->
-                                    <button type="button" name="deleteDoc" 
+                                    <button (click)="remove(document.idDocument,index)" type="button" name="deleteDoc" 
                                         class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <!--pager implementation on this table-->
-                    <pager-nav *ngIf="pagedor" [pagedor]="pagedor"></pager-nav>
+                           <nav aria-label="Page navigation example">
+            
+            <pagination-controls class="pagination" (pageChange)="goToPage($event)"></pagination-controls>
+        </nav>
                 </div>
             </div>
 

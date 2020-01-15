@@ -27,7 +27,7 @@ export class ActivitiesComponent implements OnInit {
         console.log(response);
         this.activities = response.content as Activity[];
         
-        console.log(this.activities[0].users.userName)
+        console.log(this.activities[0].users.username)
       },
       err =>
       {
