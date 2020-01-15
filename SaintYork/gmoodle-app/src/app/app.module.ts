@@ -51,6 +51,7 @@ import { AdminComponent } from './MyComponents/Dashboards/Admin/admin.component'
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { SettingsComponent } from './MyComponents/Settings/settings/settings.component';
 import { TeacherComponent } from './MyComponents/Dashboards/teacher/teacher.component';
+import { NotFoundComponent } from './MyComponents/NotFound/not-found.component';
 
 registerLocaleData(localeES, 'es');
 
@@ -88,6 +89,7 @@ const routes: Routes = [
   //? General Routes 
   { path: 'Profile', component: ProfileComponent }, //Profile! //! FOR ALL USERS!
   { path: 'Settings', component: SettingsComponent }, //Profile! //! FOR ALL USERS!
+  { path: 'NotFound', component: NotFoundComponent }, //NotFound! //! FOR ALL USERS!
 
 
   { path: 'CourseCrud', component: CreateFormComponent }, //Crud for the courses 
@@ -153,6 +155,7 @@ const routes: Routes = [
     AdminComponent,
     SettingsComponent,
     TeacherComponent,
+    NotFoundComponent,
 
 
 
