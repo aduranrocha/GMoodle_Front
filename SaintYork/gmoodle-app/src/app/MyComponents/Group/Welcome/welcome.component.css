@@ -1,0 +1,21 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+   
+  }
+
+  .top-navbar{
+    
+    background-color: #799aff;
+    background-image: #4e73df;
+    background-size: cover;
+  }
+  .title{
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+
+    .top-navbar {
+      position: static;
+    }
+  }
+  /* navbar end */

@@ -1,0 +1,122 @@
+<!--LIST OF READ ALL / Re-directs to CRUD -->
+
+
+<!--this header is the topnav-->
+<app-home-admin></app-home-admin>
+
+
+<!-- this call to app-detail does NOT WORK FOR SOME REASON-->
+<!--
+<app-detail *ngIf = "selectedUser" [Users] = "selectedUser"> </app-detail>
+-->
+
+
+<section>
+  <!--SOME SPACE BETWEEN TOPNAV AND THIS SECTION-->
+  <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+    <div class="row pt-md-5 mt-md-3">
+      <div class="col-xl-3 col-sm-6 p-2">
+      </div>
+    </div>
+  </div>
+
+  <!--JUSTIFICATION FROM THE LEFTNAV-->
+  <div class="row ml-0">
+    <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+
+      <!--SECTIONS BUTTONS-->
+      <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/CRUD">User Settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Users List</a>
+          </li>
+
+        </ul>
+      </div>
+
+      <!--CARDS WITH CRUD AND STUFF I GUESS-->
+      <div class="card border-primary mb-3">
+        <div class="card-header">Users</div>
+        <div class="card-body text-primary">
+          <h5 class="card-title">List of all users</h5>
+          <div class="my-2 text-left">
+            <!-- THIS BUTTON SHOULD SEND YOU TO THE CRUD PAGE, TO CHANGE THINGS-->
+            <button *ngIf="authService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary" type="button"
+              [routerLink]="['/CRUD']">
+              Create a new user
+            </button>
+          </div>
+          <div *ngIf="User?.length == 0" class="alert alert-info">
+            No user added yet
+          </div>
+          <table class="table table-bordered table-striped" *ngIf="users?.length>0">
+            <thead>
+              <tr>
+                <th *ngIf="authService.hasRole('ROLE_USER')">#</th>
+                <th>username</th>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>email</th>
+                <th>ROLE</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Degree</th>
+                <th>Birthday</th>
+                <th>Creation Date</th>
+                <th *ngIf="authService.hasRole('ROLE_ADMIN')">Accions</th>
+              </tr>
+            </thead>
+            <!-- CHANGE PATH!!! -->
+            <!-- USER IMAGE!! -->
+            <tbody>
+              <tr *ngFor="let user of users | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems}; let i = index">
+                <!-- client of clients-->
+                <td *ngIf="authService.hasRole('ROLE_USER')"><img (click)="abrirModal(user)" *ngIf="user?.photo"
+                    src="http://localhost:8080/api/uploads/img/{{user.photo}}" alt="{{user.photo}}"
+                    class="img-thumbnail rounded" style="width:64px; cursor: pointer;">
+                  <img (click)="abrirModal(user)" *ngIf="!user?.photo" src="http://localhost:8080/images/no-usuario.png"
+                    alt="without photo" class="img-thumbnail rounded" style="width:64px; cursor: pointer;">
+                </td>
+                <td>{{ user.username}}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles }}</td>
+                <td>{{ user.address }}</td>
+                <td>{{ user.phoneNumber }}</td>
+                <td>{{ user.degree }}</td>
+                <td>{{ user.birthDate }}</td>
+                <td>{{ user.createAt }}</td>
+                
+                <!-- <td>{{ user.createAt | date:"EEEE dd, MMMM yyyy"}}</td> -->
+                <td *ngIf="authService.hasRole('ROLE_ADMIN')">
+                  <!-- THIS BUTTON SHOULD SEND YOU TO THE CRUD PAGE, TO CHANGE THINGS-->
+                  <button type="button" name="editar" [routerLink]="['/CRUD/',1]"
+                    class="btn btn-primary btn-sm">edit</button>
+                  <button type="button" name="remove" (click)="remove(user,i)"
+                    class="btn btn-danger btn-sm">Remove</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!--pager implementation on this table-->
+          <nav aria-label="Page navigation example">
+            
+            <pagination-controls class="pagination" (pageChange)="goToPage($event)"></pagination-controls>
+        </nav>
+            <!-- <pager-nav [pagedor]="pagedor"></pager-nav> -->
+          
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+<app-footer></app-footer>

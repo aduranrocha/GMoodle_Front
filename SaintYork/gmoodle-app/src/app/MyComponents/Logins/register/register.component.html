@@ -1,0 +1,98 @@
+<body class="bg-gradient-primary">
+    <div class="container">
+        <div class="card shadow-lg o-hidden border-0 my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-flex">
+                        <div class="flex-grow-1 bg-register-image"
+                            style="background-image: url('./assets/media/register.jpeg');">
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-4">Create an Account!</h4>
+                            </div>
+                            <form [formGroup]="form" (ngSubmit)="save()" class="user">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+
+                                        <input formControlName="name" class="form-control form-control-user" type="text" id="exampleFirstName"
+                                            placeholder="First Name" name="first_name" />
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <input formControlName="lastname" class="form-control form-control-user" type="text" id="exampleFirstName"
+                                            placeholder="Last Name" name="last_name" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input formControlName="email" class="form-control form-control-user" type="email" id="exampleInputEmail"
+                                        aria-describedby="emailHelp" placeholder="Email Address" name="email" />
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+
+                                        <input formControlName="username" class="form-control form-control-user" type="text" id="username"
+                                            placeholder="Username" name="user_name" />
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <input formControlName="password" class="form-control form-control-user" type="password" id="password"
+                                            placeholder="Password" name="password" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input formControlName="address" class="form-control form-control-user" type="text"
+                                            id="Address" placeholder="Address" name="Address" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input formControlName="phone" class="form-control form-control-user" type="text"
+                                            id="PhoneStudent" placeholder="Phone"
+                                            name="PhoneStudent" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input formControlName="degree" class="form-control form-control-user" type="text"
+                                            id="Degree" placeholder="Degree" name="Degree" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input formControlName="birthDate" class="form-control form-control-user" type="date"
+                                            id="birthdayStudent" placeholder="Birthday"
+                                            name="birthdayStudent"  />
+                                    </div>
+                                </div>
+
+
+                                <button class="btn btn-primary btn-block text-white btn-user" type="submit">Register
+                                    Account</button>
+
+
+                                <hr />
+
+                               
+                            </form>
+
+
+
+                            <div class="text-center">
+                                <a class="small" routerLink="/password">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" routerLink="/login">Already have an account?
+                                    Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
