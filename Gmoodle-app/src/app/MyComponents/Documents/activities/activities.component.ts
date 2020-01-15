@@ -40,7 +40,7 @@ export class ActivitiesComponent implements OnInit {
     this._activityService.delete(id).subscribe(response =>
       {
         console.log(response);
-        this.activities.splice(1,idnex);
+        this.activities.splice(1,index);
       },
       err =>
       {
