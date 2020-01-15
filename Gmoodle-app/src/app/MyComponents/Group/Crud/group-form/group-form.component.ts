@@ -11,7 +11,9 @@ import { GroupService } from 'src/app/Services/group.service';
 export class GroupFormComponent implements OnInit {
 
   formCreate: FormGroup;
-  constructor(private formBuilder: FormBuilder, private _authService: AuthService, private _groupService, GroupService) { }
+  constructor(private formBuilder: FormBuilder, 
+    private _authService: AuthService,
+     private _groupService: GroupService) { }
 
   ngOnInit() 
   {
@@ -29,6 +31,10 @@ export class GroupFormComponent implements OnInit {
       noStudent: ['',Validators.required],
       summaryGroup: ['',Validators.required],
     });
+  }
+
+  private create():void
+  {
 
   }
 }

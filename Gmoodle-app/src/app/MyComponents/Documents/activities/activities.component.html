@@ -24,22 +24,22 @@
                     <h5 class="card-title">List of all Activities</h5>
                     <div class="my-2 text-left">
                         <!-- THIS BUTTON SHOULD LET YOU UPLOAD A NEW FILE IF YOU'RE A TEACHER OR ADMIN-->
-                        <button *ngIf="authService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary"
+                        <button *ngIf="_authService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary"
                             type="button" data-toggle="modal" data-target="#upload">
                             Upload a new Activity
                         </button>
                     </div>
 
                     
-                    <div *ngIf="User?.length == 0" class="alert alert-info">
+                    <div *ngIf="activities?.length == 0" class="alert alert-info">
                         No Activity added yet
                     </div>
                     
 
-                    <table class="table table-bordered table-striped" *ngIf="Course?.length>0">
+                    <table class="table table-bordered table-striped" *ngIf="activities?.length > 0">
                         <thead>
                             <tr>
-                                <th *ngIf="authService.hasRole('ROLE_USER')">#</th>
+                                <th *ngIf="_authService.hasRole('ROLE_USER')">#</th>
                                 <th>Course Name</th>
                                 <th>Teacher</th>
                                 <th>Creation Date</th>
@@ -48,13 +48,14 @@
                         </thead>
                         <!-- CHANGE PATH!!! -->
                         <tbody>
-                            <tr *ngFor="let User of Users">
+                            <tr *ngFor="let activity of activities; let index = index">
 
-                                <td>{{ course.id}}</td>
-                                <td>{{ course.coursename}}</td>
+                                <td>{{ activity.idActivity}}</td>
+                                <td>{{ activity.users.username}}</td>
                                 <td>{{ course.teacher }}</td>
-                                <td>{{ course.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
-                                <td *ngIf="authService.hasRole('ROLE_ADMIN')">
+                                <td>{{ activity.titleActivity }}</td>
+                                <td>{{ activity.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+                                <td *ngIf="_authService.hasRole('ROLE_ADMIN')">
                                     <!-- THIS BUTTON SHOULD DELTE EVERYTHING-->
                                     <button type="button" name="editar" 
                                         class="btn btn-danger btn-sm">Delete</button>
@@ -63,7 +64,7 @@
                         </tbody>
                     </table>
                     <!--pager implementation on this table-->
-                    <pager-nav *ngIf="pagedor" [pagedor]="pagedor"></pager-nav>
+                 <!-- <pager-nav *ngIf="pagedor" [pagedor]="pagedor"></pager-nav> -->
                 </div>
             </div>
 

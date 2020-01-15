@@ -1,14 +1,15 @@
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { AuthService } from '../MyComponents/Users/functions/auth/auth.service';
-import { GroupClass } from '../models/groupclass';
+import { Observable } from 'rxjs';
+import { Activity } from '../models/activity';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GroupService {
-  urlEndPoint: string = 'http://localhost:8080/group';
+export class ActivityService 
+{
+  urlEndPoint: string = 'http://localhost:8080/activity';
   httpHeaders = new HttpHeaders({'Content-type': 'application/json'});
   constructor(private http: HttpClient,
     private _authService: AuthService) 
@@ -28,14 +29,15 @@ export class GroupService {
     return this.httpHeaders;
   }
 
-  public getAll():Observable<GroupClass[]>
+
+  public getAll():Observable<Activity[]>
   {
-    return this.http.get<GroupClass[]>(this.urlEndPoint,{headers: this.addAuthorizationHeader()});
+    return this.http.get<Activity[]>(this.urlEndPoint,{headers: this.addAuthorizationHeader()});
   }
 
-  public getById(id: number):Observable<GroupClass>
+  public getById(id: number):Observable<Activity>
   {
-    return this.http.get<GroupClass>(`${this.urlEndPoint}/${id}`,{headers: this.addAuthorizationHeader()});
+    return this.http.get<Activity>(`${this.urlEndPoint}/${id}`,{headers: this.addAuthorizationHeader()});
   }
 
   public join(body):Observable<any>
@@ -43,14 +45,14 @@ export class GroupService {
     return this.http.post(this.urlEndPoint,body,{headers: this.addAuthorizationHeader()});
   }
 
-  public create(group: GroupClass):Observable<any>
+  public create(activity: Activity):Observable<any>
   {
-    return this.http.post(this.urlEndPoint,group,{headers: this.addAuthorizationHeader()});
+    return this.http.post(this.urlEndPoint,activity,{headers: this.addAuthorizationHeader()});
   }
 
-  public update(group: GroupClass,id: number):Observable<any>
+  public update(activity: Activity,id: number):Observable<any>
   {
-    return this.http.put(`${this.urlEndPoint}/${id}`,group,{headers: this.addAuthorizationHeader()});
+    return this.http.put(`${this.urlEndPoint}/${id}`,activity,{headers: this.addAuthorizationHeader()});
   }
 
   public delete(id: number):Observable<any>
@@ -58,7 +60,10 @@ export class GroupService {
     return this.http.delete(`${this.urlEndPoint}/${id}`,{headers: this.addAuthorizationHeader()});
   }
 
+  public getPaginate(page: number, items: number):Observable<any>
+  {
+    return this.http.get(`${this.urlEndPoint}/page/${items}/${page}`,{headers: this.addAuthorizationHeader()});
+  }
 
-
-
+  
 }
