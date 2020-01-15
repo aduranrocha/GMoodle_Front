@@ -49,19 +49,19 @@
                         </div>
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
-                                <form>
+                                <form [formGroup]="formCreate">
                                     <div class="form-row">
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="Groupname">
                                                     <strong>Group name</strong>
                                                 </label>
-                                                <input class="form-control" type="text"placeholder="Cohort 18" name="Groupname" />
+                                                <input formControlName="name" class="form-control" type="text"placeholder="Cohort 18" name="Groupname" />
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="col">
-                                                <div class="form-group"><label for="Enrolmentkey"><strong>Enrolment
+                                                <div formControlName="password" class="form-group"><label for="Enrolmentkey"><strong>Enrolment
                                                             Key</strong></label><input class="form-control"
                                                         type="password" placeholder="password" name="Enrolmentkey" />
                                                 </div>
@@ -69,14 +69,14 @@
                                         </div>
                                         <div class="form-row">
                                             <div class="col">
-                                                <div class="form-group"><label for="StartDayCreate"><strong>Start
+                                                <div formControlName="startDay" class="form-group"><label for="StartDayCreate"><strong>Start
                                                             Day</strong>
                                                     </label><input class="form-control" type="date"
                                                         name="StartDayCreate" />
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                <div class="form-group"><label for="EndDateCreate"><strong>End
+                                                <div formControlName="endDay" class="form-group"><label for="EndDateCreate"><strong>End
                                                             Day</strong>
                                                     </label><input class="form-control" type="date"
                                                         name="EndDateCreate" />
@@ -88,12 +88,12 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="numerStudents"><strong>No. Student</strong></label>
-                                                    <input class="form-control" type="text" placeholder="Max of 30 Student" name="numerStudents"/>
+                                                    <input formControlName="noStudent" class="form-control" type="text" placeholder="Max of 30 Student" name="numerStudents"/>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label for="SummaryGroup">Example textarea</label>
+                                                    <label formControlName="summaryGroup" for="SummaryGroup">Example textarea</label>
                                                     <textarea class="form-control" id="SummaryGroup" rows="3"></textarea>
                                                 </div>
                                             </div>

@@ -60,7 +60,7 @@ export class AllusersComponent implements OnInit {
     //The change between the photos for the user will get notify. Our 'original user' will be set from the original photo to the new one.
     this.modalService.notifyUpload.subscribe(user => {
       this.users = this.users.map(originalUser => {
-        if (user.id == originalUser.id) {
+        if (user.idUser == originalUser.idUser) {
           originalUser.photo = user.photo;
         }
         return originalUser;

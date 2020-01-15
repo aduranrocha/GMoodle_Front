@@ -49,6 +49,8 @@ import { DashStudentComponent } from './MyComponents/Dashboards/Students/dash-st
 import { AdminComponent } from './MyComponents/Dashboards/Admin/admin.component';
 //*Dependence
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { SettingsComponent } from './MyComponents/Settings/settings/settings.component';
+
 registerLocaleData(localeES, 'es');
 
 // Path is used to give the path a certain name, or protect certain path throu Guards, AuthGuard is a general guard while RoleGuard will circle through roles and assign a certain path depending the role
@@ -82,7 +84,10 @@ const routes: Routes = [
 
 
   //? General Routes 
-  { path: 'Profile', component: ProfileComponent }, //Profile!
+  { path: 'Profile', component: ProfileComponent }, //Profile! //! FOR ALL USERS!
+  { path: 'Settings', component: SettingsComponent }, //Profile! //! FOR ALL USERS!
+
+
   { path: 'CourseCrud', component: CreateFormComponent }, //Crud for the courses 
   { path: 'CourseCrud/:id', component: CreateFormComponent}, //Crud for the courses 
   { path: 'ListCourse', component: AllCoursesComponent }, //ReadAll of the courses
@@ -135,6 +140,7 @@ const routes: Routes = [
     ListactivitiesComponent,
     DashStudentComponent,
     AdminComponent,
+    SettingsComponent,
 
 
 

@@ -45,7 +45,7 @@ export class DetailComponent implements OnInit {
     if(!this.selectPhoto){
       Swal.fire('Error Uploading: ','Please select a photo','error');
     }else {
-      this.userService.updloadPhoto(this.selectedPhoto, this.user.id).subscribe(event => {
+      this.userService.updloadPhoto(this.selectedPhoto, this.user.idUser).subscribe(event => {
         if(event.type === HttpEventType.UploadProgress){
           this.progress = Math.round((event.loaded / event.total)* 100); //percent from 0 to 100 depending on the 'load speed' of the image. total being 100.
         }else if (event.type === HttpEventType.Response){
