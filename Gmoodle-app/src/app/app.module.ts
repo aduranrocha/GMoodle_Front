@@ -45,6 +45,7 @@ import { ListactivitiesComponent } from './MyComponents/Student/ListActivities/l
 import { DashStudentComponent } from './MyComponents/Dashboards/Students/dash-student.component';
 import { AdminComponent } from './MyComponents/Dashboards/Admin/admin.component';
 import { SettingsComponent } from './MyComponents/Settings/settings/settings.component';
+import { TeacherComponent } from './MyComponents/Dashboards/teacher/teacher.component';
 
 registerLocaleData(localeES, 'es');
 
@@ -63,6 +64,7 @@ const routes: Routes = [
   //? Dashboards Routes
   { path: 'admin/Dashboard', component: AdminComponent }, //List Groups with a modal to upload a new group
   { path: 'student/Dashboard', component: DashStudentComponent }, //List Groups with a modal to upload a new group
+  { path: 'teacher/Dashboard', component: TeacherComponent }, //List Groups with a modal to upload a new group
 
 
   //?CRUDS
@@ -88,10 +90,16 @@ const routes: Routes = [
   //? Student Routes 
   { path: 'Student/Activities:id', component: ListactivitiesComponent }, //All activities of that teacher
   { path: 'Student/Documents:id', component: ListdocumentComponent }, //All of documents of that teacher
-  { path: 'Student/Evaluations:id', component: ListactivitiesComponent }, //All evaluations of that teacher
+  { path: 'Student/Evaluations:id', component: ListEvaluationsComponent }, //All evaluations of that teacher
   { path: 'Student/Users', component: ListUsersComponent }, //List of all students and teachers
 
-];
+
+  //? Teacher Routes
+  { path: 'teacher/students/list:id', component: AllusersComponent },//show all users from a certain group
+  { path: 'teacher/documents/documents:id', component: ListdocumentComponent },//show all documents from a certain group
+  { path: 'teacher/evaluations/evaluations:id', component: ListEvaluationsComponent }, //All evaluations from a certain group
+  { path: 'teacher/activities/activities:id', component: ListactivitiesComponent },
+]; //All activities from a certain group
 
 
 @NgModule({
@@ -128,6 +136,7 @@ const routes: Routes = [
     DashStudentComponent,
     AdminComponent,
     SettingsComponent,
+    TeacherComponent,
 
 
 
