@@ -1,1 +1,155 @@
-<p>admin.component works!</p>
+<app-home-admin></app-home-admin>
+
+<section>
+    <!--//? SHOW MORE RECENT ACTIVITIE UPLOADED-->
+    <div class="container-fluid">
+        <div class="row ml-0">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row pt-md-5 mt-md-3">
+                    <div class="col-xl-3 col-sm-6 p-2">
+                        <div class="d-flex justify-content-left align-items-center">
+                            <i class="fas fa-clock fa-lg mr-3 clock"></i>
+                            <h5 class="text-muted">More Recent</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row md-5 md-3">
+                    <div class="col-xl-3 col-sm-6 p-2">
+                        <div class="card card-common " data-toggle="dropdown">
+                            <div class="dropdown">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <i class="fas fa-pencil-alt fa-2x text-primary"></i>
+                                        <span>{{ activity.users.username }}</span>
+                                        <div class="text-right text-secondary">
+                                        </div>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item">Check</a>
+                                            <!-- //? send to the specific activ.-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-secondary">
+                                <i class="fas fa-sync mr-3"></i>
+                                <span>{{ user.name  }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="course-index">
+    <div class="container-fluid">
+        <div class="row ml-0">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row pt-md-2 mt-md-3">
+                    <div class="col-xl-3 col-sm-6 p-2">
+                        <div class="d-flex justify-content-left align-items-center">
+                            <h5 class="text-muted">Overview</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-10 col-xl-9 col-md-8 ml-auto">
+                <div class="card">
+                    <div class="card-header text-dark">
+                        Options
+                    </div>
+                    <div class="card-body">
+                        <!--//? 1rs one-->
+                        <div class="row">
+                            <div class="col-xl-10 col-xl-9 col-md-8 left-pos">
+                                <div class="row md-5 md-3">
+                                    <div class="col-xl-4 col-sm-4 p-2">
+                                        <div class="card text-center" style="width: 18rem;">
+                                            <div class="card-body">
+                                                <ul class="navbar-nav ">
+                                                    <li class="nav-item"><a href="#"
+                                                            class="nav-link p-3  sidebar-link"><i
+                                                                class="fas fa-user text-info fa-3x "></i></a></li>
+                                                </ul>
+                                                <footer>Last Users Added </footer>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--//? 2nd one -->
+                                    <div class="col-xl-4 col-sm-4 p-2">
+                                        <div class="card text-center" style="width: 18rem;">
+                                            <div class="card-body">
+                                                <ul class="navbar-nav ">
+                                                    <li class="nav-item"><a href="#"
+                                                            class="nav-link p-3  sidebar-link"><i
+                                                                class="fas fa-file  text-warning fa-3x "></i></a></li>
+                                                </ul>
+                                                <footer>Your Posts </footer>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--//? 3rd one -->
+                                    <div class="col-xl-4 col-sm-4 p-2">
+                                        <div class="card text-center" style="width: 18rem;">
+                                            <div class="card-body">
+                                                <ul class="navbar-nav ">
+                                                    <li class="nav-item"><a href="#"
+                                                            class="nav-link p-3  sidebar-link"><i
+                                                                class="fas fa-users text-success fa-3x "></i></a></li>
+                                                </ul>
+                                                <footer>Your Groups </footer>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="course-index">
+    <div class="container-fluid">
+        <div class="row ml-0">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row pt-md-2 mt-md-3">
+                    <div class="col-xl-3 col-sm-6 p-2">
+                        <div class="d-flex justify-content-left align-items-center">
+                            <h5 class="text-muted">Pending</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-10 col-xl-9 col-md-8 ml-auto">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-light">
+                        Documents
+                        <span class="badge badge-primary badge-pill">14</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Activities
+                        <span class="badge badge-primary badge-pill">2</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>
