@@ -61,8 +61,7 @@
                 <th *ngIf="authService.hasRole('ROLE_ADMIN')">edit</th>
               </tr>
             </thead>
-            <!-- CHANGE PATH!!! -->
-            <!-- Group.ts i guess,  -->
+
             <tbody>
               <tr *ngFor="let group of groups | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems}; let index = index">
                 <!-- client of clients-->    
@@ -76,23 +75,21 @@
                 <td *ngIf="authService.hasRole('ROLE_ADMIN')">
                   <!-- THIS BUTTON SHOULD SEND YOU TO THE CRUD PAGE, TO CHANGE THINGS-->
                   <button type="button" name="editar" [routerLink]="['/GroupCrud/',group.idGroup]"
-                    class="btn btn-primary btn-sm">edit</button>
+                    class="btn btn-primary btn-sm mb-2"><i class="fas fa-pencil-alt text-light fa-lg mr-4" ></i> Edit</button>
+                    <a>  </a>
                   <button type="button" name="editar"
-                    class="btn btn-danger btn-sm" (click)="remove(group.idGroup, index)">remove</button>
+                    class="btn btn-danger btn-sm" (click)="remove(group.idGroup, index)"><i class="fas fa-minus-circle text-light fa-lg mr-1" ></i>Remove</button>
                 </td>
               </tr>
             </tbody>
           </table>
           <nav aria-label="Page navigation example">
-            
+            <ul class="pagination justify-content-center">
             <pagination-controls class="pagination" (pageChange)="goToPage($event)"></pagination-controls>
+          </ul>
         </nav>
-          <!--pager implementation on this table-->
-          <!-- <pager-nav *ngIf="pagedor" [pagedor]="pagedor"></pager-nav> -->
         </div>
       </div>
-
-
     </div>
 
   </div>

@@ -1,0 +1,68 @@
+  <!--SECOND-->
+                    <div class="card">
+                        <div class="card-header py-3" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button #updateButton class="btn text-success collapsed" data-toggle="collapse"
+                                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Update a Group
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <form [formGroup]="formUpdate">
+                                    <div class="form-row">
+                                        <div class="col-xl-3">
+                                            <div class="form-group">
+                                            <label for="groupIdUpdate"><strong>Group
+                                                        Id</strong></label>
+                                                        <input disabled formControlName="id" class="form-control" type="text"
+                                                    placeholder="1" name="groupIdUpdate" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="EnrolmentkeyUpdate"><strong>Enrolment
+                                                        Key</strong></label>
+                                                        <input formControlName="password" class="form-control" type="password"
+                                                    placeholder="password" name="EnrolmentkeyUpdate" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="StartDayUpdate"><strong>Start
+                                                        Day</strong>
+                                                </label><input formControlName="startDay" class="form-control" type="date" name="StartDayUpdate" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="EndDateUpdate"><strong>End
+                                                        Day</strong>
+                                                </label><input formControlName="endDay" class="form-control" type="date" name="EndDateUpdate" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="numerStudentsUpdate"><strong>No.
+                                                        Student</strong></label>
+                                                        <input formControlName="noStudent"  class="form-control" type="text"
+                                                    placeholder="Max of 30 Student" name="numerStudentsUpdate" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label   for="SummaryGroupUpdate">Example textarea</label>
+                                                <textarea formControlName="summaryGroup" class="form-control" id="SummaryGroupUpdate"
+                                                    rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group"><button class="btn btn-Success btn-sm" 
+                                        (click)="update()"
+                                            name="Update">Save
+                                            Settings</button></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
