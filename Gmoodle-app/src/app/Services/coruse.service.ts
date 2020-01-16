@@ -50,4 +50,9 @@ export class CoruseService {
   {
     return this.http.get<Course>(`${this.urlEndPoint}/${id}`,{headers: this.addAuthorizationHeader()});
   }
+
+  public getAll():Observable<Course[]>
+  {
+    return this.http.get<Course[]>(this.urlEndPoint,{headers: this.addAuthorizationHeader()});
+  }
 }

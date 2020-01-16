@@ -25,7 +25,7 @@
                     <h5 class="card-title">List of all Activities</h5>
                     <div class="my-2 text-left">
                         <!-- THIS BUTTON SHOULD LET YOU UPLOAD A NEW FILE IF YOU'RE A TEACHER OR ADMIN-->
-                        <button *ngIf="_authService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary"
+                        <button *ngIf="_authService.hasRole('ROLE_TEACHER')" class="btn btn-rounded btn-primary"
                             type="button" data-toggle="modal" data-target="#upload">
                             Upload a new Activity
                         </button>
@@ -45,17 +45,17 @@
                                 <th>Teacher</th>
                                 <th>Creation Date</th>
                                 <th>Activity</th>
+                                <th  *ngIf="_authService.hasRole('ROLE_USER')">Actions</th>
                             </tr>
                         </thead>
                         <!-- CHANGE PATH!!! -->
                         <tbody>
-                            <tr *ngFor="let activity of activities; let index = index">
+                            <tr *ngFor="let activity of activities | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems}; let i = index">
 
-                                <td>{{ activity.idActivity}}</td>
-                                <td>{{ activity.users.username}}</td>
-                                <td>{{ course.teacher }}</td>
-                                <td>{{ activity.titleActivity }}</td>
-                                <td>{{ activity.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+                                <td>{{ activity.course.nameCourse}}</td>
+                                <td>{{ activity.users.username}}</td>                             
+                                <td>{{ activity.createAt | date:"EEEE dd, MMMM yyyy" }}</td>
+                                <td>{{ activity.instructions }}</td>
                                 <td *ngIf="_authService.hasRole('ROLE_ADMIN')">
                                     <!-- THIS BUTTON SHOULD DELTE EVERYTHING-->
                                     <button type="button" name="editar" 
@@ -64,6 +64,10 @@
                             </tr>
                         </tbody>
                     </table>
+                    <nav aria-label="Page navigation example">
+            
+                        <pagination-controls class="pagination" (pageChange)="goToPage($event)"></pagination-controls>
+                    </nav>
                     <!--pager implementation on this table-->
                  <!-- <pager-nav *ngIf="pagedor" [pagedor]="pagedor"></pager-nav> -->
                 </div>
@@ -88,22 +92,35 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
+                <form [formGroup]="form">
                 <div class="form-group">
                     <label for="Activity">Activity Name</label>
-                    <input type="text" class="form-control" id="Activity" placeholder="Exercise1Fibonnaci">
+                    <input formControlName="name" type="text" class="form-control" id="Activity" placeholder="Exercise1Fibonnaci">
                 </div>
-                <form>
+                <div class="form-group">
+                    <label for="Activity">Course</label>
+                    <ng-select 
+                    formControlName="course"
+                    class=""
+                    [items]="courses"
+                    bindLabel="nameCourse"
+                    bindValue="idCourse"
+                    placeholder="Select item"
+                    appendTo="body">
+                    </ng-select>
+                </div>
+               
                     
                     <div class="form-group">
                         <label for="instructions">Instructions</label>
-                        <textarea class="form-control" id="instructions" rows="3"></textarea>
+                        <textarea formControlName="instructions" class="form-control" id="instructions" rows="3"></textarea>
                     </div>
                     
                 </form>
                 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success" data-dismiss="modal">Upload</button>
+                <button type="submit" (click)="create()" class="btn btn-success" data-dismiss="modal">Upload</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
         </div>

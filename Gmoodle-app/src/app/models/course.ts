@@ -9,4 +9,5 @@ export class Course
     updateAt: string;
     createById: number
     users: any; 
+    idCourse: number
 }

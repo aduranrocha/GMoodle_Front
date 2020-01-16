@@ -77,6 +77,7 @@ export class AuthService {
     this._user.username =  payload.user_name;
     this._user.roles = payload.authorities;
     this._user.isDemoUser = payload.isDemoUser;
+    this._user.idUser = payload.idUser;
    
 
     console.log(' THIS ROLE->'+this._user.roles); //Console confirmation everything is working good!

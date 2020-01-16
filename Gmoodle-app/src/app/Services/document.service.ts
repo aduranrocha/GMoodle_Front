@@ -44,12 +44,13 @@ export class DocumentService {
     return this.http.delete(`${this.urlEndPoint}/${id}`,{headers: this.addAuthorizationHeader()});
   }
 
-  public upload(file: File,idUser, idActivity)
+  public upload(file: File,idUser, idActivity,titleFile)
   {
     let formData = new FormData();
     formData.append('file',file);
     formData.append('idUser',idUser);
     formData.append('idActivity',idActivity);
+    formData.append('titleFile','lalala');
     let httpHeaders = new HttpHeaders();
     let token = this._authService.token;
     if(token != null)
@@ -57,6 +58,6 @@ export class DocumentService {
       httpHeaders =  httpHeaders.append('Authorization', 'Bearer '+ token); 
     }
     
-    return this.http.post(`${this.urlEndPoint}/upload`,formData,{headers: httpHeaders});
+    return this.http.post('http://localhost:8080/files/upload/file',formData,{headers: httpHeaders});
   }
 }

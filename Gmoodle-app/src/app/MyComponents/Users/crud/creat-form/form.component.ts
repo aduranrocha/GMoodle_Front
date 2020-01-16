@@ -27,7 +27,7 @@ export class FormComponent implements OnInit
   private formUser: FormGroup;
   private formUserUpdate: FormGroup;
   private formUserDelete: FormGroup;
-  
+  test = {id: 'ROLE_ADMIN'}
   //*Arrays delcaration
   errors: string [];
   //*Array with roles for ng-select
@@ -96,7 +96,7 @@ private formUserUpdateInint(): void
     username: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
-    roles: ['', Validators.required],
+    roles: ['ROLE_ADMIN', Validators.required],
     name: ['', Validators.required],
     lastName: ['', Validators.required],
     address: ['', Validators.required],
@@ -243,7 +243,7 @@ public getUser(id: number): void
         username: user.username,
         email: user.email,
         password: '',
-        roles: '',
+        roles: 1,
         name: user.name,
         lastName: user.lastName,
         address: user.address,
