@@ -21,7 +21,7 @@
                     <h5 class="card-title">List of all Documents</h5>
                     <div class="my-2 text-left">
                         <!-- THIS BUTTON SHOULD LET YOU UPLOAD A NEW FILE IF YOU'RE A TEACHER OR ADMIN-->
-                        <button *ngIf="authService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary"
+                        <button *ngIf="!authService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary"
                             type="button" data-toggle="modal" data-target="#upload">
                             Upload a new Document
                         </button>
@@ -40,21 +40,25 @@
                                 <th>Course Name</th>
                                 <th>Title</th>
                                 <th>Creation Date</th>
+                                <th>Status</th>
                                 <th>Document</th>
-                                <th>Actions</th>
+                                <th *ngIf="authService.hasRole('ROLE_ADMIN')">Actions</th>
                             </tr>
                         </thead>
                         <!-- CHANGE PATH!!! -->
                         <tbody>
                             <tr *ngFor="let document of documents | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems}; let index = index">
-
                                 <td>{{ document.idDocument}}</td>
-                                <td>{{ document.titleActivity }}</td>
+                                <td>{{document.titleDocument}}</td>
+                                <td>creacion date</td>
+                                <!-- <td>{{ document.idDocument}}</td> -->
+                                <!-- <td>{{ document.titleActivity }}</td> -->
                                 <td>
                                     <span *ngIf="document.isCheck" class="badge badge-success">Check</span>
                                     <span *ngIf="!document.isCheck" class="badge badge-warning">No Check</span>
                                 </td>
-                                <td>{{ document.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+                                <td><span class="badge badge-primary">{{document.type}}</span></td>  
+                                <!-- <td>{{ document.createAt | date:"EEEE dd, MMMM yyyy"}}</td> -->
                                 <td *ngIf="authService.hasRole('ROLE_ADMIN')">
                                     <!-- THIS BUTTON SHOULD DELTE EVERYTHING-->
                                     <button (click)="remove(document.idDocument,index)" type="button" name="deleteDoc" 

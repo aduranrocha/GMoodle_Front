@@ -27,6 +27,7 @@ export class DocumentsComponent implements OnInit {
 
   ngOnInit() 
   {
+    
     this.activatedRoute.paramMap.subscribe(params =>
       {
         let page: number = +params.get('page');
@@ -66,6 +67,13 @@ export class DocumentsComponent implements OnInit {
         this.documents = response.content as Document[];
         this.totalItems = response.totalElements;
         this.page = response.number + 1;
+
+        for(let i = 0; i < this.documents.length; i++)
+        {
+          let arr = this.documents[i].pathDoucument.split('.');
+          this.documents[i].type = arr[arr.length-1];
+          console.log(this.documents[i].type);
+        }
       },
       err =>
       {
