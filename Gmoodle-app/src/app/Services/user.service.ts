@@ -6,6 +6,7 @@ import { AuthService } from '../MyComponents/Users/functions/auth/auth.service';
 import { User } from '../MyComponents/Users/functions/user/user';
 import { map, catchError } from 'rxjs/operators';
 import Swal from 'sweetalert2';
+import { GroupClass } from '../models/groupclass';
 
 @Injectable({
   providedIn: 'root'
@@ -131,6 +132,10 @@ export class UserService {
   public register(user: User):Observable<User>
   {
     return this.http.post<User>(`${this.urlEndPoint}/signup`,user,{headers: this.httpHeaders});
+  }
+  public join(id: number,group: GroupClass):Observable<User>
+  {
+    return this.http.put<User>(`${this.urlEndPoint}/enrolStudent/${id}`,group,{headers: this.addAuthorizationHeader()});
   }
 
   public forgotPassword(user: User):Observable<any>

@@ -2,6 +2,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GroupService } from './../../../Services/group.service';
 import { Component, OnInit } from '@angular/core';
 import { GroupClass } from 'src/app/models/groupclass';
+import { UserService } from 'src/app/Services/user.service';
+import { AuthService } from '../../Users/functions/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -14,6 +17,9 @@ export class WelcomeComponent implements OnInit {
   private groupId: number;
   private form: FormGroup;
   constructor(private formBuilder: FormBuilder,
+    private _userService: UserService,
+    private _authService: AuthService,
+    private router: Router,
     private _groupService: GroupService) { }
 
   ngOnInit() 
@@ -44,11 +50,12 @@ export class WelcomeComponent implements OnInit {
     this.groupName = this.groupClass[index].nameGroup;
   }
 
-  private join():void 
+  private join(group):void 
   {
-    this._groupService.join(null).subscribe(response =>
+    this._userService.join(this._authService.user.idUser,group).subscribe(response =>
       {
         console.log(response);
+        this.router.navigate(['/Student']);
       },
       err =>
       {
