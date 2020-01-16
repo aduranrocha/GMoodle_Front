@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
       let user = this.authService.user;
 
-      Swal.fire('Login', `Welcome ${user.username}, you are now logged!`, 'success');
+      //Swal.fire('Login', `Welcome ${user.username}, you are now logged!`, 'success');
 
       if(this.authService.user.isDemoUser && this.authService.hasRole('ROLE_STUDENT'))
       {

@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/MyComponents/Users/functions/auth/auth.serv
 import { GroupService } from 'src/app/Services/group.service';
 import { GroupClass } from 'src/app/models/groupclass';
 import { Group } from 'src/app/models/group';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-group-form',
@@ -82,6 +83,13 @@ export class GroupFormComponent implements OnInit {
 
     this._groupService.create(this.group).subscribe(response =>{
       console.log(response);
+      Swal.fire({
+        title: 'Created',
+        text: `New Group Created!`,
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1350
+      });
     },
     err =>
     {

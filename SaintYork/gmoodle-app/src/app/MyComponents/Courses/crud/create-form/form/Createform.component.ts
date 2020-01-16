@@ -7,6 +7,7 @@ import { User } from 'src/app/MyComponents/Users/functions/user/user';
 import { UserService } from 'src/app/Services/user.service';
 import { AuthService } from 'src/app/MyComponents/Users/functions/auth/auth.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form',
@@ -112,6 +113,14 @@ export class CreateFormComponent implements OnInit {
     //?Temporal
     this.course.createById = 1;
     console.log(this.course);
+    Swal.fire({
+      title: 'Created',
+      text: `New Course Created!`,
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1350
+    });
+
     //*Send course to api
     this._courseService.create(this.course).subscribe(response =>
     {
