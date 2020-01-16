@@ -1,0 +1,25 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #eee;   
+  }
+  .bg-gradient-primary {
+    background-color: #eee;
+  
+    background-size: cover;
+    height: 100%;
+  } 
+  .footer 
+{
+    position: relative !important;
+    top: 60px;
+}
+ 
+.bg-footer{
+    background-color: rgb(211, 211, 211);
+    height: 60px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+  }

@@ -23,3 +23,26 @@
   .card-cent{
     margin-left: 100px;
   }
+  .footer 
+{
+    position: relative !important;
+    
+}
+ 
+.bg-footer{
+    background-color: rgb(211, 211, 211);
+    
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+  }
+
+  .color-back{
+    background-color: #eee;
+  }
+
+  .border-l {
+    background-color: #eee;
+  }
