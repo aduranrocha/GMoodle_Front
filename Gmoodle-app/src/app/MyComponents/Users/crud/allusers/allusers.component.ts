@@ -21,7 +21,7 @@ export class AllusersComponent implements OnInit {
   pagedor: any;
   selectedUser: User;
   private page: number;
-  private itemsPerPage: number = 5;
+  private itemsPerPage: number = 7;
   private totalItems: number;
   
   constructor(
@@ -72,7 +72,7 @@ export class AllusersComponent implements OnInit {
   private getUsers(page: number): void
   {
     console.log('Here!!!');
-    this._userService.getUsersPaginate(page,1).subscribe(response=>
+    this._userService.getUsersPaginate(page,this.itemsPerPage).subscribe(response=>
     {
       this.users = response.content as User[];
       this.totalItems = response.totalElements;

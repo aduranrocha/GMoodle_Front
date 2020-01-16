@@ -1,0 +1,280 @@
+<!-- STUDENTS CRUD / should re-direct to CRUD-->
+
+<!--this header is the topnav-->
+
+
+<app-home-admin></app-home-admin>
+
+<section>
+    <!--SOME SPACE BETWEEN TOPNAV AND THIS SECTION-->
+    <div class=" col-xl-10 col-lg-9 col-md-8 ml-auto">
+        <div class="row pt-md-5 mt-md-3">
+            <div class="col-xl-3 col-sm-6 p-2">
+            </div>
+        </div>
+    </div>
+
+
+    <!--JUSTIFICATION FROM THE LEFTNAV-->
+    <div class="row ml-0">
+        <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+
+            <!--SECTIONS BUTTONS-->
+            <div class="card-header bg-light">
+                <ul class="nav nav-pills card-header-pills">
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">User Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/List">Users List</a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <!--CARDS WITH CRUD AND STUFF I GUESS-->
+            <div class="card-body">
+
+                <!--CARDS!!! -->
+                <div id="accordion">
+                    <!--FIRST CARD-->
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn text-primary" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    Create a new User
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                            data-parent="#accordion">
+                            <div class="card-body">
+                                <form [formGroup]="formUser" (ngSubmit)="save($event) && formUser.valid">
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="username"><strong>Username</strong></label>
+                                                <input formControlName="username" class="form-control" type="text" placeholder="user.name"
+                                                    name="username" required/>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="email"><strong>Email
+                                                        Address</strong></label>
+                                                <input formControlName="email" class="form-control" type="email"
+                                                    placeholder="user@example.com" name="email" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label
+                                                    for="username"><strong>Password</strong></label>
+                                                    <input formControlName="password"
+                                                    class="form-control" type="password" placeholder="password"
+                                                    name="passwordCreate" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="role"><strong>Role</strong></label>
+                                                <ng-select 
+                                                formControlName="roles"
+                                                class=""
+                                                [items]="rolesModel"
+                                                bindLabel="name"
+                                                bindValue="id"
+                                                placeholder="Select item"
+                                                appendTo="body"
+                                                multiple="true">
+                                             </ng-select> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="first_name"><strong>First
+                                                        Name</strong></label>
+                                                    <input formControlName="name" class="form-control" type="text"
+                                                    placeholder="John" name="first_name" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="last_name"><strong>Last
+                                                        Name</strong></label>
+                                                        <input formControlName="lastName" class="form-control" type="text"
+                                                    placeholder="Doe" name="last_name" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label
+                                                    for="username"><strong>Addres</strong></label>
+                                                    <input formControlName="address"
+                                                    class="form-control" type="text" placeholder="Sunset Blvd, 38"
+                                                    name="addressCreate" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="role"><strong>Phone</strong>
+                                                </label>
+                                                <input formControlName="phone" class="form-control" type="email"
+                                                    placeholder="(541) 754-3010" name="role" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label
+                                                    for="username"><strong>Degree</strong></label>
+                                                    <input formControlName="degree"
+                                                    class="form-control" type="text" placeholder="Java FullStack"
+                                                    name="degreeCreate" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="role"><strong>Birthday</strong>
+                                                </label>
+                                                <input formControlName="birthDay" class="form-control" type="date"
+                                                    placeholder="(541) 754-3010" name="role" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button [disabled]="formUser.invalid" class="btn btn-primary btn-sm" type="submit">Save
+                                            Settings</button>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--SECOND-->
+                    <div class="card">
+                        <div class="card-header py-3" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button #buttonUpdate class="btn text-success collapsed" data-toggle="collapse"
+                                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Update a User
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <form [formGroup]="formUserUpdate">
+                                    <div class="form-row">
+                                        <div class="col-xl-3">
+                                            <div class="form-group">
+                                                <label for="userIdUpdate"><strong>User
+                                                        Id</strong></label>
+                                                <input disabled formControlName="id" class="form-control" type="text"
+                                                    placeholder="1" name="userIdUpdate" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label
+                                                    for="usernameUpdate"><strong>Username</strong></label>
+                                                    <input formControlName="username"
+                                                    class="form-control" type="text" placeholder="LuisG"
+                                                    name="usernameUpdate" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="emailUpdate"><strong>Email
+                                                        Address</strong></label>
+                                                        <input formControlName="email" class="form-control" type="email"
+                                                    placeholder="user@example.com" name="emailUpdate" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label
+                                                    for="passwordUpdate"><strong>Password</strong></label>
+                                                    <input formControlName="password"
+                                                    class="form-control" type="password" placeholder="password"
+                                                    name="passwordUpdate" /></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="role"><strong>Role</strong>
+                                                </label>
+                                                <ng-select 
+                                                formControlName="roles"
+                                                class=""
+                                                [items]="rolesModel"
+                                                bindLabel="name"
+                                                bindValue="id"
+                                                placeholder="Select item"
+                                                appendTo="body"
+                                                multiple="true">
+                                                </ng-select> 
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="first_nameUpdate"><strong>First
+                                                        Name</strong></label>
+                                                        <input formControlName="name"  class="form-control" type="text"
+                                                    placeholder="Luis" name="first_nameUpdate" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="last_nameUpdate"><strong>Last
+                                                        Name</strong></label>
+                                                        <input formControlName="lastName" class="form-control" type="text"
+                                                    placeholder="Gutiérrez" name="last_nameUpdate" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label
+                                                    for="addressUpdate"><strong>Addres</strong></label>
+                                                    <input formControlName="address"
+                                                    class="form-control" type="text" placeholder="Sunset Blvd, 38"
+                                                    name="addressUpdate" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="PhoneUpdate"><strong>Phone</strong>
+                                                </label>
+                                                <input formControlName="phone" class="form-control" type="text"
+                                                    placeholder="(541) 754-3010" name="role" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label
+                                                    for="degreeUpdate"><strong>Degree</strong></label>
+                                                    <input formControlName="degree"
+                                                    class="form-control" type="text" placeholder="Java FullStack"
+                                                    name="degreeUpdate" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="birthdayUpdate"><strong>Birthday</strong>
+                                                </label>
+                                                <input formControlName="birthDay" class="form-control" type="date"
+                                                    placeholder="(541) 754-3010" name="birthdayUpdate" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary btn-sm" type="button" (click)="update($event)" name="Update">Save
+                                            Settings</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+<app-footer></app-footer>

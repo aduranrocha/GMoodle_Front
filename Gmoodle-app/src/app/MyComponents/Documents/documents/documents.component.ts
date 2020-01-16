@@ -14,7 +14,7 @@ export class DocumentsComponent implements OnInit {
   private documents: Document[];
   private form: FormGroup;
   private page: number;
-  private itemsPerPage: number = 5;
+  private itemsPerPage: number = 7;
   private totalItems: number;
 
    
@@ -115,6 +115,6 @@ export class DocumentsComponent implements OnInit {
   
   private goToPage(page: number)
   {
-    this.router.navigate(['ListGroup/',page]);
+    this.router.navigate(['Documents/',page]);
   }
 }

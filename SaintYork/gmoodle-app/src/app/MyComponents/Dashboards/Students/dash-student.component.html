@@ -1,0 +1,135 @@
+<app-nav-student></app-nav-student>
+<section>
+<!--//? this should show as many activites and documents as they are uploaded, should show if is a document or an activity also, when it was created, an option to check that thing or go to a list of ALL documents or activites for that subject-->
+    <div class="container-fluid">
+        <div class="row ml-0">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row pt-md-5 mt-md-3">
+                    <div class="col-xl-3 col-sm-6 p-2">
+                        <div class="d-flex justify-content-left align-items-center">
+                            <i class="fas fa-clock fa-lg mr-3 clock"></i>
+                            <h5 class="text-muted">More Recent</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row md-5 md-3">
+                    <div class="col-xl-3 col-sm-6 p-2">
+                        <div class="card card-common " data-toggle="dropdown">
+                            <div class="dropdown">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <i class="fas fa-pencil-alt fa-2x text-primary"></i>
+                                        <span>Documento || activite</span>
+                                        <div class="text-right text-secondary">
+                                        </div>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item">Check</a>
+                                            <a class="dropdown-item">Check all</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-secondary">
+                                <i class="fas fa-sync mr-3"></i>
+                                <span>{{ create.At }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="course-index">
+    <div class="container-fluid">
+        <div class="row ml-0">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row pt-md-2 mt-md-3">
+                    <div class="col-xl-3 col-sm-6 p-2">
+                        <div class="d-flex justify-content-left align-items-center">
+                            <h5 class="text-muted">Courses</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--//? 1rs one-->
+        <div class="row">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row md-5 md-3">
+                    <div class="col-xl-4 col-sm-4 p-2">
+                        <div class="card course">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary font-weight-bold m-0">Java</h6>
+                            </div>
+                            <div class="card-body mb-2">
+
+                                <button type="button" class="btn btn-lg btn-block btn-course text-white"
+                                    routerLink="Student/Documents:id">Documents</button>
+                                <br>
+                                <button type="button" class="btn btn-lg btn-block btn-course text-white"
+                                    routerLink="Student/Activities:id">Activities</button>
+                                <br>
+                                <button type="button" class="btn btn-lg btn-block btn-course text-white"
+                                    routerLink="Student/Evaluations:id">Evaluations</button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--//? 2nd one -->
+                    <div class="col-xl-4 col-sm-4 p-2">
+                        <div class="card course ">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary font-weight-bold m-0">English</h6>
+                            </div>
+                            <div class="card-body mb-2">
+                                <div class=" justify-content-between">
+
+                                    <button type="button" class="btn btn-lg btn-block btn-course text-white"
+                                        routerLink="Student/Documents:id">Documents</button>
+                                    <br>
+                                    <button type="button" class="btn btn-lg btn-block btn-course text-white"
+                                        routerLink="Student/Activities:id">Activities</button>
+                                    <br>
+                                    <button type="button" class="btn btn-lg btn-block btn-course text-white"
+                                        routerLink="Student/Evaluations:id">Evaluations</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--//? 3rd one -->
+                    <div class="col-xl-4 col-sm-4 p-2">
+                        <div class="card course ">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary font-weight-bold m-0">Mentoring</h6>
+                            </div>
+                            <div class="card-body mb-2">
+                                <div class=" justify-content-between">
+
+                                    <button type="button" class="btn btn-lg btn-block btn-course text-white"
+                                        routerLink="Student/Documents:id">Documents</button>
+                                    <br>
+                                    <button type="button" class="btn btn-lg btn-block btn-course text-white"
+                                        routerLink="Student/Activities:id">Activities</button>
+                                    <br>
+                                    <button type="button" class="btn btn-lg btn-block btn-course text-white"
+                                        routerLink="Student/Evaluations:id">Evaluations</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

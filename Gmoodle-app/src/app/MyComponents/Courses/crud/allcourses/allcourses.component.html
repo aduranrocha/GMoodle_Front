@@ -65,7 +65,7 @@
                         <tbody>
                             <tr *ngFor="let course of courses | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems}; let index = index">
                                 <td>{{ course.nameCourse}}</td>
-                                <td>{{ course.users.userName }}</td>
+                                <td>{{ course.users.username }}</td>
                                 <td>{{ course.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
                                 <td *ngIf="authService.hasRole('ROLE_ADMIN')">
                                     <!-- THIS BUTTON SHOULD SEND YOU TO THE CRUD PAGE, TO CHANGE THINGS-->

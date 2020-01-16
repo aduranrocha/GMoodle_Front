@@ -13,7 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class AllCoursesComponent implements OnInit {
 
   private page: number;
-  private itemsPerPage: number = 1;
+  private itemsPerPage: number = 7;
   private totalItems: number;
   private courses: Course[];
   constructor(private _courseService: CoruseService,
@@ -99,7 +99,7 @@ export class AllCoursesComponent implements OnInit {
 
   private goToPage(page: number)
   {
-    this.router.navigate(['List/',page]);
+    this.router.navigate(['ListCourse/',page]);
   }
 
 }

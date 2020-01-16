@@ -1,0 +1,92 @@
+<app-nav-teacher></app-nav-teacher>
+<section>
+<!--//? SHOW MORE RECENT ACTIVITIE UPLOADED-->
+    <div class="container-fluid">
+        <div class="row ml-0">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row pt-md-5 mt-md-3">
+                    <div class="col-xl-3 col-sm-6 p-2">
+                        <div class="d-flex justify-content-left align-items-center">
+                            <i class="fas fa-clock fa-lg mr-3 clock"></i>
+                            <h5 class="text-muted">More Recent</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row md-5 md-3">
+                    <div class="col-xl-3 col-sm-6 p-2">
+                        <div class="card card-common " data-toggle="dropdown">
+                            <div class="dropdown">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <i class="fas fa-pencil-alt fa-2x text-primary"></i>
+                                        <span>{{ activity.users.username }}</span> 
+                                        <div class="text-right text-secondary">
+                                        </div>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" >Check</a> <!-- //? send to the specific activ.-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-secondary">
+                                <i class="fas fa-sync mr-3"></i>
+                                <span>{{ user.name  }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="course-index">
+    <div class="container-fluid">
+        <div class="row ml-0">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row pt-md-2 mt-md-3">
+                    <div class="col-xl-3 col-sm-6 p-2">
+                        <div class="d-flex justify-content-left align-items-center">
+                            <h5 class="text-muted">Your Groups</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--//? Repete as many times as necessary for all the groups each teacher has-->
+        <div class="row">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row md-5 md-3">
+                    <div class="col-xl-4 col-sm-4 p-2">
+                        <div class="card course">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary font-weight-bold m-0">{{group.nameGroup}}</h6>
+                            </div>
+                            <div class="card-body mb-2">
+
+                                <button type="button"
+                                    class="btn btn-lg btn-block btn-course text-white" routerLink="teacher/students/list:id" >Students</button>
+                                <br>
+                                <button type="button"
+                                    class="btn btn-lg btn-block btn-course text-white" routerLink="teacher/documents/documents:id">Documents</button>
+                                <br>
+                                <button type="button"
+                                    class="btn btn-lg btn-block btn-course text-white" routerLink="teacher/activities/activities:id">Activities</button>
+                                <br>
+                                <button type="button"
+                                    class="btn btn-lg btn-block btn-course text-white"routerLink="teacher/evaluations/evaluations:id">Evaluations</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

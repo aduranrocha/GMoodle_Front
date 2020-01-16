@@ -51,6 +51,7 @@ import { AdminComponent } from './MyComponents/Dashboards/Admin/admin.component'
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { SettingsComponent } from './MyComponents/Settings/settings/settings.component';
 import { TeacherComponent } from './MyComponents/Dashboards/teacher/teacher.component';
+import { NotFoundComponent } from './MyComponents/NotFound/not-found.component';
 
 registerLocaleData(localeES, 'es');
 
@@ -87,12 +88,14 @@ const routes: Routes = [
 
   //? General Routes 
   { path: 'Profile', component: ProfileComponent }, //Profile! //! FOR ALL USERS!
-  { path: 'Settings', component: SettingsComponent }, //Profile! //! FOR ALL USERS!
+  { path: 'Settings', component: SettingsComponent }, //Settings! //! FOR ALL USERS!
+  { path: 'NotFound', component: NotFoundComponent }, //NotFound! //! FOR ALL USERS!
 
 
   { path: 'CourseCrud', component: CreateFormComponent }, //Crud for the courses 
   { path: 'CourseCrud/:id', component: CreateFormComponent}, //Crud for the courses 
   { path: 'ListCourse', component: AllCoursesComponent }, //ReadAll of the courses
+  { path: 'ListCourse/:page', component: AllCoursesComponent }, //ReadAll of the courses
   { path: 'Documents', component: DocumentsComponent }, //List of all documents with a modal to upload documents
   { path: 'Documents/:page', component: DocumentsComponent }, //List of all documents with a modal to upload documents
   { path: 'Welcome', component: WelcomeComponent }, //Select a group! like cohort 17,18,19...
@@ -104,17 +107,17 @@ const routes: Routes = [
   { path: 'Evaluations', component: EvaluationsComponent }, //List Groups with a modal to upload a new group
 
   //? Student Routes 
-  { path: 'Student/Activities:id', component: ListactivitiesComponent }, //All activities of that teacher
-  { path: 'Student/Documents:id', component: ListdocumentComponent }, //All of documents of that teacher
-  { path: 'Student/Evaluations:id', component: ListEvaluationsComponent }, //All evaluations of that teacher
+  { path: 'Student/Activities/:id', component: ListactivitiesComponent }, //All activities of that teacher
+  { path: 'Student/Documents/:id', component: ListdocumentComponent }, //All of documents of that teacher
+  { path: 'Student/Evaluations/:id', component: ListEvaluationsComponent }, //All evaluations of that teacher
   { path: 'Student/Users', component: ListUsersComponent }, //List of all students and teachers
 
 
   //? Teacher Routes
-  { path: 'teacher/students/list:id', component: AllusersComponent },//show all users from a certain group
-  { path: 'teacher/documents/documents:id', component: ListdocumentComponent },//show all documents from a certain group
-  { path: 'teacher/evaluations/evaluations:id', component: ListEvaluationsComponent }, //All evaluations from a certain group
-  { path: 'teacher/activities/activities:id', component: ListactivitiesComponent },
+  { path: 'teacher/students/list/:id', component: AllusersComponent },//show all users from a certain group
+  { path: 'teacher/documents/documents/:id', component: ListdocumentComponent },//show all documents from a certain group
+  { path: 'teacher/evaluations/evaluations/:id', component: ListEvaluationsComponent }, //All evaluations from a certain group
+  { path: 'teacher/activities/activities/:id', component: ListactivitiesComponent },
 ]; //All activities from a certain group
 
 
@@ -153,6 +156,7 @@ const routes: Routes = [
     AdminComponent,
     SettingsComponent,
     TeacherComponent,
+    NotFoundComponent,
 
 
 

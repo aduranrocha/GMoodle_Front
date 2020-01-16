@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AllgroupsComponent implements OnInit {
   private groups: GroupClass[];
   private page: number;
-  private itemsPerPage: number = 5;
+  private itemsPerPage: number = 7;
   private totalItems: number;
   constructor(private _groupService: GroupService,  private authService: AuthService,
   private activateRoute: ActivatedRoute,

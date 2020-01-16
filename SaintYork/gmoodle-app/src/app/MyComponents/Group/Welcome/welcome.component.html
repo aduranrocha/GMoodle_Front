@@ -1,0 +1,137 @@
+<!--this should only be seen once, if the student doesn't have a group yet, once they have one, this will not be seen again-->
+<!--WELCOME NAV-->
+<nav class="navbar navbar-expand-md navbar-light">
+    <button class="navbar-toggler ml-auto mb-2 bg-light" type="button" data-toggle="collapse"
+        data-target="#myNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- TOP-NAVB-->
+                <div class=" fixed-top py-2 top-navbar">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <h4 class="text-light text-uppercase title">Welcome to Generation!!</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- TOP-NAVB- END-->
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!--/WELCOME NAV-->
+
+<!--List-->
+<section>
+    <!--SOME SPACE BETWEEN TOPNAV AND THIS SECTION-->
+    <div class=" col-xl-10 col-lg-9 col-md-8 ml-auto">
+        <div class="row pt-md-5 mt-md-3">
+            <div class="col-xl-3 col-sm-6 p-2">
+            </div>
+        </div>
+    </div>
+
+    <!--LIST THAT SHOULD SHOW ONLY THE AVAILABLE GROUPS-->
+    <div *ngIf="User?.length == 0" class="alert alert-info">
+        No Documents added yet
+    </div>
+
+    <h4 class="text-muted mb-4">Choose a Group</h4>
+    <div id="accordion">
+        <div class="card" *ngFor="let group of groupClass; let i = index">
+            <div class="card-header">
+                <button class="btn btn-block bg-light text-dark text-left" data-toggle="collapse"
+                [attr.data-target]="'#collapse'+i" >
+                    {{group.nameGroup}}
+                </button>
+            </div>
+        <div class="collapse show" id="collapse{{i}}" data-parent="#accordion">
+                <div class="card-body">
+                    <button (click)="choose(i)" type="submit" class="btn btn-primary mb-2" data-toggle="modal" data-target="#exampleModalCenter">Join</button>
+                    <!-- <p>
+                        You want to joint? Please introduce this group password!
+                    </p>
+                    <form class="form-inline">
+                        <div class="form-group mb-2">
+                            <label for="staticEmail2" class="sr-only">
+
+                            </label>
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <label for="inputPassword2" class="sr-only">Password</label>
+                            <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Join</button>
+                    </form> -->
+                </div>
+            </div>
+        </div>
+        <!-- <div class="card">
+            <div class="card-header">
+                <button class="btn btn-block bg-light text-dark text-left" data-toggle="collapse"
+                    data-target="#collapseTwo">
+                    {{group.title}}
+                </button>
+            </div>
+            <div class="collapse" id="collapseTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <p>
+                        You want to joint? Please introduce this group password!
+                    </p>
+                    <form class="form-inline">
+                        <div class="form-group mb-2">
+                            <label for="staticEmail2" class="sr-only">
+
+                            </label>
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <label for="inputPassword2" class="sr-only">Password</label>
+                            <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Join</button>
+                    </form>
+                </div>
+            </div>
+        </div> -->
+
+
+    </div>
+
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">{{groupName}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form class="form-inline">
+                <div class="form-group mb-2">
+                    <label for="staticEmail2" class="sr-only">
+
+                    </label>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="inputPassword2" class="sr-only">Password</label>
+                    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Join</button>
+            </form> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/List-->

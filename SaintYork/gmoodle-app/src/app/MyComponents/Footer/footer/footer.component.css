@@ -1,0 +1,10 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #eee;   
+}
+ 
+.bg-footer{
+    background-color: rgb(211, 211, 211);
+    bottom: 0px;
+    height: 60px;
+  }

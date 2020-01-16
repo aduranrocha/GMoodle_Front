@@ -1,0 +1,150 @@
+<app-nav-student></app-nav-student>
+
+<section>
+    <!--SOME SPACE BETWEEN TOPNAV AND THIS SECTION-->
+    <div class=" col-xl-10 col-lg-9 col-md-8 ml-auto">
+        <div class="row pt-md-5 mt-md-3">
+            <div class="col-xl-3 col-sm-6 p-2">
+            </div>
+        </div>
+    </div>
+
+    <!--JUSTIFICATION FROM THE LEFTNAV-->
+    <div class="row ml-0">
+        <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+
+
+            <!--CARDS, THEY SHOULD PILE UP IF THERE ARE USERS ON MY DATABASE-->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                        <div class="row align-items-center mb-5">
+                            <div class="col-xl-9">
+                                <h4 class="text-muted mb-4"></h4>
+                                <div>
+                                    <div *ngIf="user?.length == 0" class="alert alert-info">
+                                        No Activities available
+                                    </div>
+
+                                    <div id="accordion" *ngIf="document?.length>0">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <button class="btn btn-block bg-secondary text-light text-left"
+                                                    data-toggle="collapse" data-target="#collapseOne">
+                                                    <!--PREVIEW OF THE DOCUMENT?????-->
+                                                    {{ activitie.name }}
+                                                </button>
+                                            </div>
+                                            <div class="collapse show" id="collapseOne" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+
+                                                                <th scope="col">Teacher</th>
+                                                                <th scope="col">Instructions</th>
+                                                                <th scope="col">Submit Exercise</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let user of users">
+                                                                <th scope="row">{{teacher.name}}</th>
+                                                                <td>{{activity.summary}}</td>
+                                                                <td>
+                                                                    <button type="button" name="downDoc"
+                                                                        class="btn btn-info btn-sm" data-toggle="modal"
+                                                                        data-target="#upload">Submit</button>
+                                                                </td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <button class="btn btn-block bg-secondary text-light text-left"
+                                                    data-toggle="collapse" data-target="#collapseTwo">
+                                                    <!--PREVIEW OF THE DOCUMENT?????-->
+                                                    {{ evaluation.name }}
+                                                </button>
+                                            </div>
+                                            <div class="collapse" id="collapseTwo" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+
+                                                                <th scope="col">Posted by</th>
+                                                                <th scope="col">Summary</th>
+                                                                <th scope="col">Download</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let user of users">
+                                                                <th scope="row">{{user.name}}</th>
+                                                                <td>{{evaluation.summary}}</td>
+                                                                <td>
+                                                                    <button type="button" name="downDoc"
+                                                                        class="btn btn-info btn-sm">Download</button>
+                                                                </td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end of tables -->
+
+<!--modal logout-->
+<div class="modal fade" id="upload">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Upload an Exercise</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="Activity">Activity Name</label>
+                    <input type="text" class="form-control" id="Activity" placeholder="Exercise1Fibonnaci">
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="submitExercise">Choose a File</label>
+                        <input type="file" class="form-control-file" id="submitExercise">
+                    </div>
+                </form>
+                <form>
+
+                    <div class="form-group">
+                        <label for="instructions">Instructions</label>
+                        <textarea class="form-control" id="instructions" rows="3" disabled>{{instructions}}</textarea>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
