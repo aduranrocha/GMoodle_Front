@@ -55,7 +55,7 @@ export class WelcomeComponent implements OnInit {
     this._userService.join(this._authService.user.idUser,group).subscribe(response =>
       {
         console.log(response);
-        this.router.navigate(['/Student']);
+        this.router.navigate(['/student/Dashboard']);
       },
       err =>
       {

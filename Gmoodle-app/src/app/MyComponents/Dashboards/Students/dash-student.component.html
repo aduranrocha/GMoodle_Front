@@ -17,17 +17,17 @@
         <div class="row">
             <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
                 <div class="row md-5 md-3">
-                    <div class="col-xl-3 col-sm-6 p-2">
+                    <div class="col-xl-3 col-sm-6 p-2" *ngFor="let document of documents">
                         <div class="card card-common " data-toggle="dropdown">
                             <div class="dropdown">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
                                         <i class="fas fa-pencil-alt fa-2x text-primary"></i>
-                                        <span>Documento || activite</span>
+                                        <span>{{document.titleDocument}} || {{document.activity.titleActivity}}</span>
                                         <div class="text-right text-secondary">
                                         </div>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item">Check</a>
+                                            <a href="http://localhost:8080/files/v/{{document.pathDoucument}}" class="dropdown-item">Download</a>
                                             <a class="dropdown-item">Check all</a>
                                         </div>
                                     </div>
@@ -35,7 +35,7 @@
                             </div>
                             <div class="card-footer text-secondary">
                                 <i class="fas fa-sync mr-3"></i>
-                                <span>{{ create.At }}</span>
+                                <span>{{ document.createAt | timeago}}</span>
                             </div>
                         </div>
                     </div>

@@ -52,7 +52,7 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { SettingsComponent } from './MyComponents/Settings/settings/settings.component';
 import { TeacherComponent } from './MyComponents/Dashboards/teacher/teacher.component';
 import { NotFoundComponent } from './MyComponents/NotFound/not-found.component';
-
+import { TimeagoModule } from 'ngx-timeago';
 registerLocaleData(localeES, 'es');
 
 // Path is used to give the path a certain name, or protect certain path throu Guards, AuthGuard is a general guard while RoleGuard will circle through roles and assign a certain path depending the role
@@ -67,13 +67,13 @@ const routes: Routes = [
 
   //?HOMES
   { path: 'Admin', component: HomeAdminComponent, canActivate: [AuthGuard, RoleGuard],  data: {role: 'ROLE_ADMIN'}}, // Admi's home page only accessed by ROLE_ADMIN
-  { path: 'Student', component: HomeStudentComponent, canActivate: [AuthGuard]  }, // Studen's home page only accessed by ROLE_STUDENT
-  { path: 'Teacher', component: HomeTeacherComponent, canActivate: [AuthGuard]  }, //Teacher's home page only accessed by ROLE_TEACHER
+  { path: 'Student', component: HomeStudentComponent, canActivate: [AuthGuard, RoleGuard]  }, // Studen's home page only accessed by ROLE_STUDENT
+  { path: 'Teacher', component: HomeTeacherComponent, canActivate: [AuthGuard, RoleGuard]  }, //Teacher's home page only accessed by ROLE_TEACHER
   
   //? Dashboards Routes
-  { path: 'admin/Dashboard', component: AdminComponent }, //List Groups with a modal to upload a new group
-  { path: 'student/Dashboard', component: DashStudentComponent }, //List Groups with a modal to upload a new group
-  { path: 'teacher/Dashboard', component: TeacherComponent }, //List Groups with a modal to upload a new group
+  { path: 'admin/Dashboard', component: AdminComponent,canActivate: [AuthGuard, RoleGuard],  data: {role: 'ROLE_ADMIN'} }, //List Groups with a modal to upload a new group
+  { path: 'student/Dashboard', component: DashStudentComponent, canActivate: [AuthGuard, RoleGuard],  data: {role: 'ROLE_STUDENT'} }, //List Groups with a modal to upload a new group
+  { path: 'teacher/Dashboard', component: TeacherComponent , canActivate: [AuthGuard, RoleGuard],  data: {role: 'ROLE_TEACHER'}}, //List Groups with a modal to upload a new group
 
 
   //?CRUDS
@@ -160,7 +160,6 @@ const routes: Routes = [
     NotFoundComponent,
 
 
-
   ],
   imports: [
     FormsModule,
@@ -169,6 +168,8 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     NgxPaginationModule,
+    TimeagoModule.forRoot()
+,
     RouterModule.forRoot(routes),
   ],
   providers: [ServiceService, , { provide: LOCALE_ID, useValue: 'es' }],
