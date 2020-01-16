@@ -66,14 +66,14 @@ const routes: Routes = [
   //CRUDS
 
   //?HOMES
-  { path: 'Admin', component: HomeAdminComponent, canActivate: [AuthGuard, RoleGuard],  data: {role: 'ROLE_ADMIN'}}, // Admi's home page only accessed by ROLE_ADMIN
-  { path: 'Student', component: HomeStudentComponent, canActivate: [AuthGuard, RoleGuard]  }, // Studen's home page only accessed by ROLE_STUDENT
-  { path: 'Teacher', component: HomeTeacherComponent, canActivate: [AuthGuard, RoleGuard]  }, //Teacher's home page only accessed by ROLE_TEACHER
+  { path: 'Admin', component: HomeAdminComponent, canActivate: [AuthGuard]}, // Admi's home page only accessed by ROLE_ADMIN
+  { path: 'Student', component: HomeStudentComponent, canActivate: [AuthGuard]  }, // Studen's home page only accessed by ROLE_STUDENT
+  { path: 'Teacher', component: HomeTeacherComponent, canActivate: [AuthGuard]  }, //Teacher's home page only accessed by ROLE_TEACHER
   
   //? Dashboards Routes
-  { path: 'admin/Dashboard', component: AdminComponent,canActivate: [AuthGuard, RoleGuard],  data: {role: 'ROLE_ADMIN'} }, //List Groups with a modal to upload a new group
-  { path: 'student/Dashboard', component: DashStudentComponent, canActivate: [AuthGuard, RoleGuard],  data: {role: 'ROLE_STUDENT'} }, //List Groups with a modal to upload a new group
-  { path: 'teacher/Dashboard', component: TeacherComponent , canActivate: [AuthGuard, RoleGuard],  data: {role: 'ROLE_TEACHER'}}, //List Groups with a modal to upload a new group
+  { path: 'admin/Dashboard', component: AdminComponent}, //List Groups with a modal to upload a new group
+  { path: 'student/Dashboard', component: DashStudentComponent }, //List Groups with a modal to upload a new group
+  { path: 'teacher/Dashboard', component: TeacherComponent},//List Groups with a modal to upload a new group
 
 
   //?CRUDS
@@ -115,7 +115,7 @@ const routes: Routes = [
 
 
   //? Teacher Routes
-  { path: 'teacher/students/list/:id', component: AllusersComponent,canActivate: [AuthGuard, RoleGuard],  data: {role: 'ROLE_TEACHER'} },//show all users from a certain group
+  { path: 'teacher/students/list/:id', component: AllusersComponent },//show all users from a certain group
   { path: 'teacher/documents/documents/:id', component: ListdocumentComponent },//show all documents from a certain group
   { path: 'teacher/evaluations/evaluations/:id', component: ListEvaluationsComponent }, //All evaluations from a certain group
   { path: 'teacher/activities/activities/:id', component: ListactivitiesComponent },

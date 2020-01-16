@@ -112,8 +112,11 @@ export class DocumentsComponent implements OnInit {
     console.log(this.files[0]);
     let idUser = this.authService.user.idUser;
     console.log('ID: '+this.authService.user.idUser)
-    this._documentService.upload(this.files[0],idUser,1,'document').subscribe(response =>{
+    console.log(this.form.get('fileName').value)
+    this._documentService.upload(this.files[0],idUser,1,this.form.get('fileName').value).subscribe(response =>{
       console.log(response);
+      this.getDocuments(0);
+
     },
     err =>
     {
