@@ -114,7 +114,7 @@ const routes: Routes = [
 
 
   //? Teacher Routes
-  { path: 'teacher/students/list/:id', component: AllusersComponent },//show all users from a certain group
+  { path: 'teacher/students/list/:id', component: AllusersComponent,canActivate: [AuthGuard, RoleGuard],  data: {role: 'ROLE_TEACHER'} },//show all users from a certain group
   { path: 'teacher/documents/documents/:id', component: ListdocumentComponent },//show all documents from a certain group
   { path: 'teacher/evaluations/evaluations/:id', component: ListEvaluationsComponent }, //All evaluations from a certain group
   { path: 'teacher/activities/activities/:id', component: ListactivitiesComponent },

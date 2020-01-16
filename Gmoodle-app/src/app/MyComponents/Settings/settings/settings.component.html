@@ -1,4 +1,6 @@
-<app-home-admin></app-home-admin>
+<app-home-admin *ngIf="authService.hasRole('ROLE_ADMIN')"></app-home-admin>
+<app-nav-teacher  *ngIf="authService.hasRole('ROLE_TEACHER')" ></app-nav-teacher>
+<app-nav-student  *ngIf="authService.hasRole('ROLE_STUDENT')" ></app-nav-student>
 <!--SOME SPACE BETWEEN TOPNAV AND THIS SECTION-->
 <div class=" col-xl-10 col-lg-9 col-md-8 ml-auto">
     <div class="row pt-md-5 mt-md-3">

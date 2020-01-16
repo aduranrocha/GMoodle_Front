@@ -1,4 +1,5 @@
-<app-home-admin></app-home-admin>
+<app-nav-teacher  *ngIf="_authService.hasRole('ROLE_TEACHER')" ></app-nav-teacher>
+
 
 <!-- tables -->
 

@@ -1,7 +1,9 @@
 <!-- LIST OF ALL EVAULATIONS UPLOAD THROUGH A MODAL -->
 
 <!--This  should let you upload an Evaluation, only if you are a teacher. Then te students will be able to check it out-->
-<app-home-admin></app-home-admin>
+<app-home-admin *ngIf="authService.hasRole('ROLE_ADMIN')"></app-home-admin>
+<app-nav-teacher  *ngIf="authService.hasRole('ROLE_TEACHER')" ></app-nav-teacher>
+
 
 <!-- tables -->
 

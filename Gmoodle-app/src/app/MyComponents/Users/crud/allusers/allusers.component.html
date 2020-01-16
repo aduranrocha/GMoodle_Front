@@ -2,7 +2,8 @@
 
 
 <!--this header is the topnav-->
-<app-home-admin></app-home-admin>
+<app-home-admin *ngIf="authService.hasRole('ROLE_ADMIN')"></app-home-admin>
+<app-nav-teacher  *ngIf="authService.hasRole('ROLE_TEACHER')" ></app-nav-teacher>
 
 
 <!-- this call to app-detail does NOT WORK FOR SOME REASON-->

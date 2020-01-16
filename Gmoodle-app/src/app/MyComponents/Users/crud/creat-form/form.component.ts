@@ -6,6 +6,7 @@ import {  ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { UserService } from 'src/app/Services/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../functions/auth/auth.service';
 
 @Component({
   selector: 'app-form',
@@ -40,6 +41,7 @@ export class FormComponent implements OnInit
     private userService : ServiceService,
     private _userService: UserService,
     private router : Router,
+    private _authService: AuthService,
     private activateRouter : ActivatedRoute,
     private formBuilder: FormBuilder
     ){}

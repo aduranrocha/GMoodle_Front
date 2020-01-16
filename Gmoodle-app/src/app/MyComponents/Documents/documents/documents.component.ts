@@ -107,10 +107,11 @@ export class DocumentsComponent implements OnInit {
 
   private uploadFile()
   {
-    console.log('upload');
+    console.log('in upload');
     let document = new Document();
     console.log(this.files[0]);
-    this._documentService.upload(this.files[0],1,1).subscribe(response =>{
+    let idUser = this.authService.user.idUser;
+    this._documentService.upload(this.files[0],idUser,1).subscribe(response =>{
       console.log(response);
     },
     err =>

@@ -3,7 +3,10 @@
 <!--this header is the topnav-->
 
 
-<app-home-admin></app-home-admin>
+<app-home-admin *ngIf="_authService.hasRole('ROLE_ADMIN')"></app-home-admin>
+<app-nav-teacher  *ngIf="_authService.hasRole('ROLE_TEACHER')" ></app-nav-teacher>
+
+
 
 <section>
     <!--SOME SPACE BETWEEN TOPNAV AND THIS SECTION-->
